@@ -1,0 +1,38 @@
+{
+  "name": "was_create_standalone",
+  "description": "was_create_standalone",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+        "was": {
+          "profiles": {
+            "standalone_profiles": {
+              "standalone1": {
+                "profile": "AppSrv01",
+                "server": "standalone01",
+                "cell": "cell01",
+                "keystorepassword": ""
+              }
+            }
+          },
+          "wsadmin": {
+            "standalone": {
+              "jvmproperty": {
+                "property_value_initial": "",
+                "property_value_maximum": ""
+              }
+            }
+          }
+        }
+      },
+      "override_attributes": {
+
+      },
+      "chef_type": "role",
+      "run_list": [
+        "recipe[was::create_standalone]",
+        "recipe[was::configure_standalone]"
+      ],
+      "env_run_lists": {
+
+      }
+}

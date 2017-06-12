@@ -1,0 +1,35 @@
+{
+  "name": "was_create_dmgr",
+  "description": "WAS-Create-DMGR",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+        "was": {
+          "profiles": {
+            "dmgr": {
+              "profile": "Dmgr01",
+              "cell": "cell01",
+              "keystorepassword": ""
+            }
+          },
+          "wsadmin": {
+            "dmgr": {
+              "jvmproperty": {
+                "property_value_initial": "",
+                "property_value_maximum": ""
+              }
+            }
+          }
+        }
+      },
+      "override_attributes": {
+
+      },
+      "chef_type": "role",
+      "run_list": [
+        "recipe[was::create_dmgr]",
+        "recipe[was::configure_dmgr]"
+      ],
+      "env_run_lists": {
+
+      }
+}

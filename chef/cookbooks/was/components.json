@@ -1,0 +1,226 @@
+[
+    {
+        "attributes": {
+            "ibm": {
+                "expand_area": "/tmp/ibm_cloud/expand_area",
+                "im_repo": "",
+                "im_repo_password": "",
+                "im_repo_user": "repouser",
+                "log_dir": "/var/log/ibm_cloud",
+                "sw_repo": "",
+                "sw_repo_password": "",
+                "sw_repo_user": "repouser",
+                "temp_dir": "/tmp/ibm_cloud"
+            },
+            "was": {
+                "install_dir": "/opt/IBM/WebSphere/AppServer",
+                "java_version": "7.1.3.30",
+                "os_users": {
+                    "was": {
+                        "comment": "WAS administrative user",
+                        "gid": "wasgrp",
+                        "home": "/home/wasadmin",
+                        "ldap_user": "false",
+                        "name": "wasadmin"
+                    }
+                },
+                "security": {
+                    "admin_user": "wasadmin",
+                    "admin_user_pwd": ""
+                },
+                "version": "8.5.5.9"
+            }
+        },
+        "depends_on": [],
+        "description": "WASV85-Install",
+        "displayname": "wasV85_install",
+        "name": "wasV85_install",
+        "objectname": "wasV85_install",
+        "type": "chef_role"
+    },
+    {
+        "attributes": {
+            "ibm": {
+                "expand_area": "/tmp/ibm_cloud/expand_area",
+                "im_repo": "",
+                "im_repo_password": "",
+                "im_repo_user": "repouser",
+                "log_dir": "/var/log/ibm_cloud",
+                "sw_repo": "",
+                "sw_repo_password": "",
+                "sw_repo_user": "repouser",
+                "temp_dir": "/tmp/ibm_cloud"
+            },
+            "was": {
+                "install_dir": "/opt/IBM/WebSphere/AppServer",
+                "java_version": "8.0.4.10",
+                "os_users": {
+                    "was": {
+                        "gid": "wasgrp",
+                        "home": "/home/wasadmin",
+                        "ldap_user": "false",
+                        "name": "wasadmin"
+                    }
+                },
+                "security": {
+                    "admin_user": "wasadmin",
+                    "admin_user_pwd": ""
+                },
+                "version": "9.0.0.2"
+            }
+        },
+        "depends_on": [],
+        "description": "WASV9-Install",
+        "displayname": "wasV9_install",
+        "name": "wasV9_install",
+        "objectname": "wasV9_install",
+        "type": "chef_role"
+    },
+    {
+        "attributes": {
+            "was": {
+                "wsadmin": {
+                    "clusters": {
+                        "cluster01": {
+                            "cluster_name": "cluster01",
+                            "cluster_servers": {
+                                "cluster_server01": {
+                                    "server_name": "server01"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "depends_on": [],
+        "description": "was_create_clusters_and_members",
+        "displayname": "was_create_clusters_and_members",
+        "name": "was_create_clusters_and_members",
+        "objectname": "was_create_clusters_and_members",
+        "type": "chef_role"
+    },
+    {
+        "attributes": {
+            "was": {
+                "profiles": {
+                    "dmgr": {
+                        "cell": "cell01",
+                        "keystorepassword": "",
+                        "profile": "Dmgr01"
+                    }
+                },
+                "wsadmin": {
+                    "dmgr": {
+                        "jvmproperty": {
+                            "property_value_initial": "",
+                            "property_value_maximum": ""
+                        }
+                    }
+                }
+            }
+        },
+        "depends_on": [],
+        "description": "WAS-Create-DMGR",
+        "displayname": "was_create_dmgr",
+        "name": "was_create_dmgr",
+        "objectname": "was_create_dmgr",
+        "type": "chef_role"
+    },
+    {
+        "attributes": {
+            "was": {
+                "profiles": {
+                    "job_manager": {
+                        "cell": "cell01",
+                        "keystorepassword": "",
+                        "profile": "JobMgr01"
+                    }
+                }
+            }
+        },
+        "depends_on": [],
+        "description": "Configure the Job Manager Profile",
+        "displayname": "was_create_job_manager",
+        "name": "was_create_job_manager",
+        "objectname": "was_create_job_manager",
+        "type": "chef_role"
+    },
+    {
+        "attributes": {
+            "was": {
+                "profiles": {
+                    "node_profile": {
+                        "keystorepassword": "",
+                        "profile": "AppSrv01"
+                    }
+                },
+                "wsadmin": {
+                    "nodeagent": {
+                        "jvmproperty": {
+                            "property_value_initial": "",
+                            "property_value_maximum": ""
+                        }
+                    }
+                }
+            }
+        },
+        "depends_on": [],
+        "description": "WAS-Create-NODE",
+        "displayname": "was_create_nodeagent",
+        "name": "was_create_nodeagent",
+        "objectname": "was_create_nodeagent",
+        "type": "chef_role"
+    },
+    {
+        "attributes": {
+            "was": {
+                "profiles": {
+                    "standalone_profiles": {
+                        "standalone1": {
+                            "cell": "cell01",
+                            "keystorepassword": "",
+                            "profile": "AppSrv01",
+                            "server": "standalone01"
+                        }
+                    }
+                },
+                "wsadmin": {
+                    "standalone": {
+                        "jvmproperty": {
+                            "property_value_initial": "",
+                            "property_value_maximum": ""
+                        }
+                    }
+                }
+            }
+        },
+        "depends_on": [],
+        "description": "was_create_standalone",
+        "displayname": "was_create_standalone",
+        "name": "was_create_standalone",
+        "objectname": "was_create_standalone",
+        "type": "chef_role"
+    },
+    {
+        "attributes": {
+            "was": {
+                "webserver": {
+                    "ihs_server": {
+                        "admin_port": "8008",
+                        "ihs_admin_user": "",
+                        "install_dir": "/opt/IBM/HTTPServer",
+                        "webserver_name": "webserver1",
+                        "webserver_port": "9080"
+                    }
+                }
+            }
+        },
+        "depends_on": [],
+        "description": "was_create_webserver",
+        "displayname": "was_create_webserver",
+        "name": "was_create_webserver",
+        "objectname": "was_create_webserver",
+        "type": "chef_role"
+    }
+]
