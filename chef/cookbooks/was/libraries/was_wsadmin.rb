@@ -16,6 +16,7 @@ module WASWsadmin
       cookbook_file p.to_s do
         cookbook 'was'
         path "#{temp_dir}/#{p}"
+        sensitive true
         action :create
       end
     end
@@ -26,21 +27,22 @@ module WASWsadmin
     security_credentials = if admin_user.nil?
       ""
                            else
-      "-user #{admin_user} -password #{admin_pwd}"
+      "-user '#{admin_user}' -password '#{admin_pwd}'"
                            end
 
     dmgr_connection_string = if dmgr_host.nil?
       ""
                              else
-      "-conntype SOAP -host #{dmgr_host} -port #{dmgr_soap_port}"
+      "-conntype SOAP -host '#{dmgr_host}' -port '#{dmgr_soap_port}'"
                              end
 
-    if RUBY_PLATFORM !~ /win|mingw/
-      puts IO.popen(%Q[ su - #{os_user} -c "#{profile_path}/bin/wsadmin.sh -lang jython -f #{jython_file} #{dmgr_connection_string} #{security_credentials}" ]).readlines.join.chomp
-    else
+    wsadmin_cmd = if RUBY_PLATFORM !~ /win|mingw/
+      shell_out!(%Q[ su - #{os_user} -c "#{profile_path}/bin/wsadmin.sh -lang jython -f #{jython_file} #{dmgr_connection_string} #{security_credentials}" ])
+                  else
       #TODO test windows wsadmin invocation
-      puts IO.popen(%Q[ #{profile_path}\bin\wsadmin.bat -lang jython -f #{jython_file} #{dmgr_connection_string} #{security_credentials} ]).readlines.join.chomp
-    end
+      shell_out!(%Q[ #{profile_path}\bin\wsadmin.bat -lang jython -f #{jython_file} #{dmgr_connection_string} #{security_credentials} ])
+                  end
+    wsadmin_cmd.stdout
   end
 
   def run_jython_block(os_user, profile_path, admin_user, admin_pwd, jython)
@@ -52,39 +54,16 @@ module WASWsadmin
       Chef::Log.info("#{dmgr_host} dmgr derived from chefsearch")
     end
     dmgr_soap_port= node['was']['profiles']['dmgr']['ports']['SOAP_CONNECTOR_ADDRESS']
-    log "was dmgr port:#{dmgr_soap_port}"
-    ruby_block "run_jython" do
-      block do
-        run_jython(os_user,
-                   profile_path,
-                   temp_dir,
-                   dmgr_host,
-                   dmgr_soap_port,
-                   admin_user,
-                   admin_pwd,
-                   "#{temp_dir}/#{jython}")
-      end
-    end
+    Chef::Log.info("was dmgr port:#{dmgr_soap_port}")
+    run_jython(os_user, profile_path, temp_dir, dmgr_host, dmgr_soap_port, admin_user, admin_pwd, "#{temp_dir}/#{jython}")
   end
 
   def run_jython_block_standalone(os_user, profile_path, admin_user, admin_pwd, jython)
-    #add credentials to soap.client.props and enable soap security
     temp_dir= node['ibm']['temp_dir'].to_s
     standalone_host= was_tags(node['was']['profiles']['standalone_profiles']['standalone1']['host'].to_s)
     standalone_soap_port= node['was']['profiles']['standalone_profiles']['standalone1']['ports']['SOAP_CONNECTOR_ADDRESS']
-    log "WAS standalone port:#{standalone_soap_port}"
-    ruby_block "run_jython" do
-      block do
-        run_jython(os_user,
-                   profile_path,
-                   temp_dir,
-                   standalone_host,
-                   standalone_soap_port,
-                   admin_user,
-                   admin_pwd,
-                   "#{temp_dir}/#{jython}")
-      end
-    end
+    Chef::Log.info("WAS standalone port:#{standalone_soap_port}")
+    run_jython(os_user, profile_path, temp_dir, standalone_host, standalone_soap_port, admin_user, admin_pwd, "#{temp_dir}/#{jython}")
   end
 end
 

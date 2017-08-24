@@ -24,6 +24,7 @@ module WASProfiles
     #encrypt WAS admin user password
     execute "xor_db_pwd" do
         cwd expand_area
+        sensitive true
         command %Q[ ./was_xor_pwd.sh '#{admin_user_pwd}' > #{expand_area}/adminpwd.pwd ]
         not_if { File.readlines("#{node['was']['profile_dir']}/#{profile_name}/properties/soap.client.props").grep(/#{validatestring}/).any? }
     end
@@ -54,23 +55,26 @@ module WASProfiles
   end
 
   def execute_manage_profile(response_file, profile_name)
+    cmd = "./manageprofiles.sh -response #{response_file}"
+    # Chef 12+ problem with OS detection. Replacing C.UTF-8 with en_US"
+    cmd = "export LANG=en_US; export LANGUAGE=en_US\:; export LC_ALL=en_US; ./manageprofiles.sh -response #{response_file}" if (node['platform_family'] == "debian") && (response_file.include? "dmgr.rsp")
     execute "create_profile" do
       cwd "#{node['was']['install_dir']}/bin"
-      command %Q[ ./manageprofiles.sh -response #{response_file} ]
+      command cmd
       user node['was']['os_users']['was']['name']
       group node['was']['os_users']['was']['gid']
       not_if { File.exist?("#{node['was']['profile_dir']}/#{profile_name}") }
     end
   end
 
-  def create_server_init(profile_name, service_name, server_type)
+  def create_server_init(profile_name, service_name, server_name)
     template "/etc/init.d/#{service_name}_was.init" do
         source "server.init.erb"
         mode '0770'
         owner 'root'
         group 'root'
         variables(
-        :SERVERNAME => server_type,
+        :SERVERNAME => server_name,
         :PROFILEPATH => "#{node['was']['profile_dir']}/#{profile_name}",
         :INSTALL_LOCATION => (node['was']['install_dir']).to_s,
         :SERVICENAME => service_name,

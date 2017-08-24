@@ -46,7 +46,7 @@ chef_vault = node['was']['vault']['name']
 unless chef_vault.empty?
   encrypted_id = node['was']['vault']['encrypted_id']
   require 'chef-vault'
-  admin_user_pwd = ChefVault::Item.load(chef_vault, encrypted_id)['was']['security']['admin_user_pwd']
+  admin_user_pwd = chef_vault_item(chef_vault, encrypted_id)['was']['security']['admin_user_pwd']
 end
 #
 keystorepassword = node['was']['profiles']['node_profile']['keystorepassword']
@@ -54,7 +54,7 @@ chef_vault = node['was']['vault']['name']
 unless chef_vault.empty?
   encrypted_id = node['was']['vault']['encrypted_id']
   require 'chef-vault'
-  keystorepassword = ChefVault::Item.load(chef_vault, encrypted_id)['was']['profiles']['node_profile']['keystorepassword']
+  keystorepassword = chef_vault_item(chef_vault, encrypted_id)['was']['profiles']['node_profile']['keystorepassword']
 end
 
 
@@ -74,6 +74,7 @@ end
 
 template "#{node['was']['expand_area']}/managed.rsp" do
   source "managed.rsp.erb"
+  sensitive true
   mode '0750'
   owner node['was']['os_users']['was']['name']
   group node['was']['os_users']['was']['gid']
@@ -96,37 +97,14 @@ template "#{node['was']['expand_area']}/managed.rsp" do
   )
 end
 
-#Create the DMGR profile
+#Create the Managed profile
 execute_manage_profile("#{node['was']['expand_area']}/managed.rsp", node['was']['profiles']['node_profile']['profile'])
 # create the service init script
 create_server_init((node['was']['profiles']['node_profile']['profile']).to_s, was_tags(node['was']['profiles']['node_profile']['node'].to_s), 'nodeagent')
 
-
 if node['was']['config']['enable_admin_security'] == "true"
   encrypt_soap_client_props((node['was']['profiles']['node_profile']['profile']).to_s, admin_user_pwd.to_s)
 end
-
-# stop the nodeagent after federation
-ruby_block 'stop standalone server' do
-  sdk_version = sdk_java_edition
-  block do
-    stop_nodeagent
-  end
-  not_if { IO.popen("#{node['was']['install_dir']}/bin/managesdk.sh -listEnabledProfile  -profileName #{node['was']['profiles']['node_profile']['profile']}").readlines.grep(/#{sdk_version}/).any? }
-end
-
-java_editions = node['was']['java_features'].select { |_, props| props['enable'] == 'true' }
-if java_editions.length == 1
-  sdk_version = sdk_java_edition
-  execute "add-java-sdk-to-profile-nodeagent" do
-      cwd "#{node['was']['install_dir']}/bin"
-      command %Q[ ./managesdk.sh -enableProfile -profileName #{node['was']['profiles']['node_profile']['profile']} -sdkname #{sdk_version} -enableServers ]
-      user node['was']['os_users']['was']['name']
-      group node['was']['os_users']['was']['gid']
-      not_if { IO.popen("#{node['was']['install_dir']}/bin/managesdk.sh -listEnabledProfile  -profileName #{node['was']['profiles']['node_profile']['profile']}").readlines.grep(/#{sdk_version}/).any? }
-  end
-end
-
 
 fix_user_ownership(["#{node['was']['profile_dir']}/#{node['was']['profiles']['node_profile']['profile']}", node['was']['install_dir']])
 

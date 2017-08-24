@@ -3,7 +3,7 @@
 #
 #         Copyright IBM Corp. 2016, 2017
 #
-# <> Create WebSphere Deployment Manager
+# <> Creates WebSphere Deployment Manager profile and starts the deployment manager. 
 #
 
 # Manage base directory
@@ -49,7 +49,7 @@ chef_vault = node['was']['vault']['name']
 unless chef_vault.empty?
   encrypted_id = node['was']['vault']['encrypted_id']
   require 'chef-vault'
-  admin_user_pwd = ChefVault::Item.load(chef_vault, encrypted_id)['was']['security']['admin_user_pwd']
+  admin_user_pwd = chef_vault_item(chef_vault, encrypted_id)['was']['security']['admin_user_pwd']
 end
 #
 
@@ -58,12 +58,13 @@ chef_vault = node['was']['vault']['name']
 unless chef_vault.empty?
   encrypted_id = node['was']['vault']['encrypted_id']
   require 'chef-vault'
-  keystorepassword = ChefVault::Item.load(chef_vault, encrypted_id)['was']['profiles']['dmgr']['keystorepassword']
+  keystorepassword = chef_vault_item(chef_vault, encrypted_id)['was']['profiles']['dmgr']['keystorepassword']
 end
 
 
 template "#{node['was']['expand_area']}/dmgr.rsp" do
   source "dmgr.rsp.erb"
+  sensitive true
   mode '0750'
   owner node['was']['os_users']['was']['name']
   group node['was']['os_users']['was']['gid']
@@ -92,19 +93,6 @@ create_server_init((node['was']['profiles']['dmgr']['profile']).to_s, was_tags(n
 if node['was']['config']['enable_admin_security'] == "true"
   encrypt_soap_client_props((node['was']['profiles']['dmgr']['profile']).to_s, admin_user_pwd.to_s)
 end
-
-java_editions = node['was']['java_features'].select { |_, props| props['enable'] == 'true' }
-if java_editions.length == 1
-  sdk_version = sdk_java_edition
-  execute "add-java-sdk-to-profile-dmgr" do
-      cwd "#{node['was']['install_dir']}/bin"
-      command %Q[ ./managesdk.sh -enableProfile -profileName #{node['was']['profiles']['dmgr']['profile']} -sdkname #{sdk_version} -enableServers ]
-      user node['was']['os_users']['was']['name']
-      group node['was']['os_users']['was']['gid']
-      not_if { IO.popen("#{node['was']['install_dir']}/bin/managesdk.sh -listEnabledProfile  -profileName #{node['was']['profiles']['dmgr']['profile']}").readlines.grep(/#{sdk_version}/).any? }
-  end
-end
-
 
 fix_user_ownership(["#{node['was']['profile_dir']}/#{node['was']['profiles']['dmgr']['profile']}", node['was']['install_dir']])
 

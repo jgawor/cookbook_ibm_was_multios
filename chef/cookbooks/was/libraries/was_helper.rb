@@ -16,7 +16,6 @@ module WASHelper
                       cmd
                     else
                       "su - #{user} -s /bin/sh -c \"#{cmd}\""
-                      #cmd
                     end
     shell_out!(shell_command)
   end
@@ -72,19 +71,6 @@ module WASHelper
     first_ver = vers_arry.pop.to_s
     #vers_arry.push((ml_vers * 10 + fp_vers).to_s).join('.')
     first_ver + '.' + second_ver + '.' + ml_vers.to_s + fp_vers.to_s
-  end
-
-  def sdk_java_edition
-    vers_arry = node['was']['java_version'].split('.')
-    _fp_vers = vers_arry.pop.to_s
-    _ml_vers = vers_arry.pop.to_s
-    second_ver = vers_arry.pop.to_s
-    first_ver = vers_arry.pop.to_s
-    java_version = first_ver + '.' + second_ver
-
-    cmd = "#{node['was']['install_dir']}/bin/managesdk.sh -listAvailable  | grep #{java_version}"
-    cmd_out = run_shell_cmd(cmd, node['was']['os_users']['was']['name'])
-    cmd_out.stderr.empty? && cmd_out.stdout.split[-1]
   end
 
   def was_tags(in_string)

@@ -3,9 +3,8 @@
 #
 #         Copyright IBM Corp. 2016, 2017
 #
-# <> Install WebSphere Application Server
+# <> Installs WebSphere Application Server V8.5.5 or V9
 #
-
 
 case node['was']['install_mode']
 when 'admin'
@@ -22,7 +21,6 @@ node['was']['edition'].each_pair do |e, do_install|
     edition = e
   end
 end
-
 
 feature_list = ''
 node['was']['features'].each_pair do |feature, do_install|
@@ -76,11 +74,9 @@ Chef::Log.info("install_path: #{node['was']['install_dir']}")
 Chef::Log.info("im_repo: #{node['ibm']['im_repo']}")
 Chef::Log.info("offering Id: #{offering_id}")
 Chef::Log.info("profile Id: #{profile_id}")
-
 Chef::Log.info("JAVA name Id: #{java_name}")
 Chef::Log.info("JAVA offering Id: #{java_offering_id}")
 Chef::Log.info("JAVA version Id: #{offering_java_version}")
-
 Chef::Log.info("JAVA flag Id: #{install_java_flag}")
 
 im_install 'ibm_websphere_server' do
@@ -101,4 +97,9 @@ im_install 'ibm_websphere_server' do
   im_repo_nonsecureMode 'true'
   repo_nonsecureMode 'true'
   action [:install_im, :upgrade_im, :install]
+end
+
+was_managesdk "set_default_sdk" do
+  action [:setCommandDefault, :setNewProfileDefault]
+  only_if { java_editions.length == 1 }
 end

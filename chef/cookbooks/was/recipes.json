@@ -7,22 +7,22 @@
         },
         "configure_dmgr.rb": {
             "description": [
-                "Configure Deployment Manager like set the JVM HeapSize min / max etc"
+                "Configure Deployment Manager JVM min and max HeapSize."
             ]
         },
         "configure_nodeagent.rb": {
             "description": [
-                "Configure Node agent like set the JVM HeapSize min / max etc"
+                "Configure Node agent JVM min and max HeapSize settings"
             ]
         },
         "configure_standalone.rb": {
             "description": [
-                "Configure Websphere standalone server like set the JVM HeapSize min / max etc"
+                "Configure Websphere standalone server JVM min and max HeapSize. "
             ]
         },
         "create_cluster.rb": {
             "description": [
-                "Create Websphere clusters"
+                "Creates a WebSphere cluster for a given cell.  There is no retry logic if system management throws an exception. "
             ]
         },
         "create_clustermember.rb": {
@@ -32,12 +32,12 @@
         },
         "create_dmgr.rb": {
             "description": [
-                "Create WebSphere Deployment Manager"
+                "Creates WebSphere Deployment Manager profile and starts the deployment manager. "
             ]
         },
         "create_job_manager.rb": {
             "description": [
-                "Create WebSphere Job Manager"
+                "Create WebSphere Job Manager profile and starts the job manager. "
             ]
         },
         "create_managed.rb": {
@@ -47,7 +47,7 @@
         },
         "create_standalone.rb": {
             "description": [
-                "Create Websphere standalone server"
+                "Create Websphere standalone server profile and starts the server. "
             ]
         },
         "gather_evidence.rb": {
@@ -57,7 +57,7 @@
         },
         "install.rb": {
             "description": [
-                "Install WebSphere Application Server"
+                "Installs WebSphere Application Server V8.5.5 or V9"
             ]
         },
         "prereq.rb": {
@@ -78,7 +78,7 @@
         },
         "unmanaged_webserver.rb": {
             "description": [
-                "Create unmanaged node, create and configure webserver"
+                "Creates a IBM HTTP webserver server defintion as an unmanaged node. "
             ]
         }
     }

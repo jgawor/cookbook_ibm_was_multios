@@ -1,6 +1,6 @@
 {
-  "name": "wasV9_install",
-  "description": "WASV9-Install",
+  "name": "was_v855_install",
+  "description": "Install WebSphere Application Server V8.5.5.x with Java 7.1 SDK",
   "json_class": "Chef::Role",
   "default_attributes": {
     "ibm": {
@@ -15,13 +15,15 @@
       "sw_repo_password": ""
     },
     "was": {
-      "version": "9.0.0.2",
-      "java_version": "8.0.4.10",
+      "version": "8.5.5.9",
+      "java_version": "7.1.3.30",
       "install_dir": "/opt/IBM/WebSphere/AppServer",
+      "profile_dir": "/opt/IBM/WebSphere/AppServer/profiles",
       "os_users": {
         "was": {
           "name": "wasadmin",
           "gid": "wasgrp",
+          "comment": "WAS administrative user",
           "home": "/home/wasadmin",
           "ldap_user": "false"
         }

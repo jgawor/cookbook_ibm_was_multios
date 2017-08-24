@@ -1,6 +1,233 @@
 [
     {
         "attributes": {
+            "was": {
+                "wsadmin": {
+                    "clusters": {
+                        "cluster01": {
+                            "cluster_name": "cluster01",
+                            "cluster_servers": {
+                                "cluster_server01": {
+                                    "server_name": "server01"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "depends_on": [],
+        "description": "was_create_clusters_and_members",
+        "displayname": "was_create_clusters_and_members",
+        "name": "was_create_clusters_and_members",
+        "objectname": "was_create_clusters_and_members",
+        "run_list": [
+            "recipe[was::create_cluster]",
+            "recipe[was::create_clustermember]",
+            "recipe[was::start_clustermember]"
+        ],
+        "type": "chef_role"
+    },
+    {
+        "attributes": {
+            "was": {
+                "profiles": {
+                    "dmgr": {
+                        "cell": "cell01",
+                        "keystorepassword": "",
+                        "profile": "Dmgr01"
+                    }
+                },
+                "wsadmin": {
+                    "dmgr": {
+                        "jvmproperty": {
+                            "property_value_initial": "256",
+                            "property_value_maximum": "512"
+                        }
+                    }
+                }
+            }
+        },
+        "depends_on": [],
+        "description": "Create and configure the WebSphere Application Server Deployment manager profile",
+        "displayname": "was_create_dmgr",
+        "name": "was_create_dmgr",
+        "objectname": "was_create_dmgr",
+        "run_list": [
+            "recipe[was::create_dmgr]",
+            "recipe[was::configure_dmgr]"
+        ],
+        "type": "chef_role"
+    },
+    {
+        "attributes": {
+            "was": {
+                "profiles": {
+                    "job_manager": {
+                        "cell": "cell01",
+                        "keystorepassword": "",
+                        "profile": "JobMgr01"
+                    }
+                }
+            }
+        },
+        "depends_on": [],
+        "description": "Create Job Manager Profile",
+        "displayname": "was_create_job_manager",
+        "name": "was_create_job_manager",
+        "objectname": "was_create_job_manager",
+        "run_list": [
+            "recipe[was::create_job_manager]"
+        ],
+        "type": "chef_role"
+    },
+    {
+        "attributes": {
+            "was": {
+                "profiles": {
+                    "node_profile": {
+                        "keystorepassword": "",
+                        "profile": "AppSrv01"
+                    }
+                },
+                "wsadmin": {
+                    "nodeagent": {
+                        "jvmproperty": {
+                            "property_value_initial": "256",
+                            "property_value_maximum": "512"
+                        }
+                    }
+                }
+            }
+        },
+        "depends_on": [],
+        "description": "WAS-Create-NODE",
+        "displayname": "was_create_nodeagent",
+        "name": "was_create_nodeagent",
+        "objectname": "was_create_nodeagent",
+        "run_list": [
+            "recipe[was::create_managed]",
+            "recipe[was::configure_nodeagent]"
+        ],
+        "type": "chef_role"
+    },
+    {
+        "attributes": {
+            "was": {
+                "dmgr_host_name": "",
+                "profiles": {
+                    "node_profile": {
+                        "dmgr_port": "",
+                        "keystorepassword": "",
+                        "profile": "AppSrv01"
+                    }
+                },
+                "wsadmin": {
+                    "nodeagent": {
+                        "jvmproperty": {
+                            "property_value_initial": "256",
+                            "property_value_maximum": "512"
+                        }
+                    }
+                }
+            }
+        },
+        "depends_on": [],
+        "description": "WAS-Create-NODE_ext_dmgr",
+        "displayname": "was_create_nodeagent_ext_dmgr",
+        "name": "was_create_nodeagent_ext_dmgr",
+        "objectname": "was_create_nodeagent_ext_dmgr",
+        "run_list": [
+            "recipe[was::create_managed]",
+            "recipe[was::configure_nodeagent]"
+        ],
+        "type": "chef_role"
+    },
+    {
+        "attributes": {
+            "was": {
+                "profiles": {
+                    "standalone_profiles": {
+                        "standalone1": {
+                            "cell": "cell01",
+                            "keystorepassword": "",
+                            "profile": "AppSrv01",
+                            "server": "standalone01"
+                        }
+                    }
+                },
+                "wsadmin": {
+                    "standalone": {
+                        "jvmproperty": {
+                            "property_value_initial": "256",
+                            "property_value_maximum": "512"
+                        }
+                    }
+                }
+            }
+        },
+        "depends_on": [],
+        "description": "Create the standalone profile and start the server",
+        "displayname": "was_create_standalone",
+        "name": "was_create_standalone",
+        "objectname": "was_create_standalone",
+        "run_list": [
+            "recipe[was::create_standalone]",
+            "recipe[was::configure_standalone]"
+        ],
+        "type": "chef_role"
+    },
+    {
+        "attributes": {
+            "was": {
+                "webserver": {
+                    "ihs_server": {
+                        "admin_port": "8008",
+                        "ihs_admin_user": "",
+                        "install_dir": "/opt/IBM/HTTPServer",
+                        "webserver_name": "webserver1",
+                        "webserver_port": "9080"
+                    }
+                }
+            }
+        },
+        "depends_on": [],
+        "description": "was_create_webserver",
+        "displayname": "was_create_webserver",
+        "name": "was_create_webserver",
+        "objectname": "was_create_webserver",
+        "run_list": [
+            "recipe[was::unmanaged_webserver]"
+        ],
+        "type": "chef_role"
+    },
+    {
+        "attributes": {
+            "was": {
+                "ihs_host_name": "",
+                "webserver": {
+                    "ihs_server": {
+                        "admin_port": "8008",
+                        "ihs_admin_user": "",
+                        "install_dir": "/opt/IBM/HTTPServer",
+                        "webserver_name": "webserver1",
+                        "webserver_port": "9080"
+                    }
+                }
+            }
+        },
+        "depends_on": [],
+        "description": "was_create_webserver_ext_ihs",
+        "displayname": "was_create_webserver_ext_ihs",
+        "name": "was_create_webserver_ext_ihs",
+        "objectname": "was_create_webserver_ext_ihs",
+        "run_list": [
+            "recipe[was::unmanaged_webserver]"
+        ],
+        "type": "chef_role"
+    },
+    {
+        "attributes": {
             "ibm": {
                 "expand_area": "/tmp/ibm_cloud/expand_area",
                 "im_repo": "",
@@ -24,6 +251,7 @@
                         "name": "wasadmin"
                     }
                 },
+                "profile_dir": "/opt/IBM/WebSphere/AppServer/profiles",
                 "security": {
                     "admin_user": "wasadmin",
                     "admin_user_pwd": ""
@@ -32,10 +260,15 @@
             }
         },
         "depends_on": [],
-        "description": "WASV85-Install",
-        "displayname": "wasV85_install",
-        "name": "wasV85_install",
-        "objectname": "wasV85_install",
+        "description": "Install WebSphere Application Server V8.5.5.x with Java 7.1 SDK",
+        "displayname": "was_v855_install",
+        "name": "was_v855_install",
+        "objectname": "was_v855_install",
+        "run_list": [
+            "recipe[was::prereq]",
+            "recipe[was::prereq_check]",
+            "recipe[was::install]"
+        ],
         "type": "chef_role"
     },
     {
@@ -62,6 +295,7 @@
                         "name": "wasadmin"
                     }
                 },
+                "profile_dir": "/opt/IBM/WebSphere/AppServer/profiles",
                 "security": {
                     "admin_user": "wasadmin",
                     "admin_user_pwd": ""
@@ -70,157 +304,15 @@
             }
         },
         "depends_on": [],
-        "description": "WASV9-Install",
-        "displayname": "wasV9_install",
-        "name": "wasV9_install",
-        "objectname": "wasV9_install",
-        "type": "chef_role"
-    },
-    {
-        "attributes": {
-            "was": {
-                "wsadmin": {
-                    "clusters": {
-                        "cluster01": {
-                            "cluster_name": "cluster01",
-                            "cluster_servers": {
-                                "cluster_server01": {
-                                    "server_name": "server01"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "depends_on": [],
-        "description": "was_create_clusters_and_members",
-        "displayname": "was_create_clusters_and_members",
-        "name": "was_create_clusters_and_members",
-        "objectname": "was_create_clusters_and_members",
-        "type": "chef_role"
-    },
-    {
-        "attributes": {
-            "was": {
-                "profiles": {
-                    "dmgr": {
-                        "cell": "cell01",
-                        "keystorepassword": "",
-                        "profile": "Dmgr01"
-                    }
-                },
-                "wsadmin": {
-                    "dmgr": {
-                        "jvmproperty": {
-                            "property_value_initial": "",
-                            "property_value_maximum": ""
-                        }
-                    }
-                }
-            }
-        },
-        "depends_on": [],
-        "description": "WAS-Create-DMGR",
-        "displayname": "was_create_dmgr",
-        "name": "was_create_dmgr",
-        "objectname": "was_create_dmgr",
-        "type": "chef_role"
-    },
-    {
-        "attributes": {
-            "was": {
-                "profiles": {
-                    "job_manager": {
-                        "cell": "cell01",
-                        "keystorepassword": "",
-                        "profile": "JobMgr01"
-                    }
-                }
-            }
-        },
-        "depends_on": [],
-        "description": "Configure the Job Manager Profile",
-        "displayname": "was_create_job_manager",
-        "name": "was_create_job_manager",
-        "objectname": "was_create_job_manager",
-        "type": "chef_role"
-    },
-    {
-        "attributes": {
-            "was": {
-                "profiles": {
-                    "node_profile": {
-                        "keystorepassword": "",
-                        "profile": "AppSrv01"
-                    }
-                },
-                "wsadmin": {
-                    "nodeagent": {
-                        "jvmproperty": {
-                            "property_value_initial": "",
-                            "property_value_maximum": ""
-                        }
-                    }
-                }
-            }
-        },
-        "depends_on": [],
-        "description": "WAS-Create-NODE",
-        "displayname": "was_create_nodeagent",
-        "name": "was_create_nodeagent",
-        "objectname": "was_create_nodeagent",
-        "type": "chef_role"
-    },
-    {
-        "attributes": {
-            "was": {
-                "profiles": {
-                    "standalone_profiles": {
-                        "standalone1": {
-                            "cell": "cell01",
-                            "keystorepassword": "",
-                            "profile": "AppSrv01",
-                            "server": "standalone01"
-                        }
-                    }
-                },
-                "wsadmin": {
-                    "standalone": {
-                        "jvmproperty": {
-                            "property_value_initial": "",
-                            "property_value_maximum": ""
-                        }
-                    }
-                }
-            }
-        },
-        "depends_on": [],
-        "description": "was_create_standalone",
-        "displayname": "was_create_standalone",
-        "name": "was_create_standalone",
-        "objectname": "was_create_standalone",
-        "type": "chef_role"
-    },
-    {
-        "attributes": {
-            "was": {
-                "webserver": {
-                    "ihs_server": {
-                        "admin_port": "8008",
-                        "ihs_admin_user": "",
-                        "install_dir": "/opt/IBM/HTTPServer",
-                        "webserver_name": "webserver1",
-                        "webserver_port": "9080"
-                    }
-                }
-            }
-        },
-        "depends_on": [],
-        "description": "was_create_webserver",
-        "displayname": "was_create_webserver",
-        "name": "was_create_webserver",
-        "objectname": "was_create_webserver",
+        "description": "Install WebSphere V9.0.0.x with Java 8 SDK",
+        "displayname": "was_v9_install",
+        "name": "was_v9_install",
+        "objectname": "was_v9_install",
+        "run_list": [
+            "recipe[was::prereq]",
+            "recipe[was::prereq_check]",
+            "recipe[was::install]"
+        ],
         "type": "chef_role"
     }
 ]

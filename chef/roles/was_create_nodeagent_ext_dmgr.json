@@ -1,18 +1,19 @@
 {
-  "name": "was_create_dmgr",
-  "description": "Create and configure the WebSphere Application Server Deployment manager profile",
+  "name": "was_create_nodeagent_ext_dmgr",
+  "description": "WAS-Create-NODE_ext_dmgr",
   "json_class": "Chef::Role",
   "default_attributes": {
         "was": {
+          "dmgr_host_name": "",
           "profiles": {
-            "dmgr": {
-              "profile": "Dmgr01",
-              "cell": "cell01",
-              "keystorepassword": ""
-            }
+            "node_profile": {
+               "profile": "AppSrv01",
+               "keystorepassword": "",
+               "dmgr_port": ""
+             }
           },
           "wsadmin": {
-            "dmgr": {
+            "nodeagent": {
               "jvmproperty": {
                 "property_value_initial": "256",
                 "property_value_maximum": "512"
@@ -26,8 +27,8 @@
       },
       "chef_type": "role",
       "run_list": [
-        "recipe[was::create_dmgr]",
-        "recipe[was::configure_dmgr]"
+        "recipe[was::create_managed]",
+        "recipe[was::configure_nodeagent]"
       ],
       "env_run_lists": {
 

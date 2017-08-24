@@ -25,6 +25,9 @@
 <data key='eclipseLocation' value='<%= @INSTALL_LOCATION %>'/>
 <data key='user.import.profile' value='false'/>
 <data key='cic.selector.nl' value='en'/>
+<% if (@OFFERING_ID.include? "85") && (@OFFERING_VERSION.split('.')[2].to_i%1000  >=  11) %>
+<data key='user.wasjava' value='java8'/>
+<% end %>
 <% if @OFFERING_ID.include? "IHS" %>
 <data key='user.ihs.httpPort' value='<%= @IHS_PORT %>'/>
 <data key='user.ihs.allowNonRootSilentInstall' value='true'/>

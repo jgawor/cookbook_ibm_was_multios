@@ -54,8 +54,8 @@ default['was']['vault']['encrypted_id'] = node['ibm_internal']['vault']['item']
 default['was']['OS_supported'] = {
   'windows'  => "true",
   'rhel'    => "true",
-  'centos'  => "false",
-  'debian'  => "false",
+  'centos'  => "true",
+  'debian'  => "true",
   'sles'   =>  "false"
 }
 
@@ -115,7 +115,7 @@ when /^8.5.5/ # ~ip_checker
     'nd' => 'IBM WebSphere Application Server Network Deployment V8.5'
   }
 
-when /^9.0.0.2/ # ~ip_checker
+when /^9.0.0/ # ~ip_checker
   #<> Installation templates for WebSphere
   force_default['was']['install_template'] = 'WAS.install.xml.erb'
 
@@ -144,6 +144,8 @@ when 'rhel'
     %w(compat-libstdc++-33 compat-db ksh gtk2 gtk2-engines pam rpm-build elfutils elfutils-libs libXft glibc libgcc nss-softokn-freebl nss-softokn-freebl libXp libXmu libXtst openssl libXp libXmu libXtst pam compat-libstdc++-296 gtk2 gtk2-engines)
                                       end
   #[compat-libstdc++-33', 'compat-db', 'ksh', 'gtk2', 'gtk2-engines', 'pam', 'rpm-build', 'elfutils', 'elfutils-libs', 'libXft', 'glibc', 'libgcc', 'nss-softokn-freebl', 'nss-softokn-freebl', 'libXp', 'libXmu', 'libXtst', 'openssl', 'libXp', 'libXmu', 'libXtst', 'pam', 'compat-libstdc++-296', 'gtk2', 'gtk2-engines' ]
+when 'debian'
+  default['was']['prereq_packages'] = %w(libxtst6 libgtk2.0-bin libxft2)
 when 'windows'
   default['was']['prereq_packages'] = []
 end

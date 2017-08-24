@@ -1,6 +1,6 @@
 {
   "name": "was_create_job_manager",
-  "description": "Configure the Job Manager Profile",
+  "description": "Create Job Manager Profile",
   "json_class": "Chef::Role",
   "default_attributes": {
         "was": {

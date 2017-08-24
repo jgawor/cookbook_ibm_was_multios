@@ -13,8 +13,8 @@
           "wsadmin": {
             "nodeagent": {
               "jvmproperty": {
-                "property_value_initial": "",
-                "property_value_maximum": ""
+                "property_value_initial": "256",
+                "property_value_maximum": "512"
               }
             }
           }

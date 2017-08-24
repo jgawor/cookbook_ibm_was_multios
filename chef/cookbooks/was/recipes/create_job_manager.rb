@@ -3,7 +3,7 @@
 #
 #         Copyright IBM Corp. 2016, 2017
 #
-# <> Create WebSphere Job Manager
+# <> Create WebSphere Job Manager profile and starts the job manager. 
 #
 
 # Manage base directory
@@ -76,19 +76,6 @@ create_server_init((node['was']['profiles']['job_manager']['profile']).to_s, was
 if node['was']['config']['enable_admin_security'] == "true"
   encrypt_soap_client_props((node['was']['profiles']['job_manager']['profile']).to_s, admin_user_pwd.to_s)
 end
-
-java_editions = node['was']['java_features'].select { |_, props| props['enable'] == 'true' }
-if java_editions.length == 1
-  sdk_version = sdk_java_edition
-  execute "add-java-sdk-to-profile-job_manager" do
-      cwd "#{node['was']['install_dir']}/bin"
-      command %Q[ ./managesdk.sh -enableProfile -profileName #{node['was']['profiles']['job_manager']['profile']} -sdkname #{sdk_version} -enableServers ]
-      user node['was']['os_users']['was']['name']
-      group node['was']['os_users']['was']['gid']
-      not_if { IO.popen("#{node['was']['install_dir']}/bin/managesdk.sh -listEnabledProfile  -profileName #{node['was']['profiles']['job_manager']['profile']}").readlines.grep(/#{sdk_version}/).any? }
-  end
-end
-
 
 fix_user_ownership(["#{node['was']['profile_dir']}/#{node['was']['profiles']['job_manager']['profile']}", node['was']['install_dir']])
 

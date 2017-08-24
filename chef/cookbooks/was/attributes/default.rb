@@ -10,11 +10,11 @@
 # INSTALLATION Options
 ######################################################################################################
 
-#<> WebSphere Installation Version. options to user would be "8.5.5.9" or "9.0.0.2"
+#<> WebSphere Installation Version. options to user would be latest ones starts with "8.5.5" or "9.0.0"
 #default['was']['version'] = "8.5.5.9"
 # <md>attribute 'was/version',
-# <md>          :displayname =>  'WAS_Version',
-# <md>          :description => 'WAS_Version',
+# <md>          :displayname =>  'WebSphere Application Server version',
+# <md>          :description => 'The release and fixpack level of WebSphere Application Server to be installed. Example formats are 8.5.5.11 or 9.0.0.4',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9.0.0.2',
@@ -27,7 +27,7 @@ default['was']['version'] = "9.0.0.2" # ~ip_checker
 #<> Rolenames required for chef-search
 # <md>attribute 'was/dmgr_role_name',
 # <md>          :displayname =>  'dmgr_role_name',
-# <md>          :description => 'dmgr_role_name',
+# <md>          :description => 'Used for Chef search',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '',
@@ -39,7 +39,7 @@ default['was']['dmgr_role_name'] = "was_create_dmgr"
 
 # <md>attribute 'was/ihs_role_names',
 # <md>          :displayname =>  'ihs_role_names',
-# <md>          :description => 'ihs_role_names',
+# <md>          :description => 'Used for Chef search',
 # <md>          :type => 'array',
 # <md>          :required => 'recommended',
 # <md>          :default => '',
@@ -54,7 +54,7 @@ default['was']['ihs_role_names'] = ["ihs-wasmode-admin", "ihs-wasmode-nonadmin"]
 #<> Rolenames required for chef-search
 # <md>attribute 'was/edition/base',
 # <md>          :displayname =>  'WebSphere base edition',
-# <md>          :description => 'WebSphere base edition',
+# <md>          :description => 'WebSphere Application Server will be installed and configured',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'false',
@@ -66,7 +66,7 @@ default['was']['ihs_role_names'] = ["ihs-wasmode-admin", "ihs-wasmode-nonadmin"]
 #<> Rolenames required for chef-search
 # <md>attribute 'was/edition/nd',
 # <md>          :displayname =>  'WebSphere nd edition',
-# <md>          :description => 'WebSphere nd edition',
+# <md>          :description => 'WebSphere Application Server Network Deployment will be installed and configured',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'true',
@@ -83,19 +83,19 @@ default['was']['edition'] = {
 #<> NOTE: only com.ibm.sdk.6_32bit OR com.ibm.sdk.6_64bit should be set to true
 
 # <md>attribute 'was/java_version',
-# <md>          :displayname =>  'WebSphere nd java_version',
-# <md>          :description => 'WebSphere nd java_version',
+# <md>          :displayname =>  'Java 8 SDK version',
+# <md>          :description => 'The Java 8 SDK version that should be installed with the WebSphere Application Server. Example format is 8.0.4.70',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
-# <md>          :default => '8.0.4.10',
+# <md>          :default => '8.0.4.70',
 # <md>          :selectable => 'false',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/java_features/websphere_java_v8/enable',
-# <md>          :displayname =>  'WebSphere java_features websphere_java_v8 enable',
-# <md>          :description => 'WebSphere java_features websphere_java_v8 enable',
+# <md>          :displayname =>  'Install Java 8 SDK',
+# <md>          :description => 'Installation Manager response file option to install Java 8 SDK. Valid only for WebSphere V9',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'true',
@@ -105,8 +105,8 @@ default['was']['edition'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/java_features/websphere_java_v8/offering_id',
-# <md>          :displayname =>  'WebSphere java_features websphere_java_v8 offering_id',
-# <md>          :description => 'WebSphere java_features websphere_java_v8 offering_id',
+# <md>          :displayname =>  'Java 8 SDK installation manager offering id',
+# <md>          :description => 'Java SDK installation manager offering ID value',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'com.ibm.java.jdk.v8',
@@ -116,8 +116,8 @@ default['was']['edition'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/features/core.feature',
-# <md>          :displayname =>  'WebSphere features core.feature',
-# <md>          :description => 'WebSphere features core.feature',
+# <md>          :displayname =>  'Install WebSphere runtime',
+# <md>          :description => 'Indicates that the application server feature (core.feature) should be installed',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'true',
@@ -127,8 +127,8 @@ default['was']['edition'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/features/ejbdeploy',
-# <md>          :displayname =>  'WebSphere features ejbdeploy',
-# <md>          :description => 'WebSphere features ejbdeploy',
+# <md>          :displayname =>  'Install optional EJBDeploy feature',
+# <md>          :description => 'Indicates whether the optional feature EJBDeploy tool for pre-EJB 3.0 modules should be installed',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'true',
@@ -138,8 +138,8 @@ default['was']['edition'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/features/thinclient',
-# <md>          :displayname =>  'WebSphere features thinclient',
-# <md>          :description => 'WebSphere features thinclient',
+# <md>          :displayname =>  'Install optional stand-alone thin clients and resource adapters',
+# <md>          :description => 'Indicates whether the optional IBM stand-alone thin clients and resource adapters should be installed',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'true',
@@ -149,8 +149,8 @@ default['was']['edition'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/features/embeddablecontainer',
-# <md>          :displayname =>  'WebSphere features embeddablecontainer',
-# <md>          :description => 'WebSphere features embeddablecontainer',
+# <md>          :displayname =>  'Install optional Embeddable EJB Container feature',
+# <md>          :description => 'Indicates whether the embeddable EJB container should be installed',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'true',
@@ -160,8 +160,8 @@ default['was']['edition'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/features/samples',
-# <md>          :displayname =>  'WebSphere features samples',
-# <md>          :description => 'WebSphere features samples',
+# <md>          :displayname =>  'Install optional WebSphere Sample applications',
+# <md>          :description => 'Indicates whether the PlantsByWebSphere sample application should be installed',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'false',
@@ -172,7 +172,7 @@ default['was']['edition'] = {
 
 # <md>attribute 'was/features/liberty',
 # <md>          :displayname =>  'WebSphere features liberty',
-# <md>          :description => 'WebSphere features liberty',
+# <md>          :description => 'Indicates whether the WebSphere Liberty Application Server should be installed. Used for WebSphere installations that bundled Liberty as an install option',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'false',
@@ -204,7 +204,7 @@ when /^8.5.5/ # ~ip_checker
     'com.ibm.sdk.6_32bit' => "false",
     'com.ibm.sdk.6_64bit' => "true"
   }
-when /^9.0.0.2/ # ~ip_checker
+when /^9.0.0/ # ~ip_checker
 
   default['was']['java_version'] = "8.0.4.10" # ~ip_checker
 
@@ -231,8 +231,8 @@ end
 
 #<> WAS installation directory
 # <md>attribute 'was/install_dir',
-# <md>          :displayname =>  'WebSphere install_dir',
-# <md>          :description => 'WebSphere install_dir',
+# <md>          :displayname =>  'WebSphere product installation directory',
+# <md>          :description => 'The installation root directory for the WebSphere Application Server roduct binaries',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '/opt/IBM/WebSphere/AppServer',
@@ -244,8 +244,8 @@ default['was']['install_dir'] = "/opt/IBM/WebSphere/AppServer"
 
 #<> WAS profile directory
 # <md>attribute 'was/profile_dir',
-# <md>          :displayname =>  'WebSphere profile_dir',
-# <md>          :description => 'WebSphere profile_dir',
+# <md>          :displayname =>  'WebSphere configuration data location',
+# <md>          :description => 'The directory path that contains WebSphere Application Server profiles',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '/opt/IBM/WebSphere/AppServer/profiles',
@@ -257,8 +257,8 @@ default['was']['profile_dir'] = "#{node['was']['install_dir']}/profiles"
 
 #<> Permissions to be set for directories
 # <md>attribute 'was/os_perms',
-# <md>          :displayname =>  'WebSphere os_perms',
-# <md>          :description => 'WebSphere os_perms',
+# <md>          :displayname =>  'WebSphere Operating System permissions',
+# <md>          :description => 'File permissions for the WebSphere installation',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '750',
@@ -275,8 +275,8 @@ default['was']['os_perms'] = "750"
 
 #<> WebSphere Operating System Users To Create
 # <md>attribute 'was/os_users/was/name',
-# <md>          :displayname =>  'was os_users name',
-# <md>          :description => 'was os_users name',
+# <md>          :displayname =>  'WebSphere Installation Userid',
+# <md>          :description => 'Operating system userid that will be used to install the product. Userid will be created if it does not exist',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'wasadmin',
@@ -286,8 +286,8 @@ default['was']['os_perms'] = "750"
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/os_users/was/gid',
-# <md>          :displayname =>  'was os_users gid',
-# <md>          :description => 'was os_users gid',
+# <md>          :displayname =>  'WebSphere User Group Name',
+# <md>          :description => 'Operating System group name that will be assigned to the product installation',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'wasgrp',
@@ -297,8 +297,8 @@ default['was']['os_perms'] = "750"
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/os_users/was/comment',
-# <md>          :displayname =>  'was os_users comment',
-# <md>          :description => 'was os_users comment',
+# <md>          :displayname =>  'Add comment for the user',
+# <md>          :description => 'Comment that will be added when creating the userid',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'WAS administrative user',
@@ -308,8 +308,8 @@ default['was']['os_perms'] = "750"
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/os_users/was/home',
-# <md>          :displayname =>  'was os_users home',
-# <md>          :description => 'was os_users home',
+# <md>          :displayname =>  'WebSphere System Installation Userid Home Directory',
+# <md>          :description => 'Home directory location for operating system user that is used for product installation',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '/home/wasadmin',
@@ -319,8 +319,8 @@ default['was']['os_perms'] = "750"
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/os_users/was/shell',
-# <md>          :displayname =>  'was os_users shell',
-# <md>          :description => 'was os_users shell',
+# <md>          :displayname =>  'WebSphere System Userid Default Shell',
+# <md>          :description => 'Default shell for the operating system userid',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '/bin/bash',
@@ -330,8 +330,8 @@ default['was']['os_perms'] = "750"
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/os_users/was/ldap_user',
-# <md>          :displayname =>  'was ldap_user',
-# <md>          :description => 'was ldap_user',
+# <md>          :displayname =>  'Use LDAP for Authentication',
+# <md>          :description => 'Use LDAP to authenticate operating system account on Linux logins',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'false',
@@ -356,8 +356,8 @@ default['was']['os_users'] = {
 
 #<> WAS admininstrative user
 # <md>attribute 'was/security/admin_user',
-# <md>          :displayname =>  'was admin user',
-# <md>          :description => 'was administrative user',
+# <md>          :displayname =>  'WebSphere administrative user name',
+# <md>          :description => 'The username for securing the WebSphere adminstrative console',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'wasadmin',
@@ -368,8 +368,8 @@ default['was']['os_users'] = {
 default['was']['security']['admin_user'] = "wasadmin"
 
 # <md>attribute 'was/security/admin_user_pwd',
-# <md>          :displayname =>  'was admin password',
-# <md>          :description => 'was administrative password',
+# <md>          :displayname =>  'WebSphere administrative user password',
+# <md>          :description => 'The password for the WebSphere administrative account',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '',
@@ -393,8 +393,8 @@ default['was']['security']['admin_user_pwd'] = ""
 #<> use_default_certs:if true, default certificates will be used for profiles. If false, certificate info below will be used.
 
 # <md>attribute 'was/config/os_service',
-# <md>          :displayname =>  'was os_service',
-# <md>          :description => 'was os_service',
+# <md>          :displayname =>  'Enable automatic starting of WebSphere servers',
+# <md>          :description => 'Setup appropriate operating system job to start WebSphere at system startup',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'true',
@@ -404,8 +404,8 @@ default['was']['security']['admin_user_pwd'] = ""
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/config/enable_admin_security',
-# <md>          :displayname =>  'was enable_admin_security',
-# <md>          :description => 'was enable_admin_security',
+# <md>          :displayname =>  'Enable administrative security',
+# <md>          :description => 'Enable WebSphere administrative console security',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'true',
@@ -415,8 +415,8 @@ default['was']['security']['admin_user_pwd'] = ""
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/config/use_default_certs',
-# <md>          :displayname =>  'was use_default_certs',
-# <md>          :description => 'was use_default_certs',
+# <md>          :displayname =>  'Create a new default personal certificate',
+# <md>          :description => 'Use WebSphere default certificates when creating profiles',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'true',
@@ -432,8 +432,8 @@ default['was']['config'] = {
 
 # <> Hostnames can be entred if bringing from outside of stack
 # <md>attribute 'was/dmgr_host_name',
-# <md>          :displayname =>  'was dmgr_host_name',
-# <md>          :description => 'was dmgr_host_name',
+# <md>          :displayname =>  'Deployment manager hostname',
+# <md>          :description => 'The fully qualified domain name of the deployment manager to federate this node to',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '',
@@ -444,8 +444,8 @@ default['was']['config'] = {
 default['was']['dmgr_host_name'] = ''
 
 # <md>attribute 'was/ihs_host_name',
-# <md>          :displayname =>  'was ihs_host_name',
-# <md>          :description => 'was ihs_host_name',
+# <md>          :displayname =>  'IBM HTTP hostname',
+# <md>          :description => 'Fully qualified domain name of the IBM HTTP server',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '',
@@ -474,8 +474,8 @@ default['was']['ihs_host_name'] = ''
 # Singulaar Instance per Deployment
 
 # <md>attribute 'was/profiles/dmgr/profile',
-# <md>          :displayname =>  'was dmgr profiles profile',
-# <md>          :description => 'was dmgr profiles profile',
+# <md>          :displayname =>  'Profile name',
+# <md>          :description => 'Deployment manager profile name',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'Dmgr01',
@@ -485,8 +485,8 @@ default['was']['ihs_host_name'] = ''
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/cell',
-# <md>          :displayname =>  'was dmgr profiles cell',
-# <md>          :description => 'was dmgr profiles cell',
+# <md>          :displayname =>  'Cell name',
+# <md>          :description => 'A cell name is a logical name for the group of nodes administered by the deployment manager cell',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'cell01',
@@ -496,8 +496,8 @@ default['was']['ihs_host_name'] = ''
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/node',
-# <md>          :displayname =>  'was dmgr profiles node',
-# <md>          :description => 'was dmgr profiles node',
+# <md>          :displayname =>  'Node name',
+# <md>          :description => 'A node name is for administration by the deployment manager.  The name must be unique within the cell',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '{SHORTHOSTNAME}CellManager01',
@@ -507,8 +507,8 @@ default['was']['ihs_host_name'] = ''
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/host',
-# <md>          :displayname =>  'was dmgr profiles host',
-# <md>          :description => 'was dmgr profiles host',
+# <md>          :displayname =>  'Deployment manager host name',
+# <md>          :description => 'A host name is the domain name system (DNS) name (short or long) or the IP address of this virtual machine and cannot contain an understore (_)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '',
@@ -518,8 +518,8 @@ default['was']['ihs_host_name'] = ''
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/ports/WC_adminhost',
-# <md>          :displayname =>  'was dmgr profiles ports WC_adminhost',
-# <md>          :description => 'was dmgr profiles ports WC_adminhost',
+# <md>          :displayname =>  'Administrative Console Port',
+# <md>          :description => 'Deployment manager administrative console port (WC_adminhost)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9060',
@@ -529,8 +529,8 @@ default['was']['ihs_host_name'] = ''
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/ports/WC_adminhost_secure',
-# <md>          :displayname =>  'was dmgr profiles ports WC_adminhost_secure',
-# <md>          :description => 'was dmgr profiles ports WC_adminhost_secure',
+# <md>          :displayname =>  'Administrative Console Secure Port',
+# <md>          :description => 'Deployment manager adminsitrative secure console port (WC_adminhost_secure)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9043',
@@ -540,8 +540,8 @@ default['was']['ihs_host_name'] = ''
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/ports/BOOTSTRAP_ADDRESS',
-# <md>          :displayname =>  'was dmgr profiles ports BOOTSTRAP_ADDRESS',
-# <md>          :description => 'was dmgr profiles ports BOOTSTRAP_ADDRESS',
+# <md>          :displayname =>  'Bootstrap Port',
+# <md>          :description => 'Deployment manager bootstrap port value (BOOTSTRAP_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9809',
@@ -551,8 +551,8 @@ default['was']['ihs_host_name'] = ''
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/ports/SOAP_CONNECTOR_ADDRESS',
-# <md>          :displayname =>  'was dmgr profiles ports SOAP_CONNECTOR_ADDRESS',
-# <md>          :description => 'was dmgr profiles ports SOAP_CONNECTOR_ADDRESS',
+# <md>          :displayname =>  'SOAP Connector Port',
+# <md>          :description => 'Deployment manager SOAP connector port value (SOAP_CONNECTOR_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '8879',
@@ -562,8 +562,8 @@ default['was']['ihs_host_name'] = ''
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/ports/IPC_CONNECTOR_ADDRESS',
-# <md>          :displayname =>  'was dmgr profiles ports IPC_CONNECTOR_ADDRESS',
-# <md>          :description => 'was dmgr profiles ports IPC_CONNECTOR_ADDRESS',
+# <md>          :displayname =>  'IPC Connector Port value',
+# <md>          :description => 'Deployment manager IPC Connector Port value (IPC_CONNECTOR_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9632',
@@ -573,8 +573,8 @@ default['was']['ihs_host_name'] = ''
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/ports/SAS_SSL_SERVERAUTH_LISTENER_ADDRESS',
-# <md>          :displayname =>  'was dmgr profiles ports SAS_SSL_SERVERAUTH_LISTENER_ADDRESS',
-# <md>          :description => 'was dmgr profiles ports SAS_SSL_SERVERAUTH_LISTENER_ADDRESS',
+# <md>          :displayname =>  'SAS_SSL_SERVERAUTH_LISTENER_ADDRESS Port',
+# <md>          :description => 'Deployment manager SAS_SSL_SERVERAUTH_LISTENER_ADDRESS',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9401',
@@ -584,8 +584,8 @@ default['was']['ihs_host_name'] = ''
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/ports/CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS',
-# <md>          :displayname =>  'was dmgr profiles ports CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS',
-# <md>          :description => 'was dmgr profiles ports CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS',
+# <md>          :displayname =>  'CSIV2 Server Authentication Listener Port',
+# <md>          :description => 'Deployment manager CSIV2 Server Authentication Listener Port (CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS) port value',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9403',
@@ -595,8 +595,8 @@ default['was']['ihs_host_name'] = ''
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/ports/CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS',
-# <md>          :displayname =>  'was dmgr profiles ports CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS',
-# <md>          :description => 'was dmgr profiles ports CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS',
+# <md>          :displayname =>  'CSIV2 Client Authentication Listener Port',
+# <md>          :description => 'Deployment manager CSIV2 Client Authentication Listener Port (CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9402',
@@ -606,8 +606,8 @@ default['was']['ihs_host_name'] = ''
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/ports/ORB_LISTENER_ADDRESS',
-# <md>          :displayname =>  'was dmgr profiles ports ORB_LISTENER_ADDRESS',
-# <md>          :description => 'was dmgr profiles ports ORB_LISTENER_ADDRESS',
+# <md>          :displayname =>  'ORB Listener Port',
+# <md>          :description => 'Deployment manager ORB Listener Port (ORB_LISTENER_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9100',
@@ -617,8 +617,8 @@ default['was']['ihs_host_name'] = ''
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/ports/CELL_DISCOVERY_ADDRESS',
-# <md>          :displayname =>  'was dmgr profiles ports CELL_DISCOVERY_ADDRESS',
-# <md>          :description => 'was dmgr profiles ports CELL_DISCOVERY_ADDRESS',
+# <md>          :displayname =>  'Cell Discovery Address',
+# <md>          :description => 'Deployment manager Cell Discovery Address port value (CELL_DISCOVERY_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '7277',
@@ -628,8 +628,8 @@ default['was']['ihs_host_name'] = ''
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/ports/DCS_UNICAST_ADDRESS',
-# <md>          :displayname =>  'was dmgr profiles ports DCS_UNICAST_ADDRESS',
-# <md>          :description => 'was dmgr profiles ports DCS_UNICAST_ADDRESS',
+# <md>          :displayname =>  'High Availability Manager Communication Port',
+# <md>          :description => 'Deployment manager High Availability Manager Communication Port (DCS_UNICAST_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9352',
@@ -639,8 +639,8 @@ default['was']['ihs_host_name'] = ''
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/ports/DataPowerMgr_inbound_secure',
-# <md>          :displayname =>  'was dmgr profiles ports DataPowerMgr_inbound_secure',
-# <md>          :description => 'was dmgr profiles ports DataPowerMgr_inbound_secure',
+# <md>          :displayname =>  'DataPower Appliance Manager Secure Inbound Port',
+# <md>          :description => 'Deployment manager DataPower Appliance Manager Secure Inbound Port (DataPowerMgr_inbound_secure)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '5555',
@@ -650,8 +650,8 @@ default['was']['ihs_host_name'] = ''
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/ports/XDAGENT_PORT',
-# <md>          :displayname =>  'was dmgr profiles ports XDAGENT_PORT',
-# <md>          :description => 'was dmgr profiles ports XDAGENT_PORT',
+# <md>          :displayname =>  'Middleware Agent RPC port',
+# <md>          :description => 'Deployment manager Middleware Agent RPC port (XDAGENT_PORT)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '7060',
@@ -661,8 +661,8 @@ default['was']['ihs_host_name'] = ''
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/ports/OVERLAY_UDP_LISTENER_ADDRESS',
-# <md>          :displayname =>  'was dmgr profiles ports OVERLAY_UDP_LISTENER_ADDRESS',
-# <md>          :description => 'was dmgr profiles ports OVERLAY_UDP_LISTENER_ADDRESS',
+# <md>          :displayname =>  'Administration Overlay UDP Port',
+# <md>          :description => 'Deployment manager Administration Overlay UDP Port (OVERLAY_UDP_LISTENER_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '11005',
@@ -672,8 +672,8 @@ default['was']['ihs_host_name'] = ''
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/ports/OVERLAY_TCP_LISTENER_ADDRESS',
-# <md>          :displayname =>  'was dmgr profiles ports OVERLAY_TCP_LISTENER_ADDRESS',
-# <md>          :description => 'was dmgr profiles ports OVERLAY_TCP_LISTENER_ADDRESS',
+# <md>          :displayname =>  'Administration Overlay TCP Port',
+# <md>          :description => 'Deployment manager Administration Overlay TCP Port (OVERLAY_TCP_LISTENER_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '11006',
@@ -683,8 +683,8 @@ default['was']['ihs_host_name'] = ''
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/ports/STATUS_LISTENER_ADDRESS',
-# <md>          :displayname =>  'was dmgr profiles ports STATUS_LISTENER_ADDRESS',
-# <md>          :description => 'was dmgr profiles ports STATUS_LISTENER_ADDRESS',
+# <md>          :displayname =>  'Status Update Listener Port',
+# <md>          :description => 'Deployment manager Status Update Listener Port (STATUS_LISTENER_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9420',
@@ -694,8 +694,8 @@ default['was']['ihs_host_name'] = ''
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/personalcertdn',
-# <md>          :displayname =>  'was dmgr profiles personalcertdn',
-# <md>          :description => 'was dmgr profiles personalcertdn',
+# <md>          :displayname =>  'Personal certificate Distingushed name',
+# <md>          :description => 'Specifies the distinguished name of the personal certificate that you are creating when you create the profile',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '',
@@ -705,8 +705,8 @@ default['was']['ihs_host_name'] = ''
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/personalcertvalidityperiod',
-# <md>          :displayname =>  'was dmgr profiles personalcertvalidityperiod',
-# <md>          :description => 'was dmgr profiles personalcertvalidityperiod',
+# <md>          :displayname =>  'Personal certificate expiration period in years',
+# <md>          :description => 'An optional parameter that specifies the amount of time in years that the default personal certificate is valid',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '3',
@@ -716,8 +716,8 @@ default['was']['ihs_host_name'] = ''
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/signingcertdn',
-# <md>          :displayname =>  'was dmgr profiles signingcertdn',
-# <md>          :description => 'was dmgr profiles signingcertdn',
+# <md>          :displayname =>  'Root certificate distinguished name',
+# <md>          :description => 'Specifies the distinguished name of the root signing certificate that you create when you create the profile',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '',
@@ -727,8 +727,8 @@ default['was']['ihs_host_name'] = ''
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/signingcertvalidityperiod',
-# <md>          :displayname =>  'was dmgr profiles signingcertvalidityperiod',
-# <md>          :description => 'was dmgr profiles signingcertvalidityperiod',
+# <md>          :displayname =>  'Root signing certificate expiration period in years',
+# <md>          :description => 'An optional parameter that specifies the amount of time in years that the root signing certificate is valid',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '15',
@@ -738,8 +738,8 @@ default['was']['ihs_host_name'] = ''
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/keystorepassword',
-# <md>          :displayname =>  'was dmgr profiles keystorepassword',
-# <md>          :description => 'was dmgr profiles keystorepassword',
+# <md>          :displayname =>  'Default keystore password',
+# <md>          :description => 'Specifies the password to use on keystore created during profile creation',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '',
@@ -781,19 +781,19 @@ default['was']['profiles']['dmgr'] = {
 # Singular Instance per Node
 
 # <md>attribute 'was/profiles/node_profile/profile',
-# <md>          :displayname =>  'was node_profile profiles profile',
-# <md>          :description => 'was node_profile profiles profile',
+# <md>          :displayname =>  'Custom profile name',
+# <md>          :description => 'Profile name for a custom profile',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
-# <md>          :default => 'AppSrv01',
+# <md>          :default => 'Custom01',
 # <md>          :selectable => 'false',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/dmgr_host',
-# <md>          :displayname =>  'was node_profile profiles dmgr_host',
-# <md>          :description => 'was node_profile profiles dmgr_host',
+# <md>          :displayname =>  'Deployment manager host name or IP address',
+# <md>          :description => 'Speicfy the host name or IP address for an existing deployment manager',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '',
@@ -803,8 +803,8 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/dmgr_port',
-# <md>          :displayname =>  'was node_profile profiles dmgr_port',
-# <md>          :description => 'was node_profile profiles dmgr_port',
+# <md>          :displayname =>  'Deployment manager SOAP port number',
+# <md>          :description => 'Deployment manager SOAP port that is used when federating the custom profile',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '',
@@ -814,8 +814,8 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/node',
-# <md>          :displayname =>  'was node_profile profiles node',
-# <md>          :description => 'was node_profile profiles node',
+# <md>          :displayname =>  'Custom profile Node name',
+# <md>          :description => 'Unique node name for this federated node.  Must be unique within the cell',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '{SHORTHOSTNAME}Node01',
@@ -825,8 +825,8 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/host',
-# <md>          :displayname =>  'was node_profile profiles host',
-# <md>          :description => 'was node_profile profiles host',
+# <md>          :displayname =>  'Custom profile host name',
+# <md>          :description => 'A host name is the domain name system (DNS) name (short or long) or the IP address of this virtual machine and cannot contain an understore (_),
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '',
@@ -836,8 +836,8 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/ports/WC_adminhost',
-# <md>          :displayname =>  'was node_profile profiles ports WC_adminhost',
-# <md>          :description => 'was node_profile profiles ports WC_adminhost',
+# <md>          :displayname =>  'Administrative Console Port',
+# <md>          :description => 'Administrative console port (WC_adminhost)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9060',
@@ -847,8 +847,8 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/ports/BOOTSTRAP_ADDRESS',
-# <md>          :displayname =>  'was node_profile profiles ports BOOTSTRAP_ADDRESS',
-# <md>          :description => 'was node_profile profiles ports BOOTSTRAP_ADDRESS',
+# <md>          :displayname =>  'Bootstrap Port',
+# <md>          :description => 'Server bootstrap (BOOTSTRAP_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '2810',
@@ -858,8 +858,8 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/ports/SOAP_CONNECTOR_ADDRESS',
-# <md>          :displayname =>  'was node_profile profiles ports SOAP_CONNECTOR_ADDRESS',
-# <md>          :description => 'was node_profile profiles ports SOAP_CONNECTOR_ADDRESS',
+# <md>          :displayname =>  'SOAP Connector Port',
+# <md>          :description => 'SOAP connector port value (SOAP_CONNECTOR_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '8878',
@@ -869,8 +869,8 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/ports/IPC_CONNECTOR_ADDRESS',
-# <md>          :displayname =>  'was node_profile profiles ports IPC_CONNECTOR_ADDRESS',
-# <md>          :description => 'was node_profile profiles ports IPC_CONNECTOR_ADDRESS',
+# <md>          :displayname =>  'IPC Connector Port',
+# <md>          :description => 'IPC Connector Port value (IPC_CONNECTOR_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9626',
@@ -880,7 +880,7 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/ports/SAS_SSL_SERVERAUTH_LISTENER_ADDRESS',
-# <md>          :displayname =>  'was node_profile profiles ports SAS_SSL_SERVERAUTH_LISTENER_ADDRESS',
+# <md>          :displayname =>  'SAS_SSL_SERVERAUTH_LISTENER_ADDRESS Port',
 # <md>          :description => 'was node_profile profiles ports SAS_SSL_SERVERAUTH_LISTENER_ADDRESS',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -891,8 +891,8 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/ports/CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS',
-# <md>          :displayname =>  'was node_profile profiles ports CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS',
-# <md>          :description => 'was node_profile profiles ports CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS',
+# <md>          :displayname =>  'CSIV2 Server Authentication Listener Port',
+# <md>          :description => 'CSIV2 Server Authentication Listener Port (CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9201',
@@ -902,8 +902,8 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/ports/CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS',
-# <md>          :displayname =>  'was node_profile profiles ports CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS',
-# <md>          :description => 'was node_profile profiles ports CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS',
+# <md>          :displayname =>  'CSIV2 Client Authentication Listener Port',
+# <md>          :description => 'CSIV2 Client Authentication Listener Port (CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9202',
@@ -913,8 +913,8 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/ports/ORB_LISTENER_ADDRESS',
-# <md>          :displayname =>  'was node_profile profiles ports ORB_LISTENER_ADDRESS',
-# <md>          :description => 'was node_profile profiles ports ORB_LISTENER_ADDRESS',
+# <md>          :displayname =>  'ORB Listener Port',
+# <md>          :description => 'ORB Listener Port (ORB_LISTENER_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9101',
@@ -924,8 +924,8 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/ports/NODE_DISCOVERY_ADDRESS',
-# <md>          :displayname =>  'was node_profile profiles ports NODE_DISCOVERY_ADDRESS',
-# <md>          :description => 'was node_profile profiles ports NODE_DISCOVERY_ADDRESS',
+# <md>          :displayname =>  'Node discovery address',
+# <md>          :description => 'Node Discovery Address (NODE_DISCOVERY_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '7272',
@@ -936,8 +936,8 @@ default['was']['profiles']['dmgr'] = {
 
 
 # <md>attribute 'was/profiles/node_profile/ports/NODE_IPV6_MULTICAST_DISCOVERY_ADDRESS',
-# <md>          :displayname =>  'was node_profile profiles ports NODE_IPV6_MULTICAST_DISCOVERY_ADDRESS',
-# <md>          :description => 'was node_profile profiles ports NODE_IPV6_MULTICAST_DISCOVERY_ADDRESS',
+# <md>          :displayname =>  'Node IPV6 Discovery Address port',
+# <md>          :description => 'Node IPV6 Discovery Address (NODE_IPV6_MULTICAST_DISCOVERY_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '5001',
@@ -958,8 +958,8 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/ports/DCS_UNICAST_ADDRESS',
-# <md>          :displayname =>  'was node_profile profiles ports DCS_UNICAST_ADDRESS',
-# <md>          :description => 'was node_profile profiles ports DCS_UNICAST_ADDRESS',
+# <md>          :displayname =>  'High availability manager communication port (DCS)',
+# <md>          :description => 'High Availability Manager Communication Port (DCS_UNICAST_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9354',
@@ -970,8 +970,8 @@ default['was']['profiles']['dmgr'] = {
 
 
 # <md>attribute 'was/profiles/node_profile/ports/XDAGENT_PORT',
-# <md>          :displayname =>  'was node_profile profiles ports XDAGENT_PORT',
-# <md>          :description => 'was node_profile profiles ports XDAGENT_PORT',
+# <md>          :displayname =>  'Node Middleware Agent RPC port',
+# <md>          :description => 'Node Middleware Agent RPC port (XDAGENT_PORT)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '7061',
@@ -981,8 +981,8 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/ports/OVERLAY_UDP_LISTENER_ADDRESS',
-# <md>          :displayname =>  'was node_profile profiles ports OVERLAY_UDP_LISTENER_ADDRESS',
-# <md>          :description => 'was node_profile profiles ports OVERLAY_UDP_LISTENER_ADDRESS',
+# <md>          :displayname =>  'Node Administration Overlay UDP Port',
+# <md>          :description => 'Node Administration Overlay UDP Port (OVERLAY_UDP_LISTENER_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '11001',
@@ -992,8 +992,8 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/ports/OVERLAY_TCP_LISTENER_ADDRESS',
-# <md>          :displayname =>  'was node_profile profiles ports OVERLAY_TCP_LISTENER_ADDRESS',
-# <md>          :description => 'was node_profile profiles ports OVERLAY_TCP_LISTENER_ADDRESS',
+# <md>          :displayname =>  'Node Administration Overlay TCP Port',
+# <md>          :description => 'Node Administration Overlay TCP Port (OVERLAY_TCP_LISTENER_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '11002',
@@ -1003,8 +1003,8 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/ports/STATUS_LISTENER_ADDRESS',
-# <md>          :displayname =>  'was node_profile profiles ports STATUS_LISTENER_ADDRESS',
-# <md>          :description => 'was node_profile profiles ports STATUS_LISTENER_ADDRESS',
+# <md>          :displayname =>  'Status Update Listener port',
+# <md>          :description => 'Status Update Listener Port (STATUS_LISTENER_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9420',
@@ -1014,8 +1014,8 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/personalcertdn',
-# <md>          :displayname =>  'was node_profile profiles personalcertdn',
-# <md>          :description => 'was node_profile profiles personalcertdn',
+# <md>          :displayname =>  'Personal certificate Distingushed name',
+# <md>          :description => 'Specifies the distinguished name of the personal certificate that you are creating when you create the profile',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '',
@@ -1025,8 +1025,8 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/personalcertvalidityperiod',
-# <md>          :displayname =>  'was node_profile profiles personalcertvalidityperiod',
-# <md>          :description => 'was node_profile profiles personalcertvalidityperiod',
+# <md>          :displayname =>  'Personal certificate expiration period in years',
+# <md>          :description =>  'An optional parameter that specifies the amount of time in years that the default personal certificate is valid',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '3',
@@ -1036,8 +1036,8 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/signingcertdn',
-# <md>          :displayname =>  'was node_profile profiles signingcertdn',
-# <md>          :description => 'was node_profile profiles signingcertdn',
+# <md>          :displayname =>  'Root certificate distinguished name',
+# <md>          :description => 'Specifies the distinguished name of the root signing certificate that you create when you create the profile',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '',
@@ -1047,8 +1047,8 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/signingcertvalidityperiod',
-# <md>          :displayname =>  'was node_profile profiles signingcertvalidityperiod',
-# <md>          :description => 'was node_profile profiles signingcertvalidityperiod',
+# <md>          :displayname =>  'Root signing certificate expiration period in years',
+# <md>          :description =>  'An optional parameter that specifies the amount of time in years that the root signing certificate is valid',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '15',
@@ -1058,8 +1058,8 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/keystorepassword',
-# <md>          :displayname =>  'was node_profile profiles keystorepassword',
-# <md>          :description => 'was node_profile profiles keystorepassword',
+# <md>          :displayname =>  'Default keystore password',
+# <md>          :description => 'Specifies the password to use on all keystore files created during profile creation',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '',
@@ -1099,8 +1099,8 @@ default['was']['profiles']['node_profile'] = {
 
 # Multiple Instances Per Node
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/profile',
-# <md>          :displayname =>  'was standalone_profiles profiles profile',
-# <md>          :description => 'was standalone_profiles profiles profile',
+# <md>          :displayname =>  'Application server profile name',
+# <md>          :description => 'Application server profile name',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'AppSrv01',
@@ -1110,8 +1110,8 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/cell',
-# <md>          :displayname =>  'was standalone_profiles profiles cell',
-# <md>          :description => 'was standalone_profiles profiles cell',
+# <md>          :displayname =>  'Application server cell name',
+# <md>          :description => 'Cell name for the application server',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'cell01',
@@ -1121,8 +1121,8 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/node',
-# <md>          :displayname =>  'was standalone_profiles profiles node',
-# <md>          :description => 'was standalone_profiles profiles node',
+# <md>          :displayname =>  'Application server node name',
+# <md>          :description => 'A node name is used for administration',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '{SHORTHOSTNAME}Node01',
@@ -1132,8 +1132,8 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/host',
-# <md>          :displayname =>  'was standalone_profiles profiles host',
-# <md>          :description => 'was standalone_profiles profiles host',
+# <md>          :displayname =>  'Application server host name',
+# <md>          :description => 'A host name is the domain name system (DNS) name (short or long) or the IP address of this virtual machine and cannot contain an understore (_)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '{FULLHOSTNAME}',
@@ -1143,19 +1143,19 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/server',
-# <md>          :displayname =>  'was standalone_profiles profiles server',
-# <md>          :description => 'was standalone_profiles profiles server',
+# <md>          :displayname =>  'Application server name',
+# <md>          :description => 'Name of the application server',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
-# <md>          :default => 'standalone01',
+# <md>          :default => 'server01',
 # <md>          :selectable => 'false',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/ports/WC_adminhost',
-# <md>          :displayname =>  'was standalone_profiles profiles ports WC_adminhost',
-# <md>          :description => 'was standalone_profiles profiles ports WC_adminhost',
+# <md>          :displayname =>  'Administrative console port',
+# <md>          :description => 'Server administrative console port (WC_adminhost)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9060',
@@ -1165,8 +1165,8 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/ports/WC_adminhost_secure',
-# <md>          :displayname =>  'was standalone_profiles profiles ports WC_adminhost_secure',
-# <md>          :description => 'was standalone_profiles profiles ports WC_adminhost_secure',
+# <md>          :displayname =>  'Administrative Console Secure Port',
+# <md>          :description => 'Server adminsitrative secure console port (WC_adminhost_secure)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9043',
@@ -1176,8 +1176,8 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/ports/WC_defaulthost',
-# <md>          :displayname =>  'was standalone_profiles profiles ports WC_defaulthost',
-# <md>          :description => 'was standalone_profiles profiles ports WC_defaulthost',
+# <md>          :displayname =>  'Application server HTTP Transport Port',
+# <md>          :description => 'HTTP Transport port (WC_defaulthost)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9080',
@@ -1187,8 +1187,8 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/ports/WC_defaulthost_secure',
-# <md>          :displayname =>  'was standalone_profiles profiles ports WC_defaulthost_secure',
-# <md>          :description => 'was standalone_profiles profiles ports WC_defaulthost_secure',
+# <md>          :displayname =>  'Application server Secure HTTP Transport Port',
+# <md>          :description => 'HTTP Transport Secure Port (WC_defaulthost_secure)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9443',
@@ -1198,8 +1198,8 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/ports/BOOTSTRAP_ADDRESS',
-# <md>          :displayname =>  'was standalone_profiles profiles ports BOOTSTRAP_ADDRESS',
-# <md>          :description => 'was standalone_profiles profiles ports BOOTSTRAP_ADDRESS',
+# <md>          :displayname =>  'Application sevrver bootstrap address',
+# <md>          :description =>  'Bootstrap port value (BOOTSTRAP_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '2809',
@@ -1209,8 +1209,8 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/ports/SOAP_CONNECTOR_ADDRESS',
-# <md>          :displayname =>  'was standalone_profiles profiles ports SOAP_CONNECTOR_ADDRESS',
-# <md>          :description => 'was standalone_profiles profiles ports SOAP_CONNECTOR_ADDRESS',
+# <md>          :displayname =>  'Application server SOAP connector port',
+# <md>          :description => 'SOAP connector port value (SOAP_CONNECTOR_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '8880',
@@ -1220,8 +1220,8 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/ports/IPC_CONNECTOR_ADDRESS',
-# <md>          :displayname =>  'was standalone_profiles profiles ports IPC_CONNECTOR_ADDRESS',
-# <md>          :description => 'was standalone_profiles profiles ports IPC_CONNECTOR_ADDRESS',
+# <md>          :displayname =>  'Application server IPC connector port',
+# <md>          :description => 'IPC Connector Port value (IPC_CONNECTOR_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9633',
@@ -1231,8 +1231,8 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/ports/SAS_SSL_SERVERAUTH_LISTENER_ADDRESS',
-# <md>          :displayname =>  'was standalone_profiles profiles ports SAS_SSL_SERVERAUTH_LISTENER_ADDRESS',
-# <md>          :description => 'was standalone_profiles profiles ports SAS_SSL_SERVERAUTH_LISTENER_ADDRESS',
+# <md>          :displayname =>  'Application Server SAS_SSL_SERVERAUTH_LISTENER_ADDRESS',
+# <md>          :description => 'Application Server SAS_SSL_SERVERAUTH_LISTENER_ADDRESS',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9401',
@@ -1242,8 +1242,8 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/ports/CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS',
-# <md>          :displayname =>  'was standalone_profiles profiles ports CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS',
-# <md>          :description => 'was standalone_profiles profiles ports CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS',
+# <md>          :displayname =>  'Application Server CSIV2 Server Authentication Listener Port',
+# <md>          :description => 'CSIV2 Server Authentication Listener Port (CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9403',
@@ -1253,8 +1253,8 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/ports/CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS',
-# <md>          :displayname =>  'was standalone_profiles profiles ports CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS',
-# <md>          :description => 'was standalone_profiles profiles ports CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS',
+# <md>          :displayname =>  'Application server CSIV2 Client Authentication Listener Port',
+# <md>          :description => 'CSIV2 Client Authentication Listener Port (CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9402',
@@ -1264,8 +1264,8 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/ports/ORB_LISTENER_ADDRESS',
-# <md>          :displayname =>  'was standalone_profiles profiles ports ORB_LISTENER_ADDRESS',
-# <md>          :description => 'was standalone_profiles profiles ports ORB_LISTENER_ADDRESS',
+# <md>          :displayname =>  'Application Server ORB Listener Port',
+# <md>          :description => 'ORB Listener Port (ORB_LISTENER_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9100',
@@ -1275,8 +1275,8 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/ports/DCS_UNICAST_ADDRESS',
-# <md>          :displayname =>  'was standalone_profiles profiles ports DCS_UNICAST_ADDRESS',
-# <md>          :description => 'was standalone_profiles profiles ports DCS_UNICAST_ADDRESS',
+# <md>          :displayname =>  'Application Server High Availability Manager Communication Port ',
+# <md>          :description => 'High Availability Manager Communication Port (DCS_UNICAST_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9353',
@@ -1286,8 +1286,8 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/ports/SIB_ENDPOINT_ADDRESS',
-# <md>          :displayname =>  'was standalone_profiles profiles ports SIB_ENDPOINT_ADDRESS',
-# <md>          :description => 'was standalone_profiles profiles ports SIB_ENDPOINT_ADDRESS',
+# <md>          :displayname =>  'Application Server Service Integration Port',
+# <md>          :description =>  'Service Integration Port (SIB_ENDPOINT_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '7276',
@@ -1297,8 +1297,8 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/ports/SIB_ENDPOINT_SECURE_ADDRESS',
-# <md>          :displayname =>  'was standalone_profiles profiles ports SIB_ENDPOINT_SECURE_ADDRESS',
-# <md>          :description => 'was standalone_profiles profiles ports SIB_ENDPOINT_SECURE_ADDRESS',
+# <md>          :displayname =>  'Application Server Service Integration Secure Port',
+# <md>          :description => 'Service Integration Secure Port  (SIB_ENDPOINT_SECURE_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '7286',
@@ -1308,8 +1308,8 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/ports/SIB_MQ_ENDPOINT_ADDRESS',
-# <md>          :displayname =>  'was standalone_profiles profiles ports SIB_MQ_ENDPOINT_ADDRESS',
-# <md>          :description => 'was standalone_profiles profiles ports SIB_MQ_ENDPOINT_ADDRESS',
+# <md>          :displayname =>  'Application Server MQ Transport Port',
+# <md>          :description => 'MQ Transport Port (SIB_MQ_ENDPOINT_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '5558',
@@ -1319,8 +1319,8 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/ports/SIB_MQ_ENDPOINT_SECURE_ADDRESS',
-# <md>          :displayname =>  'was standalone_profiles profiles ports SIB_MQ_ENDPOINT_SECURE_ADDRESS',
-# <md>          :description => 'was standalone_profiles profiles ports SIB_MQ_ENDPOINT_SECURE_ADDRESS',
+# <md>          :displayname =>  'Application Server MQ Transport Secure Port',
+# <md>          :description => 'MQ Transport Secure Port  (SIB_MQ_ENDPOINT_SECURE_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '5578',
@@ -1330,8 +1330,8 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/ports/SIP_DEFAULTHOST',
-# <md>          :displayname =>  'was standalone_profiles profiles ports SIP_DEFAULTHOST',
-# <md>          :description => 'was standalone_profiles profiles ports SIP_DEFAULTHOST',
+# <md>          :displayname =>  'Application Server SIP Container Port',
+# <md>          :description => 'SIP Container Port (SIP_DEFAULTHOST)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '5060',
@@ -1341,8 +1341,8 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/ports/SIP_DEFAULTHOST_SECURE',
-# <md>          :displayname =>  'was standalone_profiles profiles ports SIP_DEFAULTHOST_SECURE',
-# <md>          :description => 'was standalone_profiles profiles ports SIP_DEFAULTHOST_SECURE',
+# <md>          :displayname =>  'Application Server SIP Container Secure Port',
+# <md>          :description => 'SIP Container Secure Port (SIP_DEFAULTHOST_SECURE)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '5061',
@@ -1352,8 +1352,8 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/ports/OVERLAY_UDP_LISTENER_ADDRESS',
-# <md>          :displayname =>  'was standalone_profiles profiles ports OVERLAY_UDP_LISTENER_ADDRESS',
-# <md>          :description => 'was standalone_profiles profiles ports OVERLAY_UDP_LISTENER_ADDRESS',
+# <md>          :displayname =>  'Application Server Administration Overlay UDP Port ',
+# <md>          :description => 'Administration Overlay UDP Port (OVERLAY_UDP_LISTENER_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '11003',
@@ -1363,8 +1363,8 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/ports/OVERLAY_TCP_LISTENER_ADDRESS',
-# <md>          :displayname =>  'was standalone_profiles profiles ports OVERLAY_TCP_LISTENER_ADDRESS',
-# <md>          :description => 'was standalone_profiles profiles ports OVERLAY_TCP_LISTENER_ADDRESS',
+# <md>          :displayname =>  'Application Server Administration Overlay TCP Port',
+# <md>          :description =>  'Administration Overlay TCP Port (OVERLAY_TCP_LISTENER_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '11004',
@@ -1374,8 +1374,8 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/personalcertdn',
-# <md>          :displayname =>  'was standalone_profiles profiles personalcertdn',
-# <md>          :description => 'was standalone_profiles profiles personalcertdn',
+# <md>          :displayname =>  'Personal certificate Distingushed name',
+# <md>          :description =>  'Specifies the distinguished name of the personal certificate that you are creating when you create the profile',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '',
@@ -1385,8 +1385,8 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/personalcertvalidityperiod',
-# <md>          :displayname =>  'was standalone_profiles profiles personalcertvalidityperiod',
-# <md>          :description => 'was standalone_profiles profiles personalcertvalidityperiod',
+# <md>          :displayname =>  'Personal certificate expiration period in years',
+# <md>          :description =>  'An optional parameter that specifies the amount of time in years that the default personal certificate is valid',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '3',
@@ -1396,8 +1396,8 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/signingcertdn',
-# <md>          :displayname =>  'was standalone_profiles profiles signingcertdn',
-# <md>          :description => 'was standalone_profiles profiles signingcertdn',
+# <md>          :displayname =>  'Root certificate distinguished name',
+# <md>          :description =>  'Specifies the distinguished name of the root signing certificate that you create when you create the profile',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '',
@@ -1407,8 +1407,8 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/signingcertvalidityperiod',
-# <md>          :displayname =>  'was standalone_profiles profiles signingcertvalidityperiod',
-# <md>          :description => 'was standalone_profiles profiles signingcertvalidityperiod',
+# <md>          :displayname =>  'Root signing certificate expiration period in years',
+# <md>          :description =>  'An optional parameter that specifies the amount of time in years that the root signing certificate is valid',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '15',
@@ -1418,8 +1418,8 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/keystorepassword',
-# <md>          :displayname =>  'was standalone_profiles profiles keystorepassword',
-# <md>          :description => 'was standalone_profiles profiles keystorepassword',
+# <md>          :displayname =>  'Default keystore password',
+# <md>          :description => 'Specifies the password to use on all keystore files created during profile creation',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '',
@@ -1466,8 +1466,8 @@ default['was']['profiles']['standalone_profiles'] = {
 }
 
 # <md>attribute 'was/profiles/job_manager/profile',
-# <md>          :displayname =>  'was job_manager profiles profile',
-# <md>          :description => 'was job_manager profiles profile',
+# <md>          :displayname =>  'Job manager Profile name ',
+# <md>          :description => 'Job Manager profile name',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'JobMgr01',
@@ -1477,8 +1477,8 @@ default['was']['profiles']['standalone_profiles'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/job_manager/cell',
-# <md>          :displayname =>  'was job_manager profiles cell',
-# <md>          :description => 'was job_manager profiles cell',
+# <md>          :displayname =>  'Job Manager cell name',
+# <md>          :description => 'Cell name of the Job manager ',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'cell01',
@@ -1488,8 +1488,8 @@ default['was']['profiles']['standalone_profiles'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/job_manager/node',
-# <md>          :displayname =>  'was job_manager profiles node',
-# <md>          :description => 'was job_manager profiles node',
+# <md>          :displayname =>  'Job Manager node name',
+# <md>          :description => 'Node name is for administration and must be unique',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '{SHORTHOSTNAME}JobMgr01',
@@ -1499,8 +1499,8 @@ default['was']['profiles']['standalone_profiles'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/job_manager/host',
-# <md>          :displayname =>  'was job_manager profiles host',
-# <md>          :description => 'was job_manager profiles host',
+# <md>          :displayname =>  'Job Manager host name',
+# <md>          :description => 'A host name is the domain name system (DNS) name (short or long) or the IP address of this virtual machine and cannot contain an understore (_)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '{FULLHOSTNAME}',
@@ -1510,8 +1510,8 @@ default['was']['profiles']['standalone_profiles'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/job_manager/ports/WC_adminhost',
-# <md>          :displayname =>  'was job_manager profiles ports WC_adminhost',
-# <md>          :description => 'was job_manager profiles ports WC_adminhost',
+# <md>          :displayname =>  'Administrative Console Port',
+# <md>          :description => 'Job Manager administrative console port (WC_adminhost)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9960',
@@ -1521,8 +1521,8 @@ default['was']['profiles']['standalone_profiles'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/job_manager/ports/WC_adminhost_secure',
-# <md>          :displayname =>  'was job_manager profiles ports WC_adminhost_secure',
-# <md>          :description => 'was job_manager profiles ports WC_adminhost_secure',
+# <md>          :displayname =>  'Administrative Console Secure Port',
+# <md>          :description => 'Job Manager adminsitrative secure console port (WC_adminhost_secure)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9943',
@@ -1532,8 +1532,8 @@ default['was']['profiles']['standalone_profiles'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/job_manager/ports/BOOTSTRAP_ADDRESS',
-# <md>          :displayname =>  'was job_manager profiles ports BOOTSTRAP_ADDRESS',
-# <md>          :description => 'was job_manager profiles ports BOOTSTRAP_ADDRESS',
+# <md>          :displayname =>  'Job Manager Bootstrap address',
+# <md>          :description => 'Bootstrap port value (BOOTSTRAP_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9808',
@@ -1543,8 +1543,8 @@ default['was']['profiles']['standalone_profiles'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/job_manager/ports/SOAP_CONNECTOR_ADDRESS',
-# <md>          :displayname =>  'was job_manager profiles ports SOAP_CONNECTOR_ADDRESS',
-# <md>          :description => 'was job_manager profiles ports SOAP_CONNECTOR_ADDRESS',
+# <md>          :displayname =>  'Job Manager',
+# <md>          :description => 'SOAP connector port value (SOAP_CONNECTOR_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '8876',
@@ -1554,8 +1554,8 @@ default['was']['profiles']['standalone_profiles'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/job_manager/ports/IPC_CONNECTOR_ADDRESS',
-# <md>          :displayname =>  'was job_manager profiles ports IPC_CONNECTOR_ADDRESS',
-# <md>          :description => 'was job_manager profiles ports IPC_CONNECTOR_ADDRESS',
+# <md>          :displayname =>  'Job Manager IPC Connector Port value',
+# <md>          :description => 'IPC Connector Port value (IPC_CONNECTOR_ADDRESS),
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9631',
@@ -1565,8 +1565,8 @@ default['was']['profiles']['standalone_profiles'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/job_manager/ports/SAS_SSL_SERVERAUTH_LISTENER_ADDRESS',
-# <md>          :displayname =>  'was job_manager profiles ports SAS_SSL_SERVERAUTH_LISTENER_ADDRESS',
-# <md>          :description => 'was job_manager profiles ports SAS_SSL_SERVERAUTH_LISTENER_ADDRESS',
+# <md>          :displayname =>  'Job Manager SAS SSL ServerAuth port',
+# <md>          :description => 'SAS_ SSL_ SERVERAUTH_ LISTENER_ ADDRESS (Deprecated)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9401',
@@ -1576,8 +1576,8 @@ default['was']['profiles']['standalone_profiles'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/job_manager/ports/CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS',
-# <md>          :displayname =>  'was job_manager profiles ports CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS',
-# <md>          :description => 'was job_manager profiles ports CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS',
+# <md>          :displayname =>  'Job Manager CSIV2 Server Authentication Listener Port',
+# <md>          :description => 'CSIV2 Server Authentication Listener Port (CSIV2_ SSL_ SERVERAUTH_ LISTENER_ ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9403',
@@ -1587,8 +1587,8 @@ default['was']['profiles']['standalone_profiles'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/job_manager/ports/CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS',
-# <md>          :displayname =>  'was job_manager profiles ports CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS',
-# <md>          :description => 'was job_manager profiles ports CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS',
+# <md>          :displayname =>  'Job Manager CSIV2 Client Authentication Listener Port',
+# <md>          :description =>  'CSIV2 Client Authentication Listener Port (CSIV2_ SSL_ MUTUALAUTH_ LISTENER_ ADDRESS)	9402',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9402',
@@ -1598,8 +1598,8 @@ default['was']['profiles']['standalone_profiles'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/job_manager/ports/ORB_LISTENER_ADDRESS',
-# <md>          :displayname =>  'was job_manager profiles ports ORB_LISTENER_ADDRESS',
-# <md>          :description => 'was job_manager profiles ports ORB_LISTENER_ADDRESS',
+# <md>          :displayname =>  'Job Manager ORB listener port',
+# <md>          :description => 'ORB Listener Port (ORB_LISTENER_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9099',
@@ -1609,8 +1609,8 @@ default['was']['profiles']['standalone_profiles'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/job_manager/ports/STATUS_LISTENER_ADDRESS',
-# <md>          :displayname =>  'was job_manager profiles ports STATUS_LISTENER_ADDRESS',
-# <md>          :description => 'was job_manager profiles ports STATUS_LISTENER_ADDRESS',
+# <md>          :displayname =>  'Job Manager Status update listener port',
+# <md>          :description => 'Status Update Listener Port (STATUS_ LISTENER_ ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9425',
@@ -1620,8 +1620,8 @@ default['was']['profiles']['standalone_profiles'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/job_manager/personalcertdn',
-# <md>          :displayname =>  'was job_manager profiles personalcertdn',
-# <md>          :description => 'was job_manager profiles personalcertdn',
+# <md>          :displayname =>  'Personal certificate Distingushed name',
+# <md>          :description => 'Specifies the distinguished name of the personal certificate that you are creating when you create the profile',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '',
@@ -1631,8 +1631,8 @@ default['was']['profiles']['standalone_profiles'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/job_manager/personalcertvalidityperiod',
-# <md>          :displayname =>  'was job_manager profiles personalcertvalidityperiod',
-# <md>          :description => 'was job_manager profiles personalcertvalidityperiod',
+# <md>          :displayname =>  'Personal certificate expiration period in years',
+# <md>          :description => 'An optional parameter that specifies the amount of time in years that the default personal certificate is valid',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '3',
@@ -1642,8 +1642,8 @@ default['was']['profiles']['standalone_profiles'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/job_manager/signingcertdn',
-# <md>          :displayname =>  'was job_manager profiles signingcertdn',
-# <md>          :description => 'was job_manager profiles signingcertdn',
+# <md>          :displayname =>  'Root certificate distinguished name',
+# <md>          :description => 'Specifies the distinguished name of the root signing certificate that you create when you create the profile',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '',
@@ -1653,8 +1653,8 @@ default['was']['profiles']['standalone_profiles'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/job_manager/signingcertvalidityperiod',
-# <md>          :displayname =>  'was job_manager profiles signingcertvalidityperiod',
-# <md>          :description => 'was job_manager profiles signingcertvalidityperiod',
+# <md>          :displayname =>  'Root signing certificate expiration period in years',
+# <md>          :description => 'An optional parameter that specifies the amount of time in years that the root signing certificate is valid',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '15',
@@ -1664,8 +1664,8 @@ default['was']['profiles']['standalone_profiles'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/job_manager/keystorepassword',
-# <md>          :displayname =>  'was job_manager profiles keystorepassword',
-# <md>          :description => 'was job_manager profiles keystorepassword',
+# <md>          :displayname =>  'Default keystore password',
+# <md>          :description =>  'Specifies the password to use on all keystore files created during profile creation',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '',
@@ -1699,8 +1699,8 @@ default['was']['profiles']['job_manager'] = {
 }
 
 # <md>attribute 'was/unmanaged_node/unmngNode01/node_name',
-# <md>          :displayname =>  'was unmanaged_node node_name',
-# <md>          :description => 'was unmanaged_node node_name',
+# <md>          :displayname =>  'Unmanaged node name ',
+# <md>          :description => 'Node name for the unmanaged node',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '{SHORTHOSTNAME}UnmangedNode01',
@@ -1710,8 +1710,8 @@ default['was']['profiles']['job_manager'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/unmanaged_node/unmngNode01/host_name',
-# <md>          :displayname =>  'was unmanaged_node host_name',
-# <md>          :description => 'was unmanaged_node host_name',
+# <md>          :displayname =>  'Unmanaged host name',
+# <md>          :description => 'The host name or ipaddress of the unmanaged host',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '',
@@ -1721,8 +1721,8 @@ default['was']['profiles']['job_manager'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/unmanaged_node/unmngNode01/os',
-# <md>          :displayname =>  'was unmanaged_node os',
-# <md>          :description => 'was unmanaged_node os',
+# <md>          :displayname =>  'Unmanaged node operating system type',
+# <md>          :description => 'Indicates the operating system type for the unmanaged node',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'linux',
@@ -1741,7 +1741,7 @@ default['was']['unmanaged_node'] = {
 
 # <md>attribute 'was/webserver/ihs_server/node_name',
 # <md>          :displayname =>  'was webserver ihs_server node_name',
-# <md>          :description => 'was webserver ihs_server node_name',
+# <md>          :description => 'Web server node name',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '{SHORTHOSTNAME}UnmangedNode01',
@@ -1752,7 +1752,7 @@ default['was']['unmanaged_node'] = {
 
 # <md>attribute 'was/webserver/ihs_server/webserver_name',
 # <md>          :displayname =>  'was webserver ihs_server webserver_name',
-# <md>          :description => 'was webserver ihs_server webserver_name',
+# <md>          :description => 'Web server server name',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'webserver1',
@@ -1762,8 +1762,8 @@ default['was']['unmanaged_node'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/webserver/ihs_server/webserver_port',
-# <md>          :displayname =>  'was webserver ihs_server webserver_port',
-# <md>          :description => 'was webserver ihs_server webserver_port',
+# <md>          :displayname =>  'IBM HTTP server listener port',
+# <md>          :description => 'HTTP Server listener port that will receive requests on. Use for creating the web server definition',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '80',
@@ -1773,8 +1773,8 @@ default['was']['unmanaged_node'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/webserver/ihs_server/install_dir',
-# <md>          :displayname =>  'was webserver ihs_server install_dir',
-# <md>          :description => 'was webserver ihs_server install_dir',
+# <md>          :displayname =>  'IBM HTTP Server installation directory',
+# <md>          :description => 'Specify the HTTP Server installation directory. Used for creating the web server definition',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '/opt/IBM/HTTPServer',
@@ -1784,8 +1784,8 @@ default['was']['unmanaged_node'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/webserver/ihs_server/plugin_dir',
-# <md>          :displayname =>  'was webserver ihs_server plugin_dir',
-# <md>          :description => 'was webserver ihs_server plugin_dir',
+# <md>          :displayname =>  'WebSphere plugin installation directory',
+# <md>          :description => 'Specify the webserver plugin directory. Used for creating the web server definition',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '/opt/IBM/WebSphere/Plugins',
@@ -1795,8 +1795,8 @@ default['was']['unmanaged_node'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/webserver/ihs_server/admin_port',
-# <md>          :displayname =>  'was webserver ihs_server admin_port',
-# <md>          :description => 'was webserver ihs_server admin_port',
+# <md>          :displayname =>  'IBM HTTP administrative server port',
+# <md>          :description => 'IBM HTTP administrative server port.  Used for creating the web server definition',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '8008',
@@ -1806,8 +1806,8 @@ default['was']['unmanaged_node'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/webserver/ihs_server/ihs_admin_user',
-# <md>          :displayname =>  'was webserver ihs_server ihs_admin_user',
-# <md>          :description => 'was webserver ihs_server ihs_admin_user',
+# <md>          :displayname =>  'IBM HTTP administrative username',
+# <md>          :description => 'IBM HTTP administrative username. Used for creating the web server definition',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '',
@@ -1817,8 +1817,8 @@ default['was']['unmanaged_node'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/webserver/ihs_server/ihs_admin_password',
-# <md>          :displayname =>  'was webserver ihs_server ihs_admin_password',
-# <md>          :description => 'was webserver ihs_server ihs_admin_password',
+# <md>          :displayname =>  'IBM HTTP administrative username password',
+# <md>          :description => 'IBM HTTP administrative username password. Used for creating the web server definition ',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '',
@@ -1828,8 +1828,8 @@ default['was']['unmanaged_node'] = {
 # <md>          :secret => 'true'
 
 # <md>attribute 'was/webserver/ihs_server/webserver_type',
-# <md>          :displayname =>  'was webserver ihs_server webserver_type',
-# <md>          :description => 'was webserver ihs_server webserver_type',
+# <md>          :displayname =>  'Type of WebServer',
+# <md>          :description => 'HTTP Server vendor.  Example IHS',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'IHS',
@@ -1839,8 +1839,8 @@ default['was']['unmanaged_node'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/webserver/ihs_server/webapp_mapping',
-# <md>          :displayname =>  'was webserver ihs_server webapp_mapping',
-# <md>          :description => 'was webserver ihs_server webapp_mapping',
+# <md>          :displayname =>  'Map all applications to the webserver',
+# <md>          :description => 'Indicate how the applications should be mapped from the webserver',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'ALL',
@@ -1867,8 +1867,8 @@ default['was']['webserver'] = {
 #<> WebSphere configure jvm properties and cluster configurations
 
 # <md>attribute 'was/wsadmin/dmgr/jvmproperty/server_name',
-# <md>          :displayname =>  'was wsadmin dmgr jvmproperty server_name',
-# <md>          :description => 'was wsadmin dmgr jvmproperty server_name',
+# <md>          :displayname =>  'Deployment Manager server name',
+# <md>          :description => 'Name of server that will be updated for JVM heap size',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'dmgr',
@@ -1878,8 +1878,8 @@ default['was']['webserver'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/wsadmin/dmgr/jvmproperty/node_name',
-# <md>          :displayname =>  'was wsadmin dmgr jvmproperty node_name',
-# <md>          :description => 'was wsadmin dmgr jvmproperty node_name',
+# <md>          :displayname =>  'Deployment manager node name',
+# <md>          :description => 'Node for the deployment manager that will be updated',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '{SHORTHOSTNAME}CellManager01',
@@ -1889,8 +1889,8 @@ default['was']['webserver'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/wsadmin/dmgr/jvmproperty/profile_path',
-# <md>          :displayname =>  'was wsadmin dmgr jvmproperty profile_path',
-# <md>          :description => 'was wsadmin dmgr jvmproperty profile_path',
+# <md>          :displayname =>  'Deployment manager profile path',
+# <md>          :description => 'Directoy where the deployment manager profile resides',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '',
@@ -1900,8 +1900,8 @@ default['was']['webserver'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/wsadmin/dmgr/jvmproperty/property_value_initial',
-# <md>          :displayname =>  'was wsadmin dmgr jvmproperty property_value_initial',
-# <md>          :description => 'was wsadmin dmgr jvmproperty property_value_initial',
+# <md>          :displayname =>  'Deployment manager minimum JVM Heap Size',
+# <md>          :description => 'Minimum JVM heap size',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '256',
@@ -1911,8 +1911,8 @@ default['was']['webserver'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/wsadmin/dmgr/jvmproperty/property_value_maximum',
-# <md>          :displayname =>  'was wsadmin dmgr jvmproperty property_value_maximum',
-# <md>          :description => 'was wsadmin dmgr jvmproperty property_value_maximum',
+# <md>          :displayname =>  'Deployment manager maximum JVM Heap Size',
+# <md>          :description => 'Maximum JVM heap size',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '512',
@@ -1922,8 +1922,8 @@ default['was']['webserver'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/wsadmin/nodeagent/jvmproperty/server_name',
-# <md>          :displayname =>  'was wsadmin nodeagent jvmproperty server_name',
-# <md>          :description => 'was wsadmin nodeagent jvmproperty server_name',
+# <md>          :displayname =>  'Node agent server name',
+# <md>          :description => 'Name of server that will be updated for JVM heap size',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'nodeagent',
@@ -1933,8 +1933,8 @@ default['was']['webserver'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/wsadmin/nodeagent/jvmproperty/node_name',
-# <md>          :displayname =>  'was wsadmin nodeagent jvmproperty node_name',
-# <md>          :description => 'was wsadmin nodeagent jvmproperty node_name',
+# <md>          :displayname =>  'Node agent node name',
+# <md>          :description => 'Node for the node agent that will be updated',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '',
@@ -1944,8 +1944,8 @@ default['was']['webserver'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/wsadmin/nodeagent/jvmproperty/profile_path',
-# <md>          :displayname =>  'was wsadmin nodeagent jvmproperty profile_path',
-# <md>          :description => 'was wsadmin nodeagent jvmproperty profile_path',
+# <md>          :displayname =>  'Node agent profile path',
+# <md>          :description => 'Node agent directory where the profile resides',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '',
@@ -1955,8 +1955,8 @@ default['was']['webserver'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/wsadmin/nodeagent/jvmproperty/property_value_initial',
-# <md>          :displayname =>  'was wsadmin nodeagent jvmproperty property_value_initial',
-# <md>          :description => 'was wsadmin nodeagent jvmproperty property_value_initial',
+# <md>          :displayname =>  'Node agent minimum JVM Heap Size',
+# <md>          :description => 'Minimum JVM heap size',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '256',
@@ -1966,8 +1966,8 @@ default['was']['webserver'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/wsadmin/nodeagent/jvmproperty/property_value_maximum',
-# <md>          :displayname =>  'was wsadmin nodeagent jvmproperty property_value_maximum',
-# <md>          :description => 'was wsadmin nodeagent jvmproperty property_value_maximum',
+# <md>          :displayname =>  'Node agent maximum JVM heap size',
+# <md>          :description => 'Maximum JVM heap size',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '512',
@@ -1977,8 +1977,8 @@ default['was']['webserver'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/wsadmin/standalone/jvmproperty/server_name',
-# <md>          :displayname =>  'was wsadmin standalone jvmproperty server_name',
-# <md>          :description => 'was wsadmin standalone jvmproperty server_name',
+# <md>          :displayname =>  'Application server name',
+# <md>          :description => 'Name of server that will be updated for JVM heap size',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '',
@@ -1988,8 +1988,8 @@ default['was']['webserver'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/wsadmin/standalone/jvmproperty/node_name',
-# <md>          :displayname =>  'was wsadmin standalone jvmproperty node_name',
-# <md>          :description => 'was wsadmin standalone jvmproperty node_name',
+# <md>          :displayname =>  'Application server node name',
+# <md>          :description => 'Node for the application server that will be updated',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '',
@@ -1999,8 +1999,8 @@ default['was']['webserver'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/wsadmin/standalone/jvmproperty/profile_path',
-# <md>          :displayname =>  'was wsadmin standalone jvmproperty profile_path',
-# <md>          :description => 'was wsadmin standalone jvmproperty profile_path',
+# <md>          :displayname =>  'Application server profile path',
+# <md>          :description =>  'Directoy where the application server profile resides',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '',
@@ -2010,8 +2010,8 @@ default['was']['webserver'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/wsadmin/standalone/jvmproperty/property_value_initial',
-# <md>          :displayname =>  'was wsadmin standalone jvmproperty property_value_initial',
-# <md>          :description => 'was wsadmin standalone jvmproperty property_value_initial',
+# <md>          :displayname =>  'Application server minimum JVM Heap Size',
+# <md>          :description => 'Minimum JVM heap size',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '256',
@@ -2021,8 +2021,8 @@ default['was']['webserver'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/wsadmin/standalone/jvmproperty/property_value_maximum',
-# <md>          :displayname =>  'was wsadmin standalone jvmproperty property_value_maximum',
-# <md>          :description => 'was wsadmin standalone jvmproperty property_value_maximum',
+# <md>          :displayname =>  'Application server maximum JVM Heap Size',
+# <md>          :description => 'Maximum JVM heap size',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '512',
@@ -2032,8 +2032,8 @@ default['was']['webserver'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/wsadmin/clusters/cluster01/cluster_name',
-# <md>          :displayname =>  'was clusters cluster_name',
-# <md>          :description => 'was clusters cluster_name',
+# <md>          :displayname =>  'WebSphere Cluster name',
+# <md>          :description => 'Name of the cluster that will be created',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'cluster01',
@@ -2054,8 +2054,8 @@ default['was']['webserver'] = {
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/wsadmin/clusters/cluster01/cluster_servers/cluster_server01/server_name',
-# <md>          :displayname =>  'was cluster_servers server_name',
-# <md>          :description => 'was cluster_servers server_name',
+# <md>          :displayname =>  'WebSphere Cluster member name',
+# <md>          :description => 'Name of the cluster member that will created on each of the nodes',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'server01',
@@ -2095,7 +2095,7 @@ default['was']['wsadmin'] = {
   'clusters'  =>  {
     'cluster01'  =>  {
       'cluster_name' => 'cluster01',
-      'session_rep' =>   "true",
+      'session_rep' =>   "True",
       'cluster_servers' => {
         'cluster_server01'  =>  {
           'server_name' =>     "server01"

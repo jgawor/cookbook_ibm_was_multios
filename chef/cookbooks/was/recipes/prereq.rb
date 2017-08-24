@@ -47,12 +47,19 @@ end
 
 # This will only work if the VM has access to rubygems.org
 # Otherwise the gem should be installed during bootstrap
-# chef_gem 'chef-vault' do
-#   action :install
-#   compile_time true
-# end
+chef_gem 'chef-vault' do
+  action :install
+  version '2.9.0'
+  compile_time true
+end
 
-if platform?("redhat")
+execute 'Update debian/ubuntu repos' do
+  command "apt-get update"
+  only_if { node['platform_family'] == "debian" }
+end
+
+case node['platform_family']
+when 'rhel', 'debian'
 
   # Install the prereq packages
   node['was']['prereq_packages'].each do |p|
