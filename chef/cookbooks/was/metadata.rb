@@ -5,7 +5,7 @@ license 'Copyright IBM Corp. 2016, 2017'
 description      'Installs and configures WebSphere Application Server and WebSphere Application Server Network Deployment'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 
-version '0.1.43'
+version '0.1.44'
 
 depends          'ibm_cloud_utils'
 depends          'im'
