@@ -120,7 +120,7 @@ Attributes
   </tr>
   <tr>
     <td><code>node['was']['java_version']</code></td>
-    <td>The Java 8 SDK version that should be installed with the WebSphere Application Server. Example format is 8.0.4.70</td>
+    <td>The Java SDK version that should be installed with the WebSphere Application Server. Example format is 8.0.4.70</td>
     <td><code>8.0.4.70</code></td>
   </tr>
   <tr>
