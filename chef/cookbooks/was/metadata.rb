@@ -5,7 +5,7 @@ license 'Copyright IBM Corp. 2016, 2017'
 description      'Installs and configures WebSphere Application Server and WebSphere Application Server Network Deployment'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 
-version '0.1.46'
+version '0.1.47'
 
 depends          'ibm_cloud_utils'
 depends          'im'
@@ -166,7 +166,7 @@ attribute 'was/ihs_role_names',
           :type => 'array'
 attribute 'was/install_dir',
           :default => '/opt/IBM/WebSphere/AppServer',
-          :description => 'The installation root directory for the WebSphere Application Server roduct binaries',
+          :description => 'The installation root directory for the WebSphere Application Server product binaries',
           :displayname => 'WebSphere product installation directory',
           :parm_type => 'node',
           :precedence_level => 'node',

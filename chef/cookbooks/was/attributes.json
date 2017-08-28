@@ -188,7 +188,7 @@
         },
         "install_dir": {
             "default": "/opt/IBM/WebSphere/AppServer",
-            "description": "The installation root directory for the WebSphere Application Server roduct binaries",
+            "description": "The installation root directory for the WebSphere Application Server product binaries",
             "displayname": "WebSphere product installation directory",
             "hidden": "false",
             "parm_type": "node",

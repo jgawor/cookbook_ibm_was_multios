@@ -232,7 +232,7 @@ end
 #<> WAS installation directory
 # <md>attribute 'was/install_dir',
 # <md>          :displayname =>  'WebSphere product installation directory',
-# <md>          :description => 'The installation root directory for the WebSphere Application Server roduct binaries',
+# <md>          :description => 'The installation root directory for the WebSphere Application Server product binaries',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '/opt/IBM/WebSphere/AppServer',

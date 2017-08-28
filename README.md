@@ -105,7 +105,7 @@ Attributes
   </tr>
   <tr>
     <td><code>node['was']['install_dir']</code></td>
-    <td>The installation root directory for the WebSphere Application Server roduct binaries</td>
+    <td>The installation root directory for the WebSphere Application Server product binaries</td>
     <td><code>/opt/IBM/WebSphere/AppServer</code></td>
   </tr>
   <tr>
