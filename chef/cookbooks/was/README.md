@@ -135,7 +135,7 @@ Attributes
   </tr>
   <tr>
     <td><code>node['was']['os_users']['was']['gid']</code></td>
-    <td>Operating System group name that will be assigned to the product installation</td>
+    <td>Operating system group name that will be assigned to the product installation</td>
     <td><code>wasgrp</code></td>
   </tr>
   <tr>
@@ -145,7 +145,7 @@ Attributes
   </tr>
   <tr>
     <td><code>node['was']['os_users']['was']['ldap_user']</code></td>
-    <td>Use LDAP to authenticate operating system account on Linux logins</td>
+    <td>A flag which indicates whether to create the WebSphere user locally, or utilize an LDAP based user</td>
     <td><code>false</code></td>
   </tr>
   <tr>
@@ -195,87 +195,87 @@ Attributes
   </tr>
   <tr>
     <td><code>node['was']['profiles']['dmgr']['ports']['BOOTSTRAP_ADDRESS']</code></td>
-    <td>Deployment manager bootstrap port value (BOOTSTRAP_ADDRESS)</td>
+    <td>Deployment Manager Bootstrap Port value (BOOTSTRAP_ADDRESS)</td>
     <td><code>9809</code></td>
   </tr>
   <tr>
     <td><code>node['was']['profiles']['dmgr']['ports']['CELL_DISCOVERY_ADDRESS']</code></td>
-    <td>Deployment manager Cell Discovery Address port value (CELL_DISCOVERY_ADDRESS)</td>
+    <td>Deployment Manager Cell Discovery Address port value (CELL_DISCOVERY_ADDRESS)</td>
     <td><code>7277</code></td>
   </tr>
   <tr>
     <td><code>node['was']['profiles']['dmgr']['ports']['CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS']</code></td>
-    <td>Deployment manager CSIV2 Client Authentication Listener Port (CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS)</td>
+    <td>Deployment Manager CSIV2 Client Authentication Listener Port (CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS)</td>
     <td><code>9402</code></td>
   </tr>
   <tr>
     <td><code>node['was']['profiles']['dmgr']['ports']['CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS']</code></td>
-    <td>Deployment manager CSIV2 Server Authentication Listener Port (CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS) port value</td>
+    <td>Deployment Manager CSIV2 Server Authentication Listener Port (CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS) value</td>
     <td><code>9403</code></td>
   </tr>
   <tr>
     <td><code>node['was']['profiles']['dmgr']['ports']['DCS_UNICAST_ADDRESS']</code></td>
-    <td>Deployment manager High Availability Manager Communication Port (DCS_UNICAST_ADDRESS)</td>
+    <td>Deployment Manager High Availability Manager Communication Port (DCS_UNICAST_ADDRESS)</td>
     <td><code>9352</code></td>
   </tr>
   <tr>
     <td><code>node['was']['profiles']['dmgr']['ports']['DataPowerMgr_inbound_secure']</code></td>
-    <td>Deployment manager DataPower Appliance Manager Secure Inbound Port (DataPowerMgr_inbound_secure)</td>
+    <td>Deployment Manager DataPower Appliance Manager Secure Inbound Port (DataPowerMgr_inbound_secure)</td>
     <td><code>5555</code></td>
   </tr>
   <tr>
     <td><code>node['was']['profiles']['dmgr']['ports']['IPC_CONNECTOR_ADDRESS']</code></td>
-    <td>Deployment manager IPC Connector Port value (IPC_CONNECTOR_ADDRESS)</td>
+    <td>Deployment Manager IPC Connector Port value (IPC_CONNECTOR_ADDRESS)</td>
     <td><code>9632</code></td>
   </tr>
   <tr>
     <td><code>node['was']['profiles']['dmgr']['ports']['ORB_LISTENER_ADDRESS']</code></td>
-    <td>Deployment manager ORB Listener Port (ORB_LISTENER_ADDRESS)</td>
+    <td>Deployment Manager ORB Listener Port (ORB_LISTENER_ADDRESS)</td>
     <td><code>9100</code></td>
   </tr>
   <tr>
     <td><code>node['was']['profiles']['dmgr']['ports']['OVERLAY_TCP_LISTENER_ADDRESS']</code></td>
-    <td>Deployment manager Administration Overlay TCP Port (OVERLAY_TCP_LISTENER_ADDRESS)</td>
+    <td>Deployment Manager Administration Overlay TCP Port (OVERLAY_TCP_LISTENER_ADDRESS)</td>
     <td><code>11006</code></td>
   </tr>
   <tr>
     <td><code>node['was']['profiles']['dmgr']['ports']['OVERLAY_UDP_LISTENER_ADDRESS']</code></td>
-    <td>Deployment manager Administration Overlay UDP Port (OVERLAY_UDP_LISTENER_ADDRESS)</td>
+    <td>Deployment Manager Administration Overlay UDP Port (OVERLAY_UDP_LISTENER_ADDRESS)</td>
     <td><code>11005</code></td>
   </tr>
   <tr>
     <td><code>node['was']['profiles']['dmgr']['ports']['SAS_SSL_SERVERAUTH_LISTENER_ADDRESS']</code></td>
-    <td>Deployment manager SAS_SSL_SERVERAUTH_LISTENER_ADDRESS</td>
+    <td>Deployment Manager SAS_SSL_SERVERAUTH_LISTENER_ADDRESS</td>
     <td><code>9401</code></td>
   </tr>
   <tr>
     <td><code>node['was']['profiles']['dmgr']['ports']['SOAP_CONNECTOR_ADDRESS']</code></td>
-    <td>Deployment manager SOAP connector port value (SOAP_CONNECTOR_ADDRESS)</td>
+    <td>Deployment Manager SOAP Connector Port value (SOAP_CONNECTOR_ADDRESS)</td>
     <td><code>8879</code></td>
   </tr>
   <tr>
     <td><code>node['was']['profiles']['dmgr']['ports']['STATUS_LISTENER_ADDRESS']</code></td>
-    <td>Deployment manager Status Update Listener Port (STATUS_LISTENER_ADDRESS)</td>
+    <td>Deployment Manager Status Update Listener Port (STATUS_LISTENER_ADDRESS)</td>
     <td><code>9420</code></td>
   </tr>
   <tr>
     <td><code>node['was']['profiles']['dmgr']['ports']['WC_adminhost']</code></td>
-    <td>Deployment manager administrative console port (WC_adminhost)</td>
+    <td>Deployment Manager Administrative Console Port (WC_adminhost)</td>
     <td><code>9060</code></td>
   </tr>
   <tr>
     <td><code>node['was']['profiles']['dmgr']['ports']['WC_adminhost_secure']</code></td>
-    <td>Deployment manager adminsitrative secure console port (WC_adminhost_secure)</td>
+    <td>Deployment Manager Adminsitrative Secure Console Port (WC_adminhost_secure)</td>
     <td><code>9043</code></td>
   </tr>
   <tr>
     <td><code>node['was']['profiles']['dmgr']['ports']['XDAGENT_PORT']</code></td>
-    <td>Deployment manager Middleware Agent RPC port (XDAGENT_PORT)</td>
+    <td>Deployment Manager Middleware Agent RPC Port (XDAGENT_PORT)</td>
     <td><code>7060</code></td>
   </tr>
   <tr>
     <td><code>node['was']['profiles']['dmgr']['profile']</code></td>
-    <td>Deployment manager profile name</td>
+    <td>WebSphere Deployment Manager profile name</td>
     <td><code>Dmgr01</code></td>
   </tr>
   <tr>
@@ -320,7 +320,7 @@ Attributes
   </tr>
   <tr>
     <td><code>node['was']['profiles']['job_manager']['ports']['BOOTSTRAP_ADDRESS']</code></td>
-    <td>Bootstrap port value (BOOTSTRAP_ADDRESS)</td>
+    <td>Bootstrap Port value (BOOTSTRAP_ADDRESS)</td>
     <td><code>9808</code></td>
   </tr>
   <tr>
@@ -351,7 +351,7 @@ Attributes
   </tr>
   <tr>
     <td><code>node['was']['profiles']['job_manager']['ports']['SOAP_CONNECTOR_ADDRESS']</code></td>
-    <td>SOAP connector port value (SOAP_CONNECTOR_ADDRESS)</td>
+    <td>SOAP Connector Port value (SOAP_CONNECTOR_ADDRESS)</td>
     <td><code>8876</code></td>
   </tr>
   <tr>
@@ -361,12 +361,12 @@ Attributes
   </tr>
   <tr>
     <td><code>node['was']['profiles']['job_manager']['ports']['WC_adminhost']</code></td>
-    <td>Job Manager administrative console port (WC_adminhost)</td>
+    <td>Job Manager Administrative Console Port (WC_adminhost)</td>
     <td><code>9960</code></td>
   </tr>
   <tr>
     <td><code>node['was']['profiles']['job_manager']['ports']['WC_adminhost_secure']</code></td>
-    <td>Job Manager adminsitrative secure console port (WC_adminhost_secure)</td>
+    <td>Job Manager Adminsitrative Secure Console Port (WC_adminhost_secure)</td>
     <td><code>9943</code></td>
   </tr>
   <tr>
@@ -391,7 +391,7 @@ Attributes
   </tr>
   <tr>
     <td><code>node['was']['profiles']['node_profile']['dmgr_port']</code></td>
-    <td>Deployment manager SOAP port that is used when federating the custom profile</td>
+    <td>Deployment Manager SOAP Port that is used when federating the custom profile</td>
     <td><code></code></td>
   </tr>
   <tr>
@@ -482,7 +482,7 @@ Attributes
   </tr>
   <tr>
     <td><code>node['was']['profiles']['node_profile']['ports']['SOAP_CONNECTOR_ADDRESS']</code></td>
-    <td>SOAP connector port value (SOAP_CONNECTOR_ADDRESS)</td>
+    <td>SOAP Connector Port value (SOAP_CONNECTOR_ADDRESS)</td>
     <td><code>8878</code></td>
   </tr>
   <tr>
@@ -492,12 +492,12 @@ Attributes
   </tr>
   <tr>
     <td><code>node['was']['profiles']['node_profile']['ports']['WC_adminhost']</code></td>
-    <td>Administrative console port (WC_adminhost)</td>
+    <td>Administrative Console Port (WC_adminhost)</td>
     <td><code>9060</code></td>
   </tr>
   <tr>
     <td><code>node['was']['profiles']['node_profile']['ports']['XDAGENT_PORT']</code></td>
-    <td>Node Middleware Agent RPC port (XDAGENT_PORT)</td>
+    <td>Node Middleware Agent RPC Port (XDAGENT_PORT)</td>
     <td><code>7061</code></td>
   </tr>
   <tr>
@@ -547,7 +547,7 @@ Attributes
   </tr>
   <tr>
     <td><code>node['was']['profiles']['standalone_profiles']['standalone1']['ports']['BOOTSTRAP_ADDRESS']</code></td>
-    <td>Bootstrap port value (BOOTSTRAP_ADDRESS)</td>
+    <td>Bootstrap Port value (BOOTSTRAP_ADDRESS)</td>
     <td><code>2809</code></td>
   </tr>
   <tr>
@@ -622,22 +622,22 @@ Attributes
   </tr>
   <tr>
     <td><code>node['was']['profiles']['standalone_profiles']['standalone1']['ports']['SOAP_CONNECTOR_ADDRESS']</code></td>
-    <td>SOAP connector port value (SOAP_CONNECTOR_ADDRESS)</td>
+    <td>SOAP Connector Port value (SOAP_CONNECTOR_ADDRESS)</td>
     <td><code>8880</code></td>
   </tr>
   <tr>
     <td><code>node['was']['profiles']['standalone_profiles']['standalone1']['ports']['WC_adminhost']</code></td>
-    <td>Server administrative console port (WC_adminhost)</td>
+    <td>Server Administrative Console Port (WC_adminhost)</td>
     <td><code>9060</code></td>
   </tr>
   <tr>
     <td><code>node['was']['profiles']['standalone_profiles']['standalone1']['ports']['WC_adminhost_secure']</code></td>
-    <td>Server adminsitrative secure console port (WC_adminhost_secure)</td>
+    <td>Server Adminsitrative Secure Console Port (WC_adminhost_secure)</td>
     <td><code>9043</code></td>
   </tr>
   <tr>
     <td><code>node['was']['profiles']['standalone_profiles']['standalone1']['ports']['WC_defaulthost']</code></td>
-    <td>HTTP Transport port (WC_defaulthost)</td>
+    <td>HTTP Transport Port (WC_defaulthost)</td>
     <td><code>9080</code></td>
   </tr>
   <tr>
@@ -653,7 +653,7 @@ Attributes
   <tr>
     <td><code>node['was']['profiles']['standalone_profiles']['standalone1']['server']</code></td>
     <td>Name of the application server</td>
-    <td><code>server01</code></td>
+    <td><code>server1</code></td>
   </tr>
   <tr>
     <td><code>node['was']['profiles']['standalone_profiles']['standalone1']['signingcertdn']</code></td>
@@ -692,12 +692,12 @@ Attributes
   </tr>
   <tr>
     <td><code>node['was']['version']</code></td>
-    <td>The release and fixpack level of WebSphere Application Server to be installed. Example formats are 8.5.5.11 or 9.0.0.4</td>
-    <td><code>9.0.0.2</code></td>
+    <td>The release and fixpack level of WebSphere Application Server to be installed. Example formats are 8.5.5.12 or 9.0.0.4</td>
+    <td><code>9.0.0.4</code></td>
   </tr>
   <tr>
     <td><code>node['was']['webserver']['ihs_server']['admin_port']</code></td>
-    <td>IBM HTTP administrative server port.  Used for creating the web server definition</td>
+    <td>IBM HTTP Administrative Server Port.  Used for creating the web server definition</td>
     <td><code>8008</code></td>
   </tr>
   <tr>
@@ -737,7 +737,7 @@ Attributes
   </tr>
   <tr>
     <td><code>node['was']['webserver']['ihs_server']['webserver_port']</code></td>
-    <td>HTTP Server listener port that will receive requests on. Use for creating the web server definition</td>
+    <td>IBM HTTP Server Listener Port that will receive requests on. Use for creating the web server definition</td>
     <td><code>80</code></td>
   </tr>
   <tr>
@@ -792,7 +792,7 @@ Attributes
   </tr>
   <tr>
     <td><code>node['was']['wsadmin']['nodeagent']['jvmproperty']['profile_path']</code></td>
-    <td>Node agent directory where the profile resides</td>
+    <td>Node Agent directory where the profile resides</td>
     <td><code></code></td>
   </tr>
   <tr>

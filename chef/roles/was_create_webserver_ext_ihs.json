@@ -8,7 +8,7 @@
           "webserver": {
             "ihs_server": {
               "webserver_name": "webserver1",
-              "webserver_port": "9080",
+              "webserver_port": "8080",
               "install_dir": "/opt/IBM/HTTPServer",
               "admin_port":"8008",
               "ihs_admin_user":""

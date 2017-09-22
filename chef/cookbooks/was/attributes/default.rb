@@ -11,13 +11,13 @@
 ######################################################################################################
 
 #<> WebSphere Installation Version. options to user would be latest ones starts with "8.5.5" or "9.0.0"
-#default['was']['version'] = "8.5.5.11"
+#default['was']['version'] = "8.5.5.12"
 # <md>attribute 'was/version',
-# <md>          :displayname =>  'WebSphere Application Server version',
-# <md>          :description => 'The release and fixpack level of WebSphere Application Server to be installed. Example formats are 8.5.5.11 or 9.0.0.4',
+# <md>          :displayname =>  'WebSphere Application Server Version',
+# <md>          :description => 'The release and fixpack level of WebSphere Application Server to be installed. Example formats are 8.5.5.12 or 9.0.0.4',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
-# <md>          :default => '9.0.0.2',
+# <md>          :default => '9.0.0.4',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
@@ -34,6 +34,7 @@ default['was']['version'] = "9.0.0.2" # ~ip_checker
 # <md>          :selectable => 'false',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 default['was']['dmgr_role_name'] = "was_create_dmgr"
 
@@ -46,6 +47,7 @@ default['was']['dmgr_role_name'] = "was_create_dmgr"
 # <md>          :selectable => 'false',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 default['was']['ihs_role_names'] = ["ihs-wasmode-admin", "ihs-wasmode-nonadmin"]
 
@@ -53,7 +55,7 @@ default['was']['ihs_role_names'] = ["ihs-wasmode-admin", "ihs-wasmode-nonadmin"]
 #<> NOTE: only one value can be set to true
 #<> Rolenames required for chef-search
 # <md>attribute 'was/edition/base',
-# <md>          :displayname =>  'WebSphere base edition',
+# <md>          :displayname =>  'WebSphere Base Edition',
 # <md>          :description => 'WebSphere Application Server will be installed and configured',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -61,11 +63,12 @@ default['was']['ihs_role_names'] = ["ihs-wasmode-admin", "ihs-wasmode-nonadmin"]
 # <md>          :selectable => 'false',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 #<> Rolenames required for chef-search
 # <md>attribute 'was/edition/nd',
-# <md>          :displayname =>  'WebSphere nd edition',
+# <md>          :displayname =>  'WebSphere ND Edition',
 # <md>          :description => 'WebSphere Application Server Network Deployment will be installed and configured',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -73,6 +76,7 @@ default['was']['ihs_role_names'] = ["ihs-wasmode-admin", "ihs-wasmode-nonadmin"]
 # <md>          :selectable => 'false',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 default['was']['edition'] = {
   'base'  => "false",
@@ -83,7 +87,7 @@ default['was']['edition'] = {
 #<> NOTE: only com.ibm.sdk.6_32bit OR com.ibm.sdk.6_64bit should be set to true
 
 # <md>attribute 'was/java_version',
-# <md>          :displayname =>  'Java SDK version',
+# <md>          :displayname =>  'WebSphere Java SDK version',
 # <md>          :description => 'The Java SDK version that should be installed with the WebSphere Application Server. Example format is 8.0.4.70',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -91,21 +95,24 @@ default['was']['edition'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/java_features/websphere_java_v8/enable',
-# <md>          :displayname =>  'Install Java 8 SDK',
+# <md>          :displayname =>  'WebSphere install Java 8 SDK',
 # <md>          :description => 'Installation Manager response file option to install Java 8 SDK. Valid only for WebSphere V9',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'true',
 # <md>          :selectable => 'true',
+# <md>          :choice => ['true', 'false'],
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/java_features/websphere_java_v8/offering_id',
-# <md>          :displayname =>  'Java 8 SDK installation manager offering id',
+# <md>          :displayname =>  'WebSphere Java 8 SDK installation manager offering id',
 # <md>          :description => 'Java SDK installation manager offering ID value',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -113,10 +120,11 @@ default['was']['edition'] = {
 # <md>          :selectable => 'false',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/features/core.feature',
-# <md>          :displayname =>  'Install WebSphere runtime',
+# <md>          :displayname =>  'WebSphere install runtime',
 # <md>          :description => 'Indicates that the application server feature (core.feature) should be installed',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -124,10 +132,11 @@ default['was']['edition'] = {
 # <md>          :selectable => 'false',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/features/ejbdeploy',
-# <md>          :displayname =>  'Install optional EJBDeploy feature',
+# <md>          :displayname =>  'WebSphere install optional EJBDeploy feature',
 # <md>          :description => 'Indicates whether the optional feature EJBDeploy tool for pre-EJB 3.0 modules should be installed',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -135,10 +144,11 @@ default['was']['edition'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/features/thinclient',
-# <md>          :displayname =>  'Install optional stand-alone thin clients and resource adapters',
+# <md>          :displayname =>  'WebSphere install optional stand-alone thin clients and resource adapters',
 # <md>          :description => 'Indicates whether the optional IBM stand-alone thin clients and resource adapters should be installed',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -146,10 +156,11 @@ default['was']['edition'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/features/embeddablecontainer',
-# <md>          :displayname =>  'Install optional Embeddable EJB Container feature',
+# <md>          :displayname =>  'WebSphere install optional Embeddable EJB Container feature',
 # <md>          :description => 'Indicates whether the embeddable EJB container should be installed',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -157,10 +168,11 @@ default['was']['edition'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/features/samples',
-# <md>          :displayname =>  'Install optional WebSphere Sample applications',
+# <md>          :displayname =>  'WebSphere install optional WebSphere Sample applications',
 # <md>          :description => 'Indicates whether the PlantsByWebSphere sample application should be installed',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -168,6 +180,7 @@ default['was']['edition'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/features/liberty',
@@ -179,12 +192,13 @@ default['was']['edition'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 case node['was']['version']
 when /^8.5.5/ # ~ip_checker
-  #<> IBM Java 7 Version valid_options 7.0.9.30, 7.1.3.30
-  default['was']['java_version'] = "7.1.3.30" # ~ip_checker
+  #<> IBM Java 7 Version valid_options 7.0.9.30, 7.1.40.5
+  default['was']['java_version'] = "7.1.40.5" # ~ip_checker
 
   #<> WebSphere Installation Options
   default['was']['java_features'] = {
@@ -239,12 +253,13 @@ end
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'false'
 default['was']['install_dir'] = "/opt/IBM/WebSphere/AppServer"
 
 #<> WAS profile directory
 # <md>attribute 'was/profile_dir',
-# <md>          :displayname =>  'WebSphere configuration data location',
+# <md>          :displayname =>  'WebSphere profile location',
 # <md>          :description => 'The directory path that contains WebSphere Application Server profiles',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -252,12 +267,13 @@ default['was']['install_dir'] = "/opt/IBM/WebSphere/AppServer"
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'false'
 default['was']['profile_dir'] = "#{node['was']['install_dir']}/profiles"
 
 #<> Permissions to be set for directories
 # <md>attribute 'was/os_perms',
-# <md>          :displayname =>  'WebSphere Operating System permissions',
+# <md>          :displayname =>  'WebSphere operating system permissions',
 # <md>          :description => 'File permissions for the WebSphere installation',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -265,6 +281,7 @@ default['was']['profile_dir'] = "#{node['was']['install_dir']}/profiles"
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 default['was']['os_perms'] = "750"
 
@@ -275,7 +292,7 @@ default['was']['os_perms'] = "750"
 
 #<> WebSphere Operating System Users To Create
 # <md>attribute 'was/os_users/was/name',
-# <md>          :displayname =>  'WebSphere Installation Userid',
+# <md>          :displayname =>  'WebSphere installation userid',
 # <md>          :description => 'Operating system userid that will be used to install the product. Userid will be created if it does not exist',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -283,21 +300,23 @@ default['was']['os_perms'] = "750"
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/os_users/was/gid',
-# <md>          :displayname =>  'WebSphere User Group Name',
-# <md>          :description => 'Operating System group name that will be assigned to the product installation',
+# <md>          :displayname =>  'WebSphere user group name',
+# <md>          :description => 'Operating system group name that will be assigned to the product installation',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'wasgrp',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/os_users/was/comment',
-# <md>          :displayname =>  'Add comment for the user',
+# <md>          :displayname =>  'WebSphere user comment for user',
 # <md>          :description => 'Comment that will be added when creating the userid',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -305,10 +324,11 @@ default['was']['os_perms'] = "750"
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/os_users/was/home',
-# <md>          :displayname =>  'WebSphere System Installation Userid Home Directory',
+# <md>          :displayname =>  'WebSphere installation userid home directory',
 # <md>          :description => 'Home directory location for operating system user that is used for product installation',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -316,10 +336,11 @@ default['was']['os_perms'] = "750"
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/os_users/was/shell',
-# <md>          :displayname =>  'WebSphere System Userid Default Shell',
+# <md>          :displayname =>  'WebSphere userid default shell',
 # <md>          :description => 'Default shell for the operating system userid',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -327,17 +348,20 @@ default['was']['os_perms'] = "750"
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/os_users/was/ldap_user',
-# <md>          :displayname =>  'Use LDAP for Authentication',
-# <md>          :description => 'Use LDAP to authenticate operating system account on Linux logins',
+# <md>          :displayname =>  'WebSphere to use LDAP for authentication',
+# <md>          :description => 'A flag which indicates whether to create the WebSphere user locally, or utilize an LDAP based user',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'false',
+# <md>          :choice => ['true', 'false'],
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 default['was']['os_users'] = {
   'was'  =>  {
@@ -364,6 +388,7 @@ default['was']['os_users'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'false'
 default['was']['security']['admin_user'] = "wasadmin"
 
@@ -375,7 +400,8 @@ default['was']['security']['admin_user'] = "wasadmin"
 # <md>          :default => '',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
-# <md>          :parm_type => 'none',
+# <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'true'
 default['was']['security']['admin_user_pwd'] = ""
 
@@ -393,36 +419,42 @@ default['was']['security']['admin_user_pwd'] = ""
 #<> use_default_certs:if true, default certificates will be used for profiles. If false, certificate info below will be used.
 
 # <md>attribute 'was/config/os_service',
-# <md>          :displayname =>  'Enable automatic starting of WebSphere servers',
+# <md>          :displayname =>  'WebSphere enable automatic start of servers',
 # <md>          :description => 'Setup appropriate operating system job to start WebSphere at system startup',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'true',
+# <md>          :choice => ['true', 'false'],
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/config/enable_admin_security',
-# <md>          :displayname =>  'Enable administrative security',
+# <md>          :displayname =>  'WebSphere enable administrative security',
 # <md>          :description => 'Enable WebSphere administrative console security',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'true',
+# <md>          :choice => ['true', 'false'],
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/config/use_default_certs',
-# <md>          :displayname =>  'Create a new default personal certificate',
+# <md>          :displayname =>  'WebSphere create a new default personal certificate',
 # <md>          :description => 'Use WebSphere default certificates when creating profiles',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'true',
+# <md>          :choice => ['true', 'false'],
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 default['was']['config'] = {
   'os_service' => "true",
@@ -430,9 +462,9 @@ default['was']['config'] = {
   'use_default_certs' => "true"
 }
 
-# <> Hostnames can be entred if bringing from outside of stack
+# <> Hostnames can be entered if bringing from outside of stack
 # <md>attribute 'was/dmgr_host_name',
-# <md>          :displayname =>  'Deployment manager hostname',
+# <md>          :displayname =>  'WebSphere Deployment Manager hostname',
 # <md>          :description => 'The fully qualified domain name of the deployment manager to federate this node to',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -440,6 +472,7 @@ default['was']['config'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'false'
 default['was']['dmgr_host_name'] = ''
 
@@ -452,6 +485,7 @@ default['was']['dmgr_host_name'] = ''
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'false'
 default['was']['ihs_host_name'] = ''
 ############################################################################################################
@@ -471,21 +505,22 @@ default['was']['ihs_host_name'] = ''
 #<>   signingcertvalidityperiod: Validity period of the signing certificate
 #<>   keystorepassword: Password of the keystore, use 'databag' if the password is to reside in a databag
 
-# Singulaar Instance per Deployment
+# Singular Instance per Deployment
 
 # <md>attribute 'was/profiles/dmgr/profile',
-# <md>          :displayname =>  'Profile name',
-# <md>          :description => 'Deployment manager profile name',
+# <md>          :displayname =>  'WebSphere Deployment Manager profile name',
+# <md>          :description => 'WebSphere Deployment Manager profile name',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => 'Dmgr01',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/cell',
-# <md>          :displayname =>  'Cell name',
+# <md>          :displayname =>  'WebSphere cell name',
 # <md>          :description => 'A cell name is a logical name for the group of nodes administered by the deployment manager cell',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -493,10 +528,11 @@ default['was']['ihs_host_name'] = ''
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/node',
-# <md>          :displayname =>  'Node name',
+# <md>          :displayname =>  'WebSphere node name',
 # <md>          :description => 'A node name is for administration by the deployment manager.  The name must be unique within the cell',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -504,10 +540,11 @@ default['was']['ihs_host_name'] = ''
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/host',
-# <md>          :displayname =>  'Deployment manager host name',
+# <md>          :displayname =>  'WebSphere Deployment Manager host name',
 # <md>          :description => 'A host name is the domain name system (DNS) name (short or long) or the IP address of this virtual machine and cannot contain an understore (_)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -515,186 +552,203 @@ default['was']['ihs_host_name'] = ''
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/ports/WC_adminhost',
-# <md>          :displayname =>  'Administrative Console Port',
-# <md>          :description => 'Deployment manager administrative console port (WC_adminhost)',
+# <md>          :displayname =>  'WebSphere Administrative Console Port',
+# <md>          :description => 'Deployment Manager Administrative Console Port (WC_adminhost)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9060',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/ports/WC_adminhost_secure',
-# <md>          :displayname =>  'Administrative Console Secure Port',
-# <md>          :description => 'Deployment manager adminsitrative secure console port (WC_adminhost_secure)',
+# <md>          :displayname =>  'WebSphere Administrative Console Secure Port',
+# <md>          :description => 'Deployment Manager Adminsitrative Secure Console Port (WC_adminhost_secure)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9043',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/ports/BOOTSTRAP_ADDRESS',
-# <md>          :displayname =>  'Bootstrap Port',
-# <md>          :description => 'Deployment manager bootstrap port value (BOOTSTRAP_ADDRESS)',
+# <md>          :displayname =>  'WebSphere Bootstrap Port',
+# <md>          :description => 'Deployment Manager Bootstrap Port value (BOOTSTRAP_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9809',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/ports/SOAP_CONNECTOR_ADDRESS',
-# <md>          :displayname =>  'SOAP Connector Port',
-# <md>          :description => 'Deployment manager SOAP connector port value (SOAP_CONNECTOR_ADDRESS)',
+# <md>          :displayname =>  'WebSphere SOAP Connector Port',
+# <md>          :description => 'Deployment Manager SOAP Connector Port value (SOAP_CONNECTOR_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '8879',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/ports/IPC_CONNECTOR_ADDRESS',
-# <md>          :displayname =>  'IPC Connector Port value',
-# <md>          :description => 'Deployment manager IPC Connector Port value (IPC_CONNECTOR_ADDRESS)',
+# <md>          :displayname =>  'WebSphere IPC Connector Port value',
+# <md>          :description => 'Deployment Manager IPC Connector Port value (IPC_CONNECTOR_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9632',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/ports/SAS_SSL_SERVERAUTH_LISTENER_ADDRESS',
-# <md>          :displayname =>  'SAS_SSL_SERVERAUTH_LISTENER_ADDRESS Port',
-# <md>          :description => 'Deployment manager SAS_SSL_SERVERAUTH_LISTENER_ADDRESS',
+# <md>          :displayname =>  'WebSphere SAS_SSL_SERVERAUTH_LISTENER_ADDRESS Port',
+# <md>          :description => 'Deployment Manager SAS_SSL_SERVERAUTH_LISTENER_ADDRESS',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9401',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/ports/CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS',
-# <md>          :displayname =>  'CSIV2 Server Authentication Listener Port',
-# <md>          :description => 'Deployment manager CSIV2 Server Authentication Listener Port (CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS) port value',
+# <md>          :displayname =>  'WebSphere CSIV2 Server Authentication Listener Port',
+# <md>          :description => 'Deployment Manager CSIV2 Server Authentication Listener Port (CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS) value',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9403',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/ports/CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS',
-# <md>          :displayname =>  'CSIV2 Client Authentication Listener Port',
-# <md>          :description => 'Deployment manager CSIV2 Client Authentication Listener Port (CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS)',
+# <md>          :displayname =>  'WebSphere CSIV2 Client Authentication Listener Port',
+# <md>          :description => 'Deployment Manager CSIV2 Client Authentication Listener Port (CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9402',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/ports/ORB_LISTENER_ADDRESS',
-# <md>          :displayname =>  'ORB Listener Port',
-# <md>          :description => 'Deployment manager ORB Listener Port (ORB_LISTENER_ADDRESS)',
+# <md>          :displayname =>  'WebSphere ORB Listener Port',
+# <md>          :description => 'Deployment Manager ORB Listener Port (ORB_LISTENER_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9100',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/ports/CELL_DISCOVERY_ADDRESS',
-# <md>          :displayname =>  'Cell Discovery Address',
-# <md>          :description => 'Deployment manager Cell Discovery Address port value (CELL_DISCOVERY_ADDRESS)',
+# <md>          :displayname =>  'WebSphere Cell Discovery Address',
+# <md>          :description => 'Deployment Manager Cell Discovery Address port value (CELL_DISCOVERY_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '7277',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/ports/DCS_UNICAST_ADDRESS',
-# <md>          :displayname =>  'High Availability Manager Communication Port',
-# <md>          :description => 'Deployment manager High Availability Manager Communication Port (DCS_UNICAST_ADDRESS)',
+# <md>          :displayname =>  'WebSphere High Availability Manager Communication Port',
+# <md>          :description => 'Deployment Manager High Availability Manager Communication Port (DCS_UNICAST_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9352',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/ports/DataPowerMgr_inbound_secure',
-# <md>          :displayname =>  'DataPower Appliance Manager Secure Inbound Port',
-# <md>          :description => 'Deployment manager DataPower Appliance Manager Secure Inbound Port (DataPowerMgr_inbound_secure)',
+# <md>          :displayname =>  'WebSphere DataPower Appliance Manager Secure Inbound Port',
+# <md>          :description => 'Deployment Manager DataPower Appliance Manager Secure Inbound Port (DataPowerMgr_inbound_secure)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '5555',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/ports/XDAGENT_PORT',
-# <md>          :displayname =>  'Middleware Agent RPC port',
-# <md>          :description => 'Deployment manager Middleware Agent RPC port (XDAGENT_PORT)',
+# <md>          :displayname =>  'WebSphere Middleware Agent RPC Port',
+# <md>          :description => 'Deployment Manager Middleware Agent RPC Port (XDAGENT_PORT)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '7060',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/ports/OVERLAY_UDP_LISTENER_ADDRESS',
-# <md>          :displayname =>  'Administration Overlay UDP Port',
-# <md>          :description => 'Deployment manager Administration Overlay UDP Port (OVERLAY_UDP_LISTENER_ADDRESS)',
+# <md>          :displayname =>  'WebSphere Administration Overlay UDP Port',
+# <md>          :description => 'Deployment Manager Administration Overlay UDP Port (OVERLAY_UDP_LISTENER_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '11005',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/ports/OVERLAY_TCP_LISTENER_ADDRESS',
-# <md>          :displayname =>  'Administration Overlay TCP Port',
-# <md>          :description => 'Deployment manager Administration Overlay TCP Port (OVERLAY_TCP_LISTENER_ADDRESS)',
+# <md>          :displayname =>  'WebSphere Administration Overlay TCP Port',
+# <md>          :description => 'Deployment Manager Administration Overlay TCP Port (OVERLAY_TCP_LISTENER_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '11006',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/ports/STATUS_LISTENER_ADDRESS',
-# <md>          :displayname =>  'Status Update Listener Port',
-# <md>          :description => 'Deployment manager Status Update Listener Port (STATUS_LISTENER_ADDRESS)',
+# <md>          :displayname =>  'WebSphere Status Update Listener Port',
+# <md>          :description => 'Deployment Manager Status Update Listener Port (STATUS_LISTENER_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9420',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/personalcertdn',
-# <md>          :displayname =>  'Personal certificate Distingushed name',
+# <md>          :displayname =>  'WebSphere personal certificate Distingushed name',
 # <md>          :description => 'Specifies the distinguished name of the personal certificate that you are creating when you create the profile',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -702,10 +756,11 @@ default['was']['ihs_host_name'] = ''
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/personalcertvalidityperiod',
-# <md>          :displayname =>  'Personal certificate expiration period in years',
+# <md>          :displayname =>  'WebSphere personal certificate expiration period in years',
 # <md>          :description => 'An optional parameter that specifies the amount of time in years that the default personal certificate is valid',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -713,10 +768,11 @@ default['was']['ihs_host_name'] = ''
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/signingcertdn',
-# <md>          :displayname =>  'Root certificate distinguished name',
+# <md>          :displayname =>  'WebSphere root certificate distinguished name',
 # <md>          :description => 'Specifies the distinguished name of the root signing certificate that you create when you create the profile',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -724,10 +780,11 @@ default['was']['ihs_host_name'] = ''
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/signingcertvalidityperiod',
-# <md>          :displayname =>  'Root signing certificate expiration period in years',
+# <md>          :displayname =>  'WebSphere root signing certificate expiration period in years',
 # <md>          :description => 'An optional parameter that specifies the amount of time in years that the root signing certificate is valid',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -735,17 +792,19 @@ default['was']['ihs_host_name'] = ''
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/dmgr/keystorepassword',
-# <md>          :displayname =>  'Default keystore password',
+# <md>          :displayname =>  'WebSphere default keystore password',
 # <md>          :description => 'Specifies the password to use on keystore created during profile creation',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
-# <md>          :parm_type => 'none',
+# <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'true'
 
 default['was']['profiles']['dmgr'] = {
@@ -781,7 +840,7 @@ default['was']['profiles']['dmgr'] = {
 # Singular Instance per Node
 
 # <md>attribute 'was/profiles/node_profile/profile',
-# <md>          :displayname =>  'Custom profile name',
+# <md>          :displayname =>  'WebSphere Custom Node profile name',
 # <md>          :description => 'Profile name for a custom profile',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -789,10 +848,11 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/dmgr_host',
-# <md>          :displayname =>  'Deployment manager host name or IP address',
+# <md>          :displayname =>  'WebSphere Deployment Manager host name or IP address',
 # <md>          :description => 'Speicfy the host name or IP address for an existing deployment manager',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -800,21 +860,23 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/dmgr_port',
-# <md>          :displayname =>  'Deployment manager SOAP port number',
-# <md>          :description => 'Deployment manager SOAP port that is used when federating the custom profile',
+# <md>          :displayname =>  'WebSphere Deployment Manager SOAP Port',
+# <md>          :description => 'Deployment Manager SOAP Port that is used when federating the custom profile',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/node',
-# <md>          :displayname =>  'Custom profile Node name',
+# <md>          :displayname =>  'WebSphere custom profile node name',
 # <md>          :description => 'Unique node name for this federated node.  Must be unique within the cell',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -822,10 +884,11 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/host',
-# <md>          :displayname =>  'Custom profile host name',
+# <md>          :displayname =>  'WebSphere custom profile host name',
 # <md>          :description => 'A host name is the domain name system (DNS) name (short or long) or the IP address of this virtual machine and cannot contain an understore (_),
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -833,21 +896,23 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/ports/WC_adminhost',
-# <md>          :displayname =>  'Administrative Console Port',
-# <md>          :description => 'Administrative console port (WC_adminhost)',
+# <md>          :displayname =>  'WebSphere Administrative Console Port',
+# <md>          :description => 'Administrative Console Port (WC_adminhost)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9060',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/ports/BOOTSTRAP_ADDRESS',
-# <md>          :displayname =>  'Bootstrap Port',
+# <md>          :displayname =>  'WebSphere Bootstrap Port',
 # <md>          :description => 'Server bootstrap (BOOTSTRAP_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -855,21 +920,23 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/ports/SOAP_CONNECTOR_ADDRESS',
-# <md>          :displayname =>  'SOAP Connector Port',
-# <md>          :description => 'SOAP connector port value (SOAP_CONNECTOR_ADDRESS)',
+# <md>          :displayname =>  'WebSphere SOAP Connector Port',
+# <md>          :description => 'SOAP Connector Port value (SOAP_CONNECTOR_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '8878',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/ports/IPC_CONNECTOR_ADDRESS',
-# <md>          :displayname =>  'IPC Connector Port',
+# <md>          :displayname =>  'WebSphere IPC Connector Port',
 # <md>          :description => 'IPC Connector Port value (IPC_CONNECTOR_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -877,10 +944,11 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/ports/SAS_SSL_SERVERAUTH_LISTENER_ADDRESS',
-# <md>          :displayname =>  'SAS_SSL_SERVERAUTH_LISTENER_ADDRESS Port',
+# <md>          :displayname =>  'WebSphere SAS_SSL_SERVERAUTH_LISTENER_ADDRESS Port',
 # <md>          :description => 'was node_profile profiles ports SAS_SSL_SERVERAUTH_LISTENER_ADDRESS',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -888,10 +956,11 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/ports/CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS',
-# <md>          :displayname =>  'CSIV2 Server Authentication Listener Port',
+# <md>          :displayname =>  'WebSphere CSIV2 Server Authentication Listener Port',
 # <md>          :description => 'CSIV2 Server Authentication Listener Port (CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -899,10 +968,11 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/ports/CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS',
-# <md>          :displayname =>  'CSIV2 Client Authentication Listener Port',
+# <md>          :displayname =>  'WebSphere CSIV2 Client Authentication Listener Port',
 # <md>          :description => 'CSIV2 Client Authentication Listener Port (CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -910,10 +980,11 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/ports/ORB_LISTENER_ADDRESS',
-# <md>          :displayname =>  'ORB Listener Port',
+# <md>          :displayname =>  'WebSphere ORB Listener Port',
 # <md>          :description => 'ORB Listener Port (ORB_LISTENER_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -921,10 +992,11 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/ports/NODE_DISCOVERY_ADDRESS',
-# <md>          :displayname =>  'Node discovery address',
+# <md>          :displayname =>  'WebSphere Node Discovery Address',
 # <md>          :description => 'Node Discovery Address (NODE_DISCOVERY_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -932,11 +1004,12 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 
 # <md>attribute 'was/profiles/node_profile/ports/NODE_IPV6_MULTICAST_DISCOVERY_ADDRESS',
-# <md>          :displayname =>  'Node IPV6 Discovery Address port',
+# <md>          :displayname =>  'WebSphere Node IPV6 Discovery Address Port',
 # <md>          :description => 'Node IPV6 Discovery Address (NODE_IPV6_MULTICAST_DISCOVERY_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -944,10 +1017,11 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/ports/NODE_MULTICAST_DISCOVERY_ADDRESS',
-# <md>          :displayname =>  'was node_profile profiles ports NODE_MULTICAST_DISCOVERY_ADDRESS',
+# <md>          :displayname =>  'WebSphere was node_profile profiles ports NODE_MULTICAST_DISCOVERY_ADDRESS',
 # <md>          :description => 'was node_profile profiles ports NODE_MULTICAST_DISCOVERY_ADDRESS',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -955,10 +1029,11 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/ports/DCS_UNICAST_ADDRESS',
-# <md>          :displayname =>  'High availability manager communication port (DCS)',
+# <md>          :displayname =>  'WebSphere High Availability Manager Communication Port (DCS)',
 # <md>          :description => 'High Availability Manager Communication Port (DCS_UNICAST_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -966,22 +1041,24 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 
 # <md>attribute 'was/profiles/node_profile/ports/XDAGENT_PORT',
-# <md>          :displayname =>  'Node Middleware Agent RPC port',
-# <md>          :description => 'Node Middleware Agent RPC port (XDAGENT_PORT)',
+# <md>          :displayname =>  'WebSphere Node Middleware Agent RPC Port',
+# <md>          :description => 'Node Middleware Agent RPC Port (XDAGENT_PORT)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '7061',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/ports/OVERLAY_UDP_LISTENER_ADDRESS',
-# <md>          :displayname =>  'Node Administration Overlay UDP Port',
+# <md>          :displayname =>  'WebSphere Node Administration Overlay UDP Port',
 # <md>          :description => 'Node Administration Overlay UDP Port (OVERLAY_UDP_LISTENER_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -989,10 +1066,11 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/ports/OVERLAY_TCP_LISTENER_ADDRESS',
-# <md>          :displayname =>  'Node Administration Overlay TCP Port',
+# <md>          :displayname =>  'WebSphere Node Administration Overlay TCP Port',
 # <md>          :description => 'Node Administration Overlay TCP Port (OVERLAY_TCP_LISTENER_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1000,10 +1078,11 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/ports/STATUS_LISTENER_ADDRESS',
-# <md>          :displayname =>  'Status Update Listener port',
+# <md>          :displayname =>  'WebSphere Status Update Listener Port',
 # <md>          :description => 'Status Update Listener Port (STATUS_LISTENER_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1011,10 +1090,11 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/personalcertdn',
-# <md>          :displayname =>  'Personal certificate Distingushed name',
+# <md>          :displayname =>  'WebSphere personal certificate distingushed name',
 # <md>          :description => 'Specifies the distinguished name of the personal certificate that you are creating when you create the profile',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1022,10 +1102,11 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/personalcertvalidityperiod',
-# <md>          :displayname =>  'Personal certificate expiration period in years',
+# <md>          :displayname =>  'WebSphere personal certificate expiration period in years',
 # <md>          :description =>  'An optional parameter that specifies the amount of time in years that the default personal certificate is valid',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1033,10 +1114,11 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/signingcertdn',
-# <md>          :displayname =>  'Root certificate distinguished name',
+# <md>          :displayname =>  'WebSphere root certificate distinguished name',
 # <md>          :description => 'Specifies the distinguished name of the root signing certificate that you create when you create the profile',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1044,10 +1126,11 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/signingcertvalidityperiod',
-# <md>          :displayname =>  'Root signing certificate expiration period in years',
+# <md>          :displayname =>  'WebSphere root signing certificate expiration period in years',
 # <md>          :description =>  'An optional parameter that specifies the amount of time in years that the root signing certificate is valid',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1055,17 +1138,19 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/node_profile/keystorepassword',
-# <md>          :displayname =>  'Default keystore password',
+# <md>          :displayname =>  'WebSphere default keystore password',
 # <md>          :description => 'Specifies the password to use on all keystore files created during profile creation',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
-# <md>          :parm_type => 'none',
+# <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'true'
 
 default['was']['profiles']['node_profile'] = {
@@ -1099,7 +1184,7 @@ default['was']['profiles']['node_profile'] = {
 
 # Multiple Instances Per Node
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/profile',
-# <md>          :displayname =>  'Application server profile name',
+# <md>          :displayname =>  'WebSphere Application Server profile name',
 # <md>          :description => 'Application server profile name',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1107,10 +1192,11 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/cell',
-# <md>          :displayname =>  'Application server cell name',
+# <md>          :displayname =>  'WebSphere Application Server cell name',
 # <md>          :description => 'Cell name for the application server',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1118,10 +1204,11 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/node',
-# <md>          :displayname =>  'Application server node name',
+# <md>          :displayname =>  'WebSphere Application Server node name',
 # <md>          :description => 'A node name is used for administration',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1129,10 +1216,11 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/host',
-# <md>          :displayname =>  'Application server host name',
+# <md>          :displayname =>  'WebSphere Application Server host name',
 # <md>          :description => 'A host name is the domain name system (DNS) name (short or long) or the IP address of this virtual machine and cannot contain an understore (_)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1140,54 +1228,59 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/server',
-# <md>          :displayname =>  'Application server name',
+# <md>          :displayname =>  'WebSphere Application Server name',
 # <md>          :description => 'Name of the application server',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
-# <md>          :default => 'server01',
+# <md>          :default => 'server1',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/ports/WC_adminhost',
-# <md>          :displayname =>  'Administrative console port',
-# <md>          :description => 'Server administrative console port (WC_adminhost)',
+# <md>          :displayname =>  'WebSphere Administrative Console Port',
+# <md>          :description => 'Server Administrative Console Port (WC_adminhost)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9060',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/ports/WC_adminhost_secure',
-# <md>          :displayname =>  'Administrative Console Secure Port',
-# <md>          :description => 'Server adminsitrative secure console port (WC_adminhost_secure)',
+# <md>          :displayname =>  'WebSphere Administrative Console Secure Port',
+# <md>          :description => 'Server Adminsitrative Secure Console Port (WC_adminhost_secure)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9043',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/ports/WC_defaulthost',
-# <md>          :displayname =>  'Application server HTTP Transport Port',
-# <md>          :description => 'HTTP Transport port (WC_defaulthost)',
+# <md>          :displayname =>  'WebSphere Application Server HTTP Transport Port',
+# <md>          :description => 'HTTP Transport Port (WC_defaulthost)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9080',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/ports/WC_defaulthost_secure',
-# <md>          :displayname =>  'Application server Secure HTTP Transport Port',
+# <md>          :displayname =>  'WebSphere Application Server Secure HTTP Transport Port',
 # <md>          :description => 'HTTP Transport Secure Port (WC_defaulthost_secure)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1195,32 +1288,35 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/ports/BOOTSTRAP_ADDRESS',
-# <md>          :displayname =>  'Application sevrver bootstrap address',
-# <md>          :description =>  'Bootstrap port value (BOOTSTRAP_ADDRESS)',
+# <md>          :displayname =>  'WebSphere Application Server bootstrap address',
+# <md>          :description =>  'Bootstrap Port value (BOOTSTRAP_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '2809',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/ports/SOAP_CONNECTOR_ADDRESS',
-# <md>          :displayname =>  'Application server SOAP connector port',
-# <md>          :description => 'SOAP connector port value (SOAP_CONNECTOR_ADDRESS)',
+# <md>          :displayname =>  'WebSphere Application Server SOAP connector Port',
+# <md>          :description => 'SOAP Connector Port value (SOAP_CONNECTOR_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '8880',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/ports/IPC_CONNECTOR_ADDRESS',
-# <md>          :displayname =>  'Application server IPC connector port',
+# <md>          :displayname =>  'WebSphere Application Server IPC Connector Port',
 # <md>          :description => 'IPC Connector Port value (IPC_CONNECTOR_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1228,10 +1324,11 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/ports/SAS_SSL_SERVERAUTH_LISTENER_ADDRESS',
-# <md>          :displayname =>  'Application Server SAS_SSL_SERVERAUTH_LISTENER_ADDRESS',
+# <md>          :displayname =>  'WebSphere Application Server SAS_SSL_SERVERAUTH_LISTENER_ADDRESS',
 # <md>          :description => 'Application Server SAS_SSL_SERVERAUTH_LISTENER_ADDRESS',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1239,10 +1336,11 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/ports/CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS',
-# <md>          :displayname =>  'Application Server CSIV2 Server Authentication Listener Port',
+# <md>          :displayname =>  'WebSphere Application Server CSIV2 Server Authentication Listener Port',
 # <md>          :description => 'CSIV2 Server Authentication Listener Port (CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1250,10 +1348,11 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/ports/CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS',
-# <md>          :displayname =>  'Application server CSIV2 Client Authentication Listener Port',
+# <md>          :displayname =>  'WebSphere Application server CSIV2 Client Authentication Listener Port',
 # <md>          :description => 'CSIV2 Client Authentication Listener Port (CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1261,10 +1360,11 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/ports/ORB_LISTENER_ADDRESS',
-# <md>          :displayname =>  'Application Server ORB Listener Port',
+# <md>          :displayname =>  'WebSphere Application Server ORB Listener Port',
 # <md>          :description => 'ORB Listener Port (ORB_LISTENER_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1272,10 +1372,11 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/ports/DCS_UNICAST_ADDRESS',
-# <md>          :displayname =>  'Application Server High Availability Manager Communication Port ',
+# <md>          :displayname =>  'WebSphere Application Server High Availability Manager Communication Port ',
 # <md>          :description => 'High Availability Manager Communication Port (DCS_UNICAST_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1283,10 +1384,11 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/ports/SIB_ENDPOINT_ADDRESS',
-# <md>          :displayname =>  'Application Server Service Integration Port',
+# <md>          :displayname =>  'WebSphere Application Server Service Integration Port',
 # <md>          :description =>  'Service Integration Port (SIB_ENDPOINT_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1294,10 +1396,11 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/ports/SIB_ENDPOINT_SECURE_ADDRESS',
-# <md>          :displayname =>  'Application Server Service Integration Secure Port',
+# <md>          :displayname =>  'WebSphere Application Server Service Integration Secure Port',
 # <md>          :description => 'Service Integration Secure Port  (SIB_ENDPOINT_SECURE_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1305,10 +1408,11 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/ports/SIB_MQ_ENDPOINT_ADDRESS',
-# <md>          :displayname =>  'Application Server MQ Transport Port',
+# <md>          :displayname =>  'WebSphere Application Server MQ Transport Port',
 # <md>          :description => 'MQ Transport Port (SIB_MQ_ENDPOINT_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1316,10 +1420,11 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/ports/SIB_MQ_ENDPOINT_SECURE_ADDRESS',
-# <md>          :displayname =>  'Application Server MQ Transport Secure Port',
+# <md>          :displayname =>  'WebSphere Application Server MQ Transport Secure Port',
 # <md>          :description => 'MQ Transport Secure Port  (SIB_MQ_ENDPOINT_SECURE_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1327,10 +1432,11 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/ports/SIP_DEFAULTHOST',
-# <md>          :displayname =>  'Application Server SIP Container Port',
+# <md>          :displayname =>  'WebSphere Application Server SIP Container Port',
 # <md>          :description => 'SIP Container Port (SIP_DEFAULTHOST)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1338,10 +1444,11 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/ports/SIP_DEFAULTHOST_SECURE',
-# <md>          :displayname =>  'Application Server SIP Container Secure Port',
+# <md>          :displayname =>  'WebSphere Application Server SIP Container Secure Port',
 # <md>          :description => 'SIP Container Secure Port (SIP_DEFAULTHOST_SECURE)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1349,10 +1456,11 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/ports/OVERLAY_UDP_LISTENER_ADDRESS',
-# <md>          :displayname =>  'Application Server Administration Overlay UDP Port ',
+# <md>          :displayname =>  'WebSphere Application Server Administration Overlay UDP Port ',
 # <md>          :description => 'Administration Overlay UDP Port (OVERLAY_UDP_LISTENER_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1360,10 +1468,11 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/ports/OVERLAY_TCP_LISTENER_ADDRESS',
-# <md>          :displayname =>  'Application Server Administration Overlay TCP Port',
+# <md>          :displayname =>  'WebSphere Application Server Administration Overlay TCP Port',
 # <md>          :description =>  'Administration Overlay TCP Port (OVERLAY_TCP_LISTENER_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1371,10 +1480,11 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/personalcertdn',
-# <md>          :displayname =>  'Personal certificate Distingushed name',
+# <md>          :displayname =>  'WebSphere personal certificate distingushed name',
 # <md>          :description =>  'Specifies the distinguished name of the personal certificate that you are creating when you create the profile',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1382,10 +1492,11 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/personalcertvalidityperiod',
-# <md>          :displayname =>  'Personal certificate expiration period in years',
+# <md>          :displayname =>  'WebSphere personal certificate expiration period in years',
 # <md>          :description =>  'An optional parameter that specifies the amount of time in years that the default personal certificate is valid',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1393,10 +1504,11 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/signingcertdn',
-# <md>          :displayname =>  'Root certificate distinguished name',
+# <md>          :displayname =>  'WebSphere root certificate distinguished name',
 # <md>          :description =>  'Specifies the distinguished name of the root signing certificate that you create when you create the profile',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1404,10 +1516,11 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/signingcertvalidityperiod',
-# <md>          :displayname =>  'Root signing certificate expiration period in years',
+# <md>          :displayname =>  'WebSphere root signing certificate expiration period in years',
 # <md>          :description =>  'An optional parameter that specifies the amount of time in years that the root signing certificate is valid',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1415,17 +1528,19 @@ default['was']['profiles']['node_profile'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/keystorepassword',
-# <md>          :displayname =>  'Default keystore password',
+# <md>          :displayname =>  'WebSphere default keystore password',
 # <md>          :description => 'Specifies the password to use on all keystore files created during profile creation',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
-# <md>          :parm_type => 'none',
+# <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'true'
 
 default['was']['profiles']['standalone_profiles'] = {
@@ -1466,7 +1581,7 @@ default['was']['profiles']['standalone_profiles'] = {
 }
 
 # <md>attribute 'was/profiles/job_manager/profile',
-# <md>          :displayname =>  'Job manager Profile name ',
+# <md>          :displayname =>  'WebSphere Job Manager profile name ',
 # <md>          :description => 'Job Manager profile name',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1474,10 +1589,11 @@ default['was']['profiles']['standalone_profiles'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/job_manager/cell',
-# <md>          :displayname =>  'Job Manager cell name',
+# <md>          :displayname =>  'WebSphere Job Manager cell name',
 # <md>          :description => 'Cell name of the Job manager ',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1485,10 +1601,11 @@ default['was']['profiles']['standalone_profiles'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/job_manager/node',
-# <md>          :displayname =>  'Job Manager node name',
+# <md>          :displayname =>  'WebSphere Job Manager node name',
 # <md>          :description => 'Node name is for administration and must be unique',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1496,10 +1613,11 @@ default['was']['profiles']['standalone_profiles'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/job_manager/host',
-# <md>          :displayname =>  'Job Manager host name',
+# <md>          :displayname =>  'WebSphere Job Manager host name',
 # <md>          :description => 'A host name is the domain name system (DNS) name (short or long) or the IP address of this virtual machine and cannot contain an understore (_)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1507,54 +1625,59 @@ default['was']['profiles']['standalone_profiles'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/job_manager/ports/WC_adminhost',
-# <md>          :displayname =>  'Administrative Console Port',
-# <md>          :description => 'Job Manager administrative console port (WC_adminhost)',
+# <md>          :displayname =>  'WebSphere Administrative Console Port',
+# <md>          :description => 'Job Manager Administrative Console Port (WC_adminhost)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9960',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/job_manager/ports/WC_adminhost_secure',
-# <md>          :displayname =>  'Administrative Console Secure Port',
-# <md>          :description => 'Job Manager adminsitrative secure console port (WC_adminhost_secure)',
+# <md>          :displayname =>  'WebSphere Administrative Console Secure Port',
+# <md>          :description => 'Job Manager Adminsitrative Secure Console Port (WC_adminhost_secure)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9943',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/job_manager/ports/BOOTSTRAP_ADDRESS',
-# <md>          :displayname =>  'Job Manager Bootstrap address',
-# <md>          :description => 'Bootstrap port value (BOOTSTRAP_ADDRESS)',
+# <md>          :displayname =>  'WebSphere Job Manager Bootstrap address',
+# <md>          :description => 'Bootstrap Port value (BOOTSTRAP_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '9808',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/job_manager/ports/SOAP_CONNECTOR_ADDRESS',
-# <md>          :displayname =>  'Job Manager',
-# <md>          :description => 'SOAP connector port value (SOAP_CONNECTOR_ADDRESS)',
+# <md>          :displayname =>  'WebSphere Job Manager SOAP Connector Port',
+# <md>          :description => 'SOAP Connector Port value (SOAP_CONNECTOR_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '8876',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/job_manager/ports/IPC_CONNECTOR_ADDRESS',
-# <md>          :displayname =>  'Job Manager IPC Connector Port value',
+# <md>          :displayname =>  'WebSphere Job Manager IPC Connector Port value',
 # <md>          :description => 'IPC Connector Port value (IPC_CONNECTOR_ADDRESS),
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1562,10 +1685,11 @@ default['was']['profiles']['standalone_profiles'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/job_manager/ports/SAS_SSL_SERVERAUTH_LISTENER_ADDRESS',
-# <md>          :displayname =>  'Job Manager SAS SSL ServerAuth port',
+# <md>          :displayname =>  'WebSphere Job Manager SAS SSL ServerAuth Port',
 # <md>          :description => 'SAS_ SSL_ SERVERAUTH_ LISTENER_ ADDRESS (Deprecated)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1573,10 +1697,11 @@ default['was']['profiles']['standalone_profiles'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/job_manager/ports/CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS',
-# <md>          :displayname =>  'Job Manager CSIV2 Server Authentication Listener Port',
+# <md>          :displayname =>  'WebSphere Job Manager CSIV2 Server Authentication Listener Port',
 # <md>          :description => 'CSIV2 Server Authentication Listener Port (CSIV2_ SSL_ SERVERAUTH_ LISTENER_ ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1584,10 +1709,11 @@ default['was']['profiles']['standalone_profiles'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/job_manager/ports/CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS',
-# <md>          :displayname =>  'Job Manager CSIV2 Client Authentication Listener Port',
+# <md>          :displayname =>  'WebSphere Job Manager CSIV2 Client Authentication Listener Port',
 # <md>          :description =>  'CSIV2 Client Authentication Listener Port (CSIV2_ SSL_ MUTUALAUTH_ LISTENER_ ADDRESS)	9402',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1595,10 +1721,11 @@ default['was']['profiles']['standalone_profiles'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/job_manager/ports/ORB_LISTENER_ADDRESS',
-# <md>          :displayname =>  'Job Manager ORB listener port',
+# <md>          :displayname =>  'WebSphere Job Manager ORB listener Port',
 # <md>          :description => 'ORB Listener Port (ORB_LISTENER_ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1606,10 +1733,11 @@ default['was']['profiles']['standalone_profiles'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/job_manager/ports/STATUS_LISTENER_ADDRESS',
-# <md>          :displayname =>  'Job Manager Status update listener port',
+# <md>          :displayname =>  'WebSphere Job Manager Status update listener Port',
 # <md>          :description => 'Status Update Listener Port (STATUS_ LISTENER_ ADDRESS)',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1617,10 +1745,11 @@ default['was']['profiles']['standalone_profiles'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/job_manager/personalcertdn',
-# <md>          :displayname =>  'Personal certificate Distingushed name',
+# <md>          :displayname =>  'WebSphere personal certificate distingushed name',
 # <md>          :description => 'Specifies the distinguished name of the personal certificate that you are creating when you create the profile',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1628,10 +1757,11 @@ default['was']['profiles']['standalone_profiles'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/job_manager/personalcertvalidityperiod',
-# <md>          :displayname =>  'Personal certificate expiration period in years',
+# <md>          :displayname =>  'WebSphere personal certificate expiration period in years',
 # <md>          :description => 'An optional parameter that specifies the amount of time in years that the default personal certificate is valid',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1639,10 +1769,11 @@ default['was']['profiles']['standalone_profiles'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/job_manager/signingcertdn',
-# <md>          :displayname =>  'Root certificate distinguished name',
+# <md>          :displayname =>  'WebSphere root certificate distinguished name',
 # <md>          :description => 'Specifies the distinguished name of the root signing certificate that you create when you create the profile',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1650,10 +1781,11 @@ default['was']['profiles']['standalone_profiles'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/job_manager/signingcertvalidityperiod',
-# <md>          :displayname =>  'Root signing certificate expiration period in years',
+# <md>          :displayname =>  'WebSphere root signing certificate expiration period in years',
 # <md>          :description => 'An optional parameter that specifies the amount of time in years that the root signing certificate is valid',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1661,17 +1793,19 @@ default['was']['profiles']['standalone_profiles'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/profiles/job_manager/keystorepassword',
-# <md>          :displayname =>  'Default keystore password',
+# <md>          :displayname =>  'WebSphere default keystore password',
 # <md>          :description =>  'Specifies the password to use on all keystore files created during profile creation',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
-# <md>          :parm_type => 'none',
+# <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'true'
 
 default['was']['profiles']['job_manager'] = {
@@ -1699,7 +1833,7 @@ default['was']['profiles']['job_manager'] = {
 }
 
 # <md>attribute 'was/unmanaged_node/unmngNode01/node_name',
-# <md>          :displayname =>  'Unmanaged node name ',
+# <md>          :displayname =>  'WebSphere Unmanaged node name ',
 # <md>          :description => 'Node name for the unmanaged node',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1707,10 +1841,11 @@ default['was']['profiles']['job_manager'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/unmanaged_node/unmngNode01/host_name',
-# <md>          :displayname =>  'Unmanaged host name',
+# <md>          :displayname =>  'WebSphere Unmanaged host name',
 # <md>          :description => 'The host name or ipaddress of the unmanaged host',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1718,10 +1853,11 @@ default['was']['profiles']['job_manager'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/unmanaged_node/unmngNode01/os',
-# <md>          :displayname =>  'Unmanaged node operating system type',
+# <md>          :displayname =>  'WebSphere Unmanaged node operating system type',
 # <md>          :description => 'Indicates the operating system type for the unmanaged node',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1729,6 +1865,7 @@ default['was']['profiles']['job_manager'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 default['was']['unmanaged_node'] = {
@@ -1740,7 +1877,7 @@ default['was']['unmanaged_node'] = {
 }
 
 # <md>attribute 'was/webserver/ihs_server/node_name',
-# <md>          :displayname =>  'was webserver ihs_server node_name',
+# <md>          :displayname =>  'WebSphere was webserver ihs_server node_name',
 # <md>          :description => 'Web server node name',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1748,10 +1885,11 @@ default['was']['unmanaged_node'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/webserver/ihs_server/webserver_name',
-# <md>          :displayname =>  'was webserver ihs_server webserver_name',
+# <md>          :displayname =>  'WebSphere was webserver ihs_server webserver_name',
 # <md>          :description => 'Web server server name',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1759,17 +1897,19 @@ default['was']['unmanaged_node'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/webserver/ihs_server/webserver_port',
-# <md>          :displayname =>  'IBM HTTP server listener port',
-# <md>          :description => 'HTTP Server listener port that will receive requests on. Use for creating the web server definition',
+# <md>          :displayname =>  'IBM HTTP Server Listener Port',
+# <md>          :description => 'IBM HTTP Server Listener Port that will receive requests on. Use for creating the web server definition',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '80',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/webserver/ihs_server/install_dir',
@@ -1781,6 +1921,7 @@ default['was']['unmanaged_node'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/webserver/ihs_server/plugin_dir',
@@ -1792,17 +1933,19 @@ default['was']['unmanaged_node'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/webserver/ihs_server/admin_port',
-# <md>          :displayname =>  'IBM HTTP administrative server port',
-# <md>          :description => 'IBM HTTP administrative server port.  Used for creating the web server definition',
+# <md>          :displayname =>  'IBM HTTP Administrative Server Port',
+# <md>          :description => 'IBM HTTP Administrative Server Port.  Used for creating the web server definition',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '8008',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/webserver/ihs_server/ihs_admin_user',
@@ -1814,6 +1957,7 @@ default['was']['unmanaged_node'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/webserver/ihs_server/ihs_admin_password',
@@ -1825,6 +1969,7 @@ default['was']['unmanaged_node'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'true'
 
 # <md>attribute 'was/webserver/ihs_server/webserver_type',
@@ -1836,6 +1981,7 @@ default['was']['unmanaged_node'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/webserver/ihs_server/webapp_mapping',
@@ -1847,6 +1993,7 @@ default['was']['unmanaged_node'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'false'
 
 default['was']['webserver'] = {
@@ -1867,7 +2014,7 @@ default['was']['webserver'] = {
 #<> WebSphere configure jvm properties and cluster configurations
 
 # <md>attribute 'was/wsadmin/dmgr/jvmproperty/server_name',
-# <md>          :displayname =>  'Deployment Manager server name',
+# <md>          :displayname =>  'WebSphere Deployment Manager server name',
 # <md>          :description => 'Name of server that will be updated for JVM heap size',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1875,10 +2022,11 @@ default['was']['webserver'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/wsadmin/dmgr/jvmproperty/node_name',
-# <md>          :displayname =>  'Deployment manager node name',
+# <md>          :displayname =>  'WebSphere Deployment Manager node name',
 # <md>          :description => 'Node for the deployment manager that will be updated',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1886,10 +2034,11 @@ default['was']['webserver'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/wsadmin/dmgr/jvmproperty/profile_path',
-# <md>          :displayname =>  'Deployment manager profile path',
+# <md>          :displayname =>  'WebSphere Deployment Manager profile path',
 # <md>          :description => 'Directoy where the deployment manager profile resides',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1897,10 +2046,11 @@ default['was']['webserver'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/wsadmin/dmgr/jvmproperty/property_value_initial',
-# <md>          :displayname =>  'Deployment manager minimum JVM Heap Size',
+# <md>          :displayname =>  'WebSphere Deployment Manager minimum JVM Heap Size',
 # <md>          :description => 'Minimum JVM heap size',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1908,10 +2058,11 @@ default['was']['webserver'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/wsadmin/dmgr/jvmproperty/property_value_maximum',
-# <md>          :displayname =>  'Deployment manager maximum JVM Heap Size',
+# <md>          :displayname =>  'WebSphere Deployment Manager maximum JVM Heap Size',
 # <md>          :description => 'Maximum JVM heap size',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1919,10 +2070,11 @@ default['was']['webserver'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/wsadmin/nodeagent/jvmproperty/server_name',
-# <md>          :displayname =>  'Node agent server name',
+# <md>          :displayname =>  'WebSphere Node Agent server name',
 # <md>          :description => 'Name of server that will be updated for JVM heap size',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1930,10 +2082,11 @@ default['was']['webserver'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/wsadmin/nodeagent/jvmproperty/node_name',
-# <md>          :displayname =>  'Node agent node name',
+# <md>          :displayname =>  'WebSphere Node Agent node name',
 # <md>          :description => 'Node for the node agent that will be updated',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1941,21 +2094,23 @@ default['was']['webserver'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/wsadmin/nodeagent/jvmproperty/profile_path',
-# <md>          :displayname =>  'Node agent profile path',
-# <md>          :description => 'Node agent directory where the profile resides',
+# <md>          :displayname =>  'WebSphere Node Agent profile path',
+# <md>          :description => 'Node Agent directory where the profile resides',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/wsadmin/nodeagent/jvmproperty/property_value_initial',
-# <md>          :displayname =>  'Node agent minimum JVM Heap Size',
+# <md>          :displayname =>  'WebSphere Node Agent minimum JVM Heap Size',
 # <md>          :description => 'Minimum JVM heap size',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1963,10 +2118,11 @@ default['was']['webserver'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/wsadmin/nodeagent/jvmproperty/property_value_maximum',
-# <md>          :displayname =>  'Node agent maximum JVM heap size',
+# <md>          :displayname =>  'WebSphere Node Agent maximum JVM heap size',
 # <md>          :description => 'Maximum JVM heap size',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1974,10 +2130,11 @@ default['was']['webserver'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/wsadmin/standalone/jvmproperty/server_name',
-# <md>          :displayname =>  'Application server name',
+# <md>          :displayname =>  'WebSphere Application Server name',
 # <md>          :description => 'Name of server that will be updated for JVM heap size',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1985,10 +2142,11 @@ default['was']['webserver'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/wsadmin/standalone/jvmproperty/node_name',
-# <md>          :displayname =>  'Application server node name',
+# <md>          :displayname =>  'WebSphere Application Server node name',
 # <md>          :description => 'Node for the application server that will be updated',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -1996,10 +2154,11 @@ default['was']['webserver'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/wsadmin/standalone/jvmproperty/profile_path',
-# <md>          :displayname =>  'Application server profile path',
+# <md>          :displayname =>  'WebSphere Application Server profile path',
 # <md>          :description =>  'Directoy where the application server profile resides',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -2007,10 +2166,11 @@ default['was']['webserver'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/wsadmin/standalone/jvmproperty/property_value_initial',
-# <md>          :displayname =>  'Application server minimum JVM Heap Size',
+# <md>          :displayname =>  'WebSphere Application Server minimum JVM Heap Size',
 # <md>          :description => 'Minimum JVM heap size',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -2018,10 +2178,11 @@ default['was']['webserver'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/wsadmin/standalone/jvmproperty/property_value_maximum',
-# <md>          :displayname =>  'Application server maximum JVM Heap Size',
+# <md>          :displayname =>  'WebSphere Application Server maximum JVM Heap Size',
 # <md>          :description => 'Maximum JVM heap size',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
@@ -2029,6 +2190,7 @@ default['was']['webserver'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/wsadmin/clusters/cluster01/cluster_name',
@@ -2040,6 +2202,7 @@ default['was']['webserver'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/wsadmin/clusters/cluster01/session_rep',
@@ -2051,6 +2214,7 @@ default['was']['webserver'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/wsadmin/clusters/cluster01/cluster_servers/cluster_server01/server_name',
@@ -2062,6 +2226,7 @@ default['was']['webserver'] = {
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
 # <md>          :secret => 'false'
 
 default['was']['wsadmin'] = {
