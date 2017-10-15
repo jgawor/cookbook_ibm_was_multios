@@ -6,6 +6,14 @@
 # <> Configure Node agent JVM min and max HeapSize settings
 #
 
+# Create directories incase cleanup recipe as been executed before
+[node['was']['expand_area'], node['ibm']['temp_dir'], node['ibm']['log_dir']].each do |dir|
+    directory dir do
+      recursive true
+      action :create
+      mode '0755'
+    end
+end
 #create wsadmin libraries
 create_wsadmin_library(node['ibm']['temp_dir'])
 

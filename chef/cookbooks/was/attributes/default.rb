@@ -300,7 +300,7 @@ default['was']['os_perms'] = "750"
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
-# <md>          :hidden => 'false',
+# <md>          :hidden => 'true',
 # <md>          :secret => 'false'
 
 # <md>attribute 'was/os_users/was/gid',
@@ -1549,7 +1549,7 @@ default['was']['profiles']['standalone_profiles'] = {
     'cell' => 'cell01',
     'node' => '{SHORTHOSTNAME}Node01',
     'host' => '{FULLHOSTNAME}',
-    'server' => 'standalone01',
+    'server' => 'server1',
     'ports' => {
       'WC_adminhost' => '9060',
       'WC_adminhost_secure' => '9043',
@@ -1953,7 +1953,7 @@ default['was']['unmanaged_node'] = {
 # <md>          :description => 'IBM HTTP administrative username. Used for creating the web server definition',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
-# <md>          :default => '',
+# <md>          :default => 'ihsadmin',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
@@ -2004,7 +2004,7 @@ default['was']['webserver'] = {
     'install_dir' => '/opt/IBM/HTTPServer',
     'plugin_dir' => '/opt/IBM/WebSphere/Plugins',
     'admin_port' => '8008',
-    'ihs_admin_user' => '',
+    'ihs_admin_user' => 'ihsadmin',
     'ihs_admin_password' => '',
     'webserver_type' => 'IHS',
     'webapp_mapping' => 'ALL'
@@ -2222,7 +2222,7 @@ default['was']['webserver'] = {
 # <md>          :description => 'Name of the cluster member that will created on each of the nodes',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
-# <md>          :default => 'server01',
+# <md>          :default => 'server1',
 # <md>          :selectable => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
@@ -2263,7 +2263,7 @@ default['was']['wsadmin'] = {
       'session_rep' =>   "True",
       'cluster_servers' => {
         'cluster_server01'  =>  {
-          'server_name' =>     "server01"
+          'server_name' =>     "server1"
         }
       }
     }

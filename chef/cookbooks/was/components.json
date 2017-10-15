@@ -24,7 +24,8 @@
         "run_list": [
             "recipe[was::create_cluster]",
             "recipe[was::create_clustermember]",
-            "recipe[was::start_clustermember]"
+            "recipe[was::start_clustermember]",
+            "recipe[was::cleanup]"
         ],
         "type": "chef_role"
     },
@@ -55,7 +56,8 @@
         "objectname": "was_create_dmgr",
         "run_list": [
             "recipe[was::create_dmgr]",
-            "recipe[was::configure_dmgr]"
+            "recipe[was::configure_dmgr]",
+            "recipe[was::cleanup]"
         ],
         "type": "chef_role"
     },
@@ -77,7 +79,8 @@
         "name": "was_create_job_manager",
         "objectname": "was_create_job_manager",
         "run_list": [
-            "recipe[was::create_job_manager]"
+            "recipe[was::create_job_manager]",
+            "recipe[was::cleanup]"
         ],
         "type": "chef_role"
     },
@@ -107,7 +110,8 @@
         "objectname": "was_create_nodeagent",
         "run_list": [
             "recipe[was::create_managed]",
-            "recipe[was::configure_nodeagent]"
+            "recipe[was::configure_nodeagent]",
+            "recipe[was::cleanup]"
         ],
         "type": "chef_role"
     },
@@ -139,7 +143,8 @@
         "objectname": "was_create_nodeagent_ext_dmgr",
         "run_list": [
             "recipe[was::create_managed]",
-            "recipe[was::configure_nodeagent]"
+            "recipe[was::configure_nodeagent]",
+            "recipe[was::cleanup]"
         ],
         "type": "chef_role"
     },
@@ -152,7 +157,7 @@
                             "cell": "cell01",
                             "keystorepassword": "",
                             "profile": "AppSrv01",
-                            "server": "standalone01"
+                            "server": "server1"
                         }
                     }
                 },
@@ -173,7 +178,8 @@
         "objectname": "was_create_standalone",
         "run_list": [
             "recipe[was::create_standalone]",
-            "recipe[was::configure_standalone]"
+            "recipe[was::configure_standalone]",
+            "recipe[was::cleanup]"
         ],
         "type": "chef_role"
     },
@@ -197,7 +203,8 @@
         "name": "was_create_webserver",
         "objectname": "was_create_webserver",
         "run_list": [
-            "recipe[was::unmanaged_webserver]"
+            "recipe[was::unmanaged_webserver]",
+            "recipe[was::cleanup]"
         ],
         "type": "chef_role"
     },
@@ -222,7 +229,8 @@
         "name": "was_create_webserver_ext_ihs",
         "objectname": "was_create_webserver_ext_ihs",
         "run_list": [
-            "recipe[was::unmanaged_webserver]"
+            "recipe[was::unmanaged_webserver]",
+            "recipe[was::cleanup]"
         ],
         "type": "chef_role"
     },
@@ -267,7 +275,8 @@
         "run_list": [
             "recipe[was::prereq]",
             "recipe[was::prereq_check]",
-            "recipe[was::install]"
+            "recipe[was::install]",
+            "recipe[was::cleanup]"
         ],
         "type": "chef_role"
     },
@@ -311,7 +320,8 @@
         "run_list": [
             "recipe[was::prereq]",
             "recipe[was::prereq_check]",
-            "recipe[was::install]"
+            "recipe[was::install]",
+            "recipe[was::cleanup]"
         ],
         "type": "chef_role"
     }

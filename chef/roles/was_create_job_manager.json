@@ -18,7 +18,8 @@
       },
       "chef_type": "role",
       "run_list": [
-        "recipe[was::create_job_manager]"
+        "recipe[was::create_job_manager]",
+        "recipe[was::cleanup]"
       ],
       "env_run_lists": {
 

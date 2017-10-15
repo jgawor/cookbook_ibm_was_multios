@@ -3,8 +3,16 @@
 #
 #         Copyright IBM Corp. 2016, 2017
 #
-# <> Creates a IBM HTTP webserver server defintion as an unmanaged node. 
+# <> Creates a IBM HTTP webserver server defintion as an unmanaged node.
 
+# Create directories incase cleanup recipe as been executed before
+[node['was']['expand_area'], node['ibm']['temp_dir'], node['ibm']['log_dir']].each do |dir|
+    directory dir do
+      recursive true
+      action :create
+      mode '0755'
+    end
+end
 
 adminuserpwd = node['was']['security']['admin_user_pwd']
 ihsadminpassword = node['was']['webserver']['ihs_server']['ihs_admin_password']

@@ -3,8 +3,17 @@
 #
 #         Copyright IBM Corp. 2016, 2017
 #
-# <> Create Websphere standalone server profile and starts the server. 
+# <> Create Websphere standalone server profile and starts the server.
 #
+
+# Create directories incase cleanup recipe as been executed before
+[node['was']['expand_area'], node['ibm']['temp_dir'], node['ibm']['log_dir']].each do |dir|
+    directory dir do
+      recursive true
+      action :create
+      mode '0755'
+    end
+end
 
 # Manage base directory
 subdirs = subdirs_to_create(node['was']['profile_dir'], node['was']['os_users']['was']['name'])

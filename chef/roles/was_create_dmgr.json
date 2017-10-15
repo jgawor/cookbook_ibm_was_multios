@@ -27,7 +27,8 @@
       "chef_type": "role",
       "run_list": [
         "recipe[was::create_dmgr]",
-        "recipe[was::configure_dmgr]"
+        "recipe[was::configure_dmgr]",
+        "recipe[was::cleanup]"
       ],
       "env_run_lists": {
 

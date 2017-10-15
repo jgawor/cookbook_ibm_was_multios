@@ -344,7 +344,7 @@
                     "default": "wasadmin",
                     "description": "Operating system userid that will be used to install the product. Userid will be created if it does not exist",
                     "displayname": "WebSphere installation userid",
-                    "hidden": "false",
+                    "hidden": "true",
                     "parm_type": "node",
                     "precedence_level": "node",
                     "required": "true",
@@ -1689,7 +1689,7 @@
                     "type": "string"
                 },
                 "ihs_admin_user": {
-                    "default": "",
+                    "default": "ihsadmin",
                     "description": "IBM HTTP administrative username. Used for creating the web server definition",
                     "displayname": "IBM HTTP administrative username",
                     "hidden": "false",
@@ -1804,7 +1804,7 @@
                     "cluster_servers": {
                         "cluster_server01": {
                             "server_name": {
-                                "default": "server01",
+                                "default": "server1",
                                 "description": "Name of the cluster member that will created on each of the nodes",
                                 "displayname": "WebSphere Cluster member name",
                                 "hidden": "false",

@@ -20,7 +20,8 @@
       },
       "chef_type": "role",
       "run_list": [
-        "recipe[was::unmanaged_webserver]"
+        "recipe[was::unmanaged_webserver]",
+        "recipe[was::cleanup]"
       ],
       "env_run_lists": {
 

@@ -708,7 +708,7 @@ Attributes
   <tr>
     <td><code>node['was']['webserver']['ihs_server']['ihs_admin_user']</code></td>
     <td>IBM HTTP administrative username. Used for creating the web server definition</td>
-    <td><code></code></td>
+    <td><code>ihsadmin</code></td>
   </tr>
   <tr>
     <td><code>node['was']['webserver']['ihs_server']['install_dir']</code></td>
@@ -753,7 +753,7 @@ Attributes
   <tr>
     <td><code>node['was']['wsadmin']['clusters']['cluster01']['cluster_servers']['cluster_server01']['server_name']</code></td>
     <td>Name of the cluster member that will created on each of the nodes</td>
-    <td><code>server01</code></td>
+    <td><code>server1</code></td>
   </tr>
   <tr>
     <td><code>node['was']['wsadmin']['clusters']['cluster01']['session_rep']</code></td>

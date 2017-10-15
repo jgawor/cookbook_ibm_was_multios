@@ -25,7 +25,8 @@
       "run_list": [
         "recipe[was::create_cluster]",
         "recipe[was::create_clustermember]",
-        "recipe[was::start_clustermember]"
+        "recipe[was::start_clustermember]",
+        "recipe[was::cleanup]"
       ],
       "env_run_lists": {
 

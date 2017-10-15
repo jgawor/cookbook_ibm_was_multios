@@ -28,7 +28,8 @@
       "chef_type": "role",
       "run_list": [
         "recipe[was::create_managed]",
-        "recipe[was::configure_nodeagent]"
+        "recipe[was::configure_nodeagent]",
+        "recipe[was::cleanup]"
       ],
       "env_run_lists": {
 

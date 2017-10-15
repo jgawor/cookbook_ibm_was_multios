@@ -5,7 +5,7 @@ license 'Copyright IBM Corp. 2016, 2017'
 description      'Installs and configures WebSphere Application Server and WebSphere Application Server Network Deployment'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 
-version '0.1.52'
+version '0.1.55'
 
 depends          'ibm_cloud_utils'
 depends          'im'
@@ -292,7 +292,7 @@ attribute 'was/os_users/was/name',
           :default => 'wasadmin',
           :description => 'Operating system userid that will be used to install the product. Userid will be created if it does not exist',
           :displayname => 'WebSphere installation userid',
-          :hidden => 'false',
+          :hidden => 'true',
           :parm_type => 'node',
           :precedence_level => 'node',
           :required => 'recommended',
@@ -1495,7 +1495,7 @@ attribute 'was/webserver/ihs_server/ihs_admin_password',
           :selectable => 'true',
           :type => 'string'
 attribute 'was/webserver/ihs_server/ihs_admin_user',
-          :default => '',
+          :default => 'ihsadmin',
           :description => 'IBM HTTP administrative username. Used for creating the web server definition',
           :displayname => 'IBM HTTP administrative username',
           :hidden => 'false',
@@ -1594,7 +1594,7 @@ attribute 'was/wsadmin/clusters/cluster01/cluster_name',
           :selectable => 'true',
           :type => 'string'
 attribute 'was/wsadmin/clusters/cluster01/cluster_servers/cluster_server01/server_name',
-          :default => 'server01',
+          :default => 'server1',
           :description => 'Name of the cluster member that will created on each of the nodes',
           :displayname => 'WebSphere Cluster member name',
           :hidden => 'false',
