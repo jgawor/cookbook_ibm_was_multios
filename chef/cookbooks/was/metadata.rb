@@ -5,7 +5,7 @@ license 'Copyright IBM Corp. 2016, 2017'
 description      'Installs and configures WebSphere Application Server and WebSphere Application Server Network Deployment'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 
-version '0.1.55'
+version '0.1.56'
 
 depends          'ibm_cloud_utils'
 depends          'im'
@@ -1790,25 +1790,25 @@ recipe 'was::configure_nodeagent.rb', '
 Configure Node agent JVM min and max HeapSize settings
 '
 recipe 'was::configure_standalone.rb', '
-Configure Websphere standalone server JVM min and max HeapSize. 
+Configure Websphere standalone server JVM min and max HeapSize.
 '
 recipe 'was::create_cluster.rb', '
-Creates a WebSphere cluster for a given cell.  There is no retry logic if system management throws an exception. 
+Creates a WebSphere cluster for a given cell.  There is no retry logic if system management throws an exception.
 '
 recipe 'was::create_clustermember.rb', '
 Create Websphere cluster members/servers
 '
 recipe 'was::create_dmgr.rb', '
-Creates WebSphere Deployment Manager profile and starts the deployment manager. 
+Creates WebSphere Deployment Manager profile and starts the deployment manager.
 '
 recipe 'was::create_job_manager.rb', '
-Create WebSphere Job Manager profile and starts the job manager. 
+Create WebSphere Job Manager profile and starts the job manager.
 '
 recipe 'was::create_managed.rb', '
 Create node agent, manage node profile, start the node agent
 '
 recipe 'was::create_standalone.rb', '
-Create Websphere standalone server profile and starts the server. 
+Create Websphere standalone server profile and starts the server.
 '
 recipe 'was::gather_evidence.rb', '
 Gather evidence that installation was successful
@@ -1827,5 +1827,5 @@ recipe 'was::start_clustermember.rb', '
 Start the Websphere cluster members/application servers
 '
 recipe 'was::unmanaged_webserver.rb', '
-Creates a IBM HTTP webserver server defintion as an unmanaged node. 
+Creates a IBM HTTP webserver server defintion as an unmanaged node.
 '

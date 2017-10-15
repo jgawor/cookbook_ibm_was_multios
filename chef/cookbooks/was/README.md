@@ -861,13 +861,13 @@ Configure Node agent JVM min and max HeapSize settings
 ### was::configure_standalone.rb
 
 
-Configure Websphere standalone server JVM min and max HeapSize. 
+Configure Websphere standalone server JVM min and max HeapSize.
 
 
 ### was::create_cluster.rb
 
 
-Creates a WebSphere cluster for a given cell.  There is no retry logic if system management throws an exception. 
+Creates a WebSphere cluster for a given cell.  There is no retry logic if system management throws an exception.
 
 
 ### was::create_clustermember.rb
@@ -879,13 +879,13 @@ Create Websphere cluster members/servers
 ### was::create_dmgr.rb
 
 
-Creates WebSphere Deployment Manager profile and starts the deployment manager. 
+Creates WebSphere Deployment Manager profile and starts the deployment manager.
 
 
 ### was::create_job_manager.rb
 
 
-Create WebSphere Job Manager profile and starts the job manager. 
+Create WebSphere Job Manager profile and starts the job manager.
 
 
 ### was::create_managed.rb
@@ -897,7 +897,7 @@ Create node agent, manage node profile, start the node agent
 ### was::create_standalone.rb
 
 
-Create Websphere standalone server profile and starts the server. 
+Create Websphere standalone server profile and starts the server.
 
 
 ### was::gather_evidence.rb
@@ -934,7 +934,7 @@ Start the Websphere cluster members/application servers
 ### was::unmanaged_webserver.rb
 
 
-Creates a IBM HTTP webserver server defintion as an unmanaged node. 
+Creates a IBM HTTP webserver server defintion as an unmanaged node.
 
 
 

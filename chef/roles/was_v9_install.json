@@ -40,8 +40,7 @@
   "run_list": [
     "recipe[was::prereq]",
     "recipe[was::prereq_check]",
-    "recipe[was::install]",
-    "recipe[was::cleanup]"
+    "recipe[was::install]"
   ],
   "env_run_lists": {
 
