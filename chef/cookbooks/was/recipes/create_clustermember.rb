@@ -1,11 +1,22 @@
 # Cookbook Name::was
 # Recipe::create_clustermember
 #
-#         Copyright IBM Corp. 2016, 2017
+#         Copyright IBM Corp. 2016, 2018
 #
 # <> Create Websphere cluster members/servers
 #
 
+#-------------------------------------------------------------------------------
+# Resolve Runas Users
+#-------------------------------------------------------------------------------
+
+
+runas_user = if !node['was']['os_users']['wasrun']['name'].empty?
+               node['was']['os_users']['wasrun']['name'].to_s
+             else
+               node['was']['os_users']['was']['name'].to_s
+             end
+             
 # Create directories incase cleanup recipe as been executed before
 [node['was']['expand_area'], node['ibm']['temp_dir'], node['ibm']['log_dir']].each do |dir|
     directory dir do
@@ -55,7 +66,7 @@ node['was']['wsadmin']['clusters'].each_pair do |_k, u|
       profile_path profilepath
       admin_user node['was']['security']['admin_user']
       admin_pwd adminuserpwd
-      os_user node['was']['os_users']['was']['name']
+      os_user runas_user.to_s
       server_name i['server_name']
       node_name nodename
       action :create

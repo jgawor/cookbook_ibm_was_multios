@@ -1,7 +1,7 @@
 # Cookbook Name::was
 # Recipe::install
 #
-#         Copyright IBM Corp. 2016, 2017
+#         Copyright IBM Corp. 2016, 2018
 #
 # <> Installs WebSphere Application Server V8.5.5 or V9
 #
@@ -81,13 +81,13 @@ Chef::Log.info("JAVA flag Id: #{install_java_flag}")
 
 im_install 'ibm_websphere_server' do
   repositories node['ibm']['im_repo']
-  install_dir node['was']['install_dir']
   response_file node['was']['im_install_template']
   offering_id offering_id
   offering_version was_offering_version
   profile_id profile_id
   feature_list feature_list
   im_install_mode node['was']['install_mode']
+  install_dir node['was']['install_dir']
   install_java install_java_flag
   java_offering_id java_offering_id
   java_offering_version was_java_offering_version

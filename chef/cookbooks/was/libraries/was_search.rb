@@ -1,7 +1,7 @@
 # Cookbook Name:: was
 # Library:: was_search
 #
-# Copyright IBM Corp. 2016, 2017
+# Copyright IBM Corp. 2016, 2018
 #
 
 # <> library: WAS search

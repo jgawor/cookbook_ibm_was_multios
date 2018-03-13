@@ -2,7 +2,7 @@
 # Cookbook Name:: was
 # Provider:: was_serverincluster
 #
-# Copyright IBM Corp. 2017, 2017
+# Copyright IBM Corp. 2017, 2018
 #
 actions :create, :create_server_in_cluster
 default_action :create

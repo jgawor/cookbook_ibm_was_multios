@@ -1,7 +1,7 @@
 # Cookbook Name::was
 #  Recipe::prereq_check
 #
-#         Copyright IBM Corp. 2016, 2017
+#         Copyright IBM Corp. 2016, 2018
 #
 # <> This recipe will check the environment prior to installing software.
 #

@@ -1,7 +1,7 @@
 # Cookbook Name::was
 # Recipe::cleanup
 #
-#         Copyright IBM Corp. 2016, 2017
+#         Copyright IBM Corp. 2016, 2018
 #
 # <> Cleanup Post WebSphere Install
 #

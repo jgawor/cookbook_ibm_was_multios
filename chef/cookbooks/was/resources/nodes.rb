@@ -2,7 +2,7 @@
 # Cookbook Name:: was
 # Provider:: was_nodes
 #
-# Copyright IBM Corp. 2017, 2017
+# Copyright IBM Corp. 2017, 2018
 #
 actions :create_unmanaged
 default_action :create_unmanaged

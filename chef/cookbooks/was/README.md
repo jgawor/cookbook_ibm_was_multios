@@ -104,6 +104,11 @@ Attributes
     <td><code></code></td>
   </tr>
   <tr>
+    <td><code>node['was']['im_install_dir']</code></td>
+    <td>The installation root directory for the Installation Manager</td>
+    <td><code>/home/wasadmin/InstallationManager</code></td>
+  </tr>
+  <tr>
     <td><code>node['was']['install_dir']</code></td>
     <td>The installation root directory for the WebSphere Application Server product binaries</td>
     <td><code>/opt/IBM/WebSphere/AppServer</code></td>
@@ -121,7 +126,7 @@ Attributes
   <tr>
     <td><code>node['was']['java_version']</code></td>
     <td>The Java SDK version that should be installed with the WebSphere Application Server. Example format is 8.0.4.70</td>
-    <td><code>8.0.4.70</code></td>
+    <td><code>8.0.50.7</code></td>
   </tr>
   <tr>
     <td><code>node['was']['os_perms']</code></td>
@@ -155,6 +160,36 @@ Attributes
   </tr>
   <tr>
     <td><code>node['was']['os_users']['was']['shell']</code></td>
+    <td>Default shell for the operating system userid</td>
+    <td><code>/bin/bash</code></td>
+  </tr>
+  <tr>
+    <td><code>node['was']['os_users']['wasrun']['comment']</code></td>
+    <td>Comment that will be added when creating the userid</td>
+    <td><code>WAS administrative user</code></td>
+  </tr>
+  <tr>
+    <td><code>node['was']['os_users']['wasrun']['gid']</code></td>
+    <td>Operating system group name that will be assigned to the runas user, reccomended setting same value as install user</td>
+    <td><code>wasgrp</code></td>
+  </tr>
+  <tr>
+    <td><code>node['was']['os_users']['wasrun']['home']</code></td>
+    <td>Home directory location for operating system user that is used to run WebSphere</td>
+    <td><code>/home/wasrun</code></td>
+  </tr>
+  <tr>
+    <td><code>node['was']['os_users']['wasrun']['ldap_user']</code></td>
+    <td>A flag which indicates whether to create the WebSphere user locally, or utilize an LDAP based user</td>
+    <td><code>false</code></td>
+  </tr>
+  <tr>
+    <td><code>node['was']['os_users']['wasrun']['name']</code></td>
+    <td>Operating system userid that will be used to run the product. Userid will be created if it does not exist</td>
+    <td><code>wasadmin</code></td>
+  </tr>
+  <tr>
+    <td><code>node['was']['os_users']['wasrun']['shell']</code></td>
     <td>Default shell for the operating system userid</td>
     <td><code>/bin/bash</code></td>
   </tr>
@@ -692,8 +727,8 @@ Attributes
   </tr>
   <tr>
     <td><code>node['was']['version']</code></td>
-    <td>The release and fixpack level of WebSphere Application Server to be installed. Example formats are 8.5.5.12 or 9.0.0.4</td>
-    <td><code>9.0.0.4</code></td>
+    <td>The release and fixpack level of WebSphere Application Server to be installed. Example formats are 8.5.5.13 or 9.0.0.6</td>
+    <td><code>9.0.0.6</code></td>
   </tr>
   <tr>
     <td><code>node['was']['webserver']['ihs_server']['admin_port']</code></td>
@@ -876,6 +911,12 @@ Creates a WebSphere cluster for a given cell.  There is no retry logic if system
 Create Websphere cluster members/servers
 
 
+### was::create_custom.rb
+
+
+Create node agent, manage node profile, start the node agent
+
+
 ### was::create_dmgr.rb
 
 
@@ -943,7 +984,7 @@ License and Author
 
 Author:: IBM Corp (<>)
 
-Copyright:: 2017, IBM Corp
+Copyright:: 2018, IBM Corp
 
-License:: Copyright IBM Corp. 2016, 2017
+License:: Copyright IBM Corp. 2016, 2018
 

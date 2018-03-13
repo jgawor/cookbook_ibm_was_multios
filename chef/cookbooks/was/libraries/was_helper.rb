@@ -1,7 +1,7 @@
 # Cookbook Name:: was
 # Library:: was_helper
 #
-# Copyright IBM Corp. 2016, 2017
+# Copyright IBM Corp. 2016, 2018
 #
 
 # <> library: WAS helper
@@ -87,11 +87,11 @@ module WASHelper
     end
   end
 
-  def fix_user_ownership(folders)
+  def fix_user_ownership(folders, user, group)
     folders.each do |folder|
       execute "chown-#{folder}" do
-        command "chown -R #{node['was']['os_users']['was']['name']}:#{node['was']['os_users']['was']['gid']} #{folder}"
-        not_if { File.stat(folder).uid == Etc.getpwnam(node['was']['os_users']['was']['name']).uid && File.stat(folder).gid == Etc.getpwnam(node['was']['os_users']['was']['name']).gid }
+        command "chown -R #{user}:#{group} #{folder}"
+        not_if { File.stat(folder).uid == Etc.getpwnam(user).uid && File.stat(folder).gid == Etc.getpwnam(user).gid }
       end
     end
   end

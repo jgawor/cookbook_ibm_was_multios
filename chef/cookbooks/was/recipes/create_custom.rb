@@ -1,5 +1,5 @@
 # Cookbook Name::was
-# Recipe::create_managed
+# Recipe::create_custom
 #
 #         Copyright IBM Corp. 2016, 2018
 #
@@ -43,8 +43,8 @@ subdirs.each do |dir|
   end
 end
 
-# Prepare the managed.ports file
-template "#{node['was']['expand_area']}/managed.ports" do
+# Prepare the custom.ports file
+template "#{node['was']['expand_area']}/custom.ports" do
   source "managed.ports.erb"
   mode '0750'
   owner node['was']['os_users']['was']['name']
@@ -84,22 +84,8 @@ unless chef_vault.empty?
 end
 
 
-dmgr_host= node['was']['dmgr_host_name'].to_s
-Chef::Log.info("#{dmgr_host} dmgr derived node attributes")
-if dmgr_host == '' || dmgr_host.empty? || dmgr_host.nil?
-  dmgr_host = chef_searchhostname(node['was']['dmgr_role_name'])
-  Chef::Log.info("#{dmgr_host} dmgr derived from chefsearch")
-end
-
-dmgr_port= node['was']['profiles']['node_profile']['dmgr_port'].to_s
-Chef::Log.info("#{dmgr_port} dmgr port derived from node attributes")
-if dmgr_port == '' || dmgr_port.empty? || dmgr_port.nil?
-  dmgr_port = chef_searchdmgrport(node['was']['dmgr_role_name'])
-  Chef::Log.info("#{dmgr_port} dmgr derived from chefsearch")
-end
-
-template "#{node['was']['expand_area']}/managed.rsp" do
-  source "managed.rsp.erb"
+template "#{node['was']['expand_area']}/custom.rsp" do
+  source "custom.rsp.erb"
   sensitive true
   mode '0750'
   owner node['was']['os_users']['was']['name']
@@ -112,9 +98,7 @@ template "#{node['was']['expand_area']}/managed.rsp" do
     :HOSTNAME => node['fqdn'],
     :ADMINUSERNAME => (node['was']['security']['admin_user']).to_s,
     :ADMINPASSWORD => admin_user_pwd.to_s,
-    :DMGRHOST => dmgr_host.to_s,
-    :DMGRPORT => dmgr_port.to_s,
-    :PORTSFILE => "#{node['was']['expand_area']}/managed.ports",
+    :PORTSFILE => "#{node['was']['expand_area']}/custom.ports",
     :PERSONALCERTDN => node['was']['profiles']['node_profile']['personalcertdn'],
     :PERSONALCERTVALIDITYPERIOD => (node['was']['profiles']['node_profile']['personalcertvalidityperiod']).to_s,
     :SIGNINGCERTDN => (node['was']['profiles']['node_profile']['signingcertdn']).to_s,
@@ -123,8 +107,8 @@ template "#{node['was']['expand_area']}/managed.rsp" do
   )
 end
 
-#Create the Managed profile
-execute_manage_profile("#{node['was']['expand_area']}/managed.rsp", node['was']['profiles']['node_profile']['profile'])
+#Create the custom profile
+execute_manage_profile("#{node['was']['expand_area']}/custom.rsp", node['was']['profiles']['node_profile']['profile'])
 # create the service init script
 create_server_init((node['was']['profiles']['node_profile']['profile']).to_s, was_tags(node['was']['profiles']['node_profile']['node'].to_s), 'nodeagent', runas_user)
 
@@ -135,6 +119,4 @@ end
 fix_user_ownership(["#{node['was']['profile_dir']}/#{node['was']['profiles']['node_profile']['profile']}"], runas_user, runas_grp)
 fix_user_ownership([node['was']['install_dir']], node['was']['os_users']['was']['name'].to_s, node['was']['os_users']['was']['gid'].to_s)
 
-#fix_init_script("#{node['was']['profiles']['node_profile']['node'].to_s}_was.init")
-
-start_nodeagent
+enable_nodeagent

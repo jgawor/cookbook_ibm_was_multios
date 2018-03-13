@@ -2,7 +2,7 @@
 # Cookbook Name:: was
 # Provider:: was_serverincluster
 #
-# Copyright IBM Corp. 2017, 2017
+# Copyright IBM Corp. 2017, 2018
 #
 include WASWsadmin
 include WASSearch

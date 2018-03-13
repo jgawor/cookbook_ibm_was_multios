@@ -2,7 +2,7 @@
 # Cookbook Name:: was
 # Provider:: was_setheapsize
 #
-# Copyright IBM Corp. 2017, 2017
+# Copyright IBM Corp. 2017, 2018
 #
 actions :set_initial_heap_size, :set_maximum_heap_size
 default_action :set_initial_heap_size

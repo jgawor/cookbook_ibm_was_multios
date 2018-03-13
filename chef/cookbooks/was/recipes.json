@@ -30,6 +30,11 @@
                 "Create Websphere cluster members/servers"
             ]
         },
+        "create_custom.rb": {
+            "description": [
+                "Create node agent, manage node profile, start the node agent"
+            ]
+        },
         "create_dmgr.rb": {
             "description": [
                 "Creates WebSphere Deployment Manager profile and starts the deployment manager."

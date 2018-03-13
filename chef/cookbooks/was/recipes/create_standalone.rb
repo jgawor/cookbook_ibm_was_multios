@@ -1,10 +1,26 @@
 # Cookbook Name::was
 # Recipe::create_standalone
 #
-#         Copyright IBM Corp. 2016, 2017
+#         Copyright IBM Corp. 2016, 2018
 #
 # <> Create Websphere standalone server profile and starts the server.
 #
+
+#-------------------------------------------------------------------------------
+# Resolve Runas Users
+#-------------------------------------------------------------------------------
+
+runas_grp = if !node['was']['os_users']['wasrun']['gid'].empty?
+              node['was']['os_users']['wasrun']['gid'].to_s
+            else
+              node['was']['os_users']['was']['gid'].to_s
+            end
+
+runas_user = if !node['was']['os_users']['wasrun']['name'].empty?
+               node['was']['os_users']['wasrun']['name'].to_s
+             else
+               node['was']['os_users']['was']['name'].to_s
+             end
 
 # Create directories incase cleanup recipe as been executed before
 [node['was']['expand_area'], node['ibm']['temp_dir'], node['ibm']['log_dir']].each do |dir|
@@ -105,13 +121,14 @@ node['was']['profiles']['standalone_profiles'].each_pair do |p, v|
   execute_manage_profile("#{node['was']['expand_area']}/#{p}.rsp", v['profile'])
 
   # # create the service init script
-  create_server_init((v['profile']).to_s, was_tags((v['node']).to_s), (v['server']).to_s)
+  create_server_init((v['profile']).to_s, was_tags((v['node']).to_s), (v['server']).to_s, runas_user)
 
   if node['was']['config']['enable_admin_security'] == "true"
     encrypt_soap_client_props((v['profile']).to_s, admin_user_pwd.to_s)
   end
 
-  fix_user_ownership(["#{node['was']['profile_dir']}/#{v['profile']}", node['was']['install_dir']])
+  fix_user_ownership(["#{node['was']['profile_dir']}/#{v['profile']}"], runas_user, runas_grp)
+  fix_user_ownership([node['was']['install_dir']], node['was']['os_users']['was']['name'].to_s, node['was']['os_users']['was']['gid'].to_s)
 
   start_server(v['node'])
 end

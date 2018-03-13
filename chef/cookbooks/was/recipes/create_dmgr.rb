@@ -1,10 +1,26 @@
 # Cookbook Name::was
 # Recipe::create_dmgr
 #
-#         Copyright IBM Corp. 2016, 2017
+#         Copyright IBM Corp. 2016, 2018
 #
 # <> Creates WebSphere Deployment Manager profile and starts the deployment manager.
 #
+
+#-------------------------------------------------------------------------------
+# Resolve Runas Users
+#-------------------------------------------------------------------------------
+
+runas_grp = if !node['was']['os_users']['wasrun']['gid'].empty?
+              node['was']['os_users']['wasrun']['gid'].to_s
+            else
+              node['was']['os_users']['was']['gid'].to_s
+            end
+
+runas_user = if !node['was']['os_users']['wasrun']['name'].empty?
+               node['was']['os_users']['wasrun']['name'].to_s
+             else
+               node['was']['os_users']['was']['name'].to_s
+             end
 
 # Create directories incase cleanup recipe as been executed before
 [node['was']['expand_area'], node['ibm']['temp_dir'], node['ibm']['log_dir']].each do |dir|
@@ -97,13 +113,14 @@ end
 
 #Create the DMGR profile
 execute_manage_profile("#{node['was']['expand_area']}/dmgr.rsp", node['was']['profiles']['dmgr']['profile'])
-create_server_init((node['was']['profiles']['dmgr']['profile']).to_s, was_tags(node['was']['profiles']['dmgr']['node'].to_s), 'dmgr')
+create_server_init((node['was']['profiles']['dmgr']['profile']).to_s, was_tags(node['was']['profiles']['dmgr']['node'].to_s), 'dmgr', runas_user)
 
 if node['was']['config']['enable_admin_security'] == "true"
   encrypt_soap_client_props((node['was']['profiles']['dmgr']['profile']).to_s, admin_user_pwd.to_s)
 end
 
-fix_user_ownership(["#{node['was']['profile_dir']}/#{node['was']['profiles']['dmgr']['profile']}", node['was']['install_dir']])
+fix_user_ownership(["#{node['was']['profile_dir']}/#{node['was']['profiles']['dmgr']['profile']}"], runas_user, runas_grp)
+fix_user_ownership([node['was']['install_dir']], node['was']['os_users']['was']['name'].to_s, node['was']['os_users']['was']['gid'].to_s)
 
 #fix_init_script("#{node['was']['profiles']['dmgr']['node'].to_s}_was.init")
 

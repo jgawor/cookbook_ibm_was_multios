@@ -249,7 +249,7 @@
             },
             "was": {
                 "install_dir": "/opt/IBM/WebSphere/AppServer",
-                "java_version": "7.1.40.5",
+                "java_version": "7.1.4.15",
                 "os_users": {
                     "was": {
                         "comment": "WAS administrative user",
@@ -264,7 +264,7 @@
                     "admin_user": "wasadmin",
                     "admin_user_pwd": ""
                 },
-                "version": "8.5.5.12"
+                "version": "8.5.5.13"
             }
         },
         "depends_on": [],
@@ -294,7 +294,7 @@
             },
             "was": {
                 "install_dir": "/opt/IBM/WebSphere/AppServer",
-                "java_version": "8.0.4.70",
+                "java_version": "8.0.50.7",
                 "os_users": {
                     "was": {
                         "gid": "wasgrp",
@@ -308,7 +308,7 @@
                     "admin_user": "wasadmin",
                     "admin_user_pwd": ""
                 },
-                "version": "9.0.0.4"
+                "version": "9.0.0.6"
             }
         },
         "depends_on": [],

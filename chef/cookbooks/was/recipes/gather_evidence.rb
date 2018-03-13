@@ -1,7 +1,7 @@
 # Cookbook Name::was
 # Recipe::gather_evidence
 #
-#         Copyright IBM Corp. 2016, 2017
+#         Copyright IBM Corp. 2016, 2018
 #
 # <>  Gather evidence that installation was successful
 #

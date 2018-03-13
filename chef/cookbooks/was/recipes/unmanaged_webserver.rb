@@ -1,9 +1,19 @@
 # Cookbook Name::was
 # Recipe::unmanaged_webserver
 #
-#         Copyright IBM Corp. 2016, 2017
+#         Copyright IBM Corp. 2016, 2018
 #
 # <> Creates a IBM HTTP webserver server defintion as an unmanaged node.
+
+#-------------------------------------------------------------------------------
+# Resolve Runas Users
+#-------------------------------------------------------------------------------
+
+runas_user = if !node['was']['os_users']['wasrun']['name'].empty?
+               node['was']['os_users']['wasrun']['name'].to_s
+             else
+               node['was']['os_users']['was']['name'].to_s
+             end
 
 # Create directories incase cleanup recipe as been executed before
 [node['was']['expand_area'], node['ibm']['temp_dir'], node['ibm']['log_dir']].each do |dir|
@@ -54,7 +64,7 @@ node['was']['unmanaged_node'].each_pair do |_k, u|
     profile_path profilepath
     admin_user node['was']['security']['admin_user']
     admin_pwd adminuserpwd
-    os_user node['was']['os_users']['was']['name']
+    os_user runas_user.to_s
     node_name nodename
     action :create_unmanaged
   end
@@ -92,7 +102,7 @@ node['was']['webserver'].each_pair do |_k, u|
     profile_path profilepath
     admin_user node['was']['security']['admin_user']
     admin_pwd adminuserpwd
-    os_user node['was']['os_users']['was']['name']
+    os_user runas_user.to_s
     webserver_name u['webserver_name']
     action :create
   end

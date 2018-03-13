@@ -1,11 +1,22 @@
 # Cookbook Name::was
 # Recipe::create_cluster
 #
-#         Copyright IBM Corp. 2016, 2017
+#         Copyright IBM Corp. 2016, 2018
 #
 # <> Creates a WebSphere cluster for a given cell.  There is no retry logic if system management throws an exception.
 #
 
+#-------------------------------------------------------------------------------
+# Resolve Runas Users
+#-------------------------------------------------------------------------------
+
+
+runas_user = if !node['was']['os_users']['wasrun']['name'].empty?
+               node['was']['os_users']['wasrun']['name'].to_s
+             else
+               node['was']['os_users']['was']['name'].to_s
+             end
+             
 # Create directories incase cleanup recipe as been executed before
 [node['was']['expand_area'], node['ibm']['temp_dir'], node['ibm']['log_dir']].each do |dir|
     directory dir do
@@ -48,7 +59,7 @@ node['was']['wsadmin']['clusters'].each_pair do |_k, u|
     profile_path profilepath
     admin_user node['was']['security']['admin_user']
     admin_pwd adminuserpwd
-    os_user node['was']['os_users']['was']['name']
+    os_user runas_user.to_s
     cluster_name u['cluster_name']
     action :create
   end

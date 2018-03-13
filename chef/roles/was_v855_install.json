@@ -15,8 +15,8 @@
       "sw_repo_password": ""
     },
     "was": {
-      "version": "8.5.5.12",
-      "java_version": "7.1.40.5",
+      "version": "8.5.5.13",
+      "java_version": "7.1.4.15",
       "install_dir": "/opt/IBM/WebSphere/AppServer",
       "profile_dir": "/opt/IBM/WebSphere/AppServer/profiles",
       "os_users": {

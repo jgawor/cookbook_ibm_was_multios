@@ -2,7 +2,7 @@
 # Cookbook Name:: was
 # Provider:: was_webserver
 #
-# Copyright IBM Corp. 2017, 2017
+# Copyright IBM Corp. 2017, 2018
 #
 actions :create
 default_action :create

@@ -1,7 +1,7 @@
 # Cookbook Name::was
 #  Recipe::prereq
 #
-#	  Copyright IBM Corp. 2016, 2017
+#	  Copyright IBM Corp. 2016, 2018
 #
 # <> This recipe will add to the environment the necessary Pre-Requisites to be added prior ro WebSphere Instalation, this will include
 # <> Adding users, Packages, Kernel Configuration
@@ -79,7 +79,7 @@ when 'rhel', 'debian'
 
   #create OS users and groups
   node['was']['os_users'].each_pair do |_k, u|
-    next if u['name'].nil?
+    next if u['name'].empty?
     next if u['gid'].nil?
     next if u['ldap_user'] == 'true'
     group u['gid'] do

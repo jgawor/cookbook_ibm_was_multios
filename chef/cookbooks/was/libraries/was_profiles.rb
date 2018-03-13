@@ -1,7 +1,7 @@
 # Cookbook Name:: was
 # Library:: was_profiles
 #
-# Copyright IBM Corp. 2016, 2017
+# Copyright IBM Corp. 2016, 2018
 #
 # <> library: WAS Profiles
 # <> Library Functions for the WAS Cookbook
@@ -37,8 +37,6 @@ module WASProfiles
     end
   end
 
-  #Chef::Util::FileEdit.new("#{node['was']['profile_dir']}/#{node['was']['profiles']['dmgr']['profile']}/properties/soap.client.props")
-
   def modify_soap_client_props(profile_name, expand_area)
     #add credentials to soap.client.props and enable soap security
     ruby_block "modify_soap.client.props" do
@@ -54,6 +52,8 @@ module WASProfiles
     end
   end
 
+
+
   def execute_manage_profile(response_file, profile_name)
     cmd = "./manageprofiles.sh -response #{response_file}"
     # Chef 12+ problem with OS detection. Replacing C.UTF-8 with en_US"
@@ -67,7 +67,7 @@ module WASProfiles
     end
   end
 
-  def create_server_init(profile_name, service_name, server_name)
+  def create_server_init(profile_name, service_name, server_name, user)
     template "/etc/init.d/#{service_name}_was.init" do
         source "server.init.erb"
         mode '0770'
@@ -78,7 +78,7 @@ module WASProfiles
         :PROFILEPATH => "#{node['was']['profile_dir']}/#{profile_name}",
         :INSTALL_LOCATION => (node['was']['install_dir']).to_s,
         :SERVICENAME => service_name,
-        :USERNAME => (node['was']['os_users']['was']['name']).to_s
+        :USERNAME => user.to_s
         )
     end
   end

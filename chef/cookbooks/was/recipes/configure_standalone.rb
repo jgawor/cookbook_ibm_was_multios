@@ -1,12 +1,24 @@
 # Cookbook Name::was
 # Recipe::configure_standalone
 #
-#         Copyright IBM Corp. 2016, 2017
+#         Copyright IBM Corp. 2016, 2018
 #
 # <> Configure Websphere standalone server JVM min and max HeapSize.
 #
 
+#-------------------------------------------------------------------------------
+# Resolve Runas Users
+#-------------------------------------------------------------------------------
+
+runas_user = if !node['was']['os_users']['wasrun']['name'].empty?
+               node['was']['os_users']['wasrun']['name'].to_s
+             else
+               node['was']['os_users']['was']['name'].to_s
+             end
+
 # Create directories incase cleanup recipe as been executed before
+
+
 [node['was']['expand_area'], node['ibm']['temp_dir'], node['ibm']['log_dir']].each do |dir|
     directory dir do
       recursive true
@@ -60,7 +72,7 @@ was_setheapsize "Set_heap_size" do
   profile_path node['was']['wsadmin']['standalone']['jvmproperty']['profile_path']
   admin_user node['was']['security']['admin_user']
   admin_pwd adminuserpwd
-  os_user node['was']['os_users']['was']['name']
+  os_user runas_user.to_s
   property_value_initial propertyvalueinitial
   property_value_maximum propertyvaluemaximum
   node_name nodename

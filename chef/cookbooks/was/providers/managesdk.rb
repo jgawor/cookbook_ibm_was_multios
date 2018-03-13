@@ -2,7 +2,7 @@
 # Cookbook Name:: was
 # Provider:: was_managesdk
 #
-# Copyright IBM Corp. 2017, 2017
+# Copyright IBM Corp. 2017, 2018
 #
 include WASHelper
 use_inline_resources

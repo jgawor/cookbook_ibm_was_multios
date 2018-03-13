@@ -1,7 +1,7 @@
 # Cookbook Name::was
 # Recipe:: internal
 #
-#         Copyright IBM Corp. 2016, 2017
+#         Copyright IBM Corp. 2016, 2018
 #
 # <> This file contains the preset attributes that have the highest level of precendence.
 #

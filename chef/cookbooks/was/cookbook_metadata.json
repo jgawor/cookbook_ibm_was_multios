@@ -7,8 +7,8 @@
                 "9.0.0"
             ],
             "minor_version": [
-                "8.5.5.12",
-                "9.0.0.4"
+                "8.5.5.13",
+                "9.0.0.6"
             ],
             "platforms": [
                 "RHEL 6.x",
@@ -53,13 +53,13 @@
             "8.5.5": {
                 "X86_64": {
                     "repo_root": "IM Repository File",
-                    "file": ["com.ibm.websphere.IHS.v85_8.5.5011.20161206_1434", "com.ibm.websphere.ND.v85_8.5.5011.20161206_1434", "com.ibm.websphere.PLG.v85_8.5.5011.20161206_1434", "com.ibm.websphere.WCT.v85_8.5.5011.20161206_1434"]
+                    "file": ["com.ibm.websphere.IHS.v85_8.5.5013.20180112_1418", "com.ibm.websphere.ND.v85_8.5.5013.20180112_1418", "com.ibm.websphere.PLG.v85_8.5.5013.20180112_1418", "com.ibm.websphere.WCT.v85_8.5.5013.20180112_1418"]
                 }
             },
             "9.0.0": {
                 "X86_64": {
                     "repo_root": "IM Repository File",
-                    "file": ["com.ibm.websphere.BASE.v90_9.0.4.20170523_1327", "com.ibm.websphere.IHS.v90_9.0.4.20170523_1327", "com.ibm.websphere.ND.v90_9.0.4.20170523_1327", "com.ibm.websphere.PLG.v90_9.0.4.20170523_1327", "com.ibm.websphere.WCT.v90_9.0.4.20170523_1327"]
+                    "file": ["com.ibm.websphere.BASE.v90_9.0.6.20171205_1311", "com.ibm.websphere.IHS.v90_9.0.6.20171205_1311", "com.ibm.websphere.ND.v90_9.0.6.20171205_1311", "com.ibm.websphere.PLG.v90_9.0.6.20171205_1311", "com.ibm.websphere.WCT.v90_9.0.6.20171205_1311"]
                 }
             }
         },

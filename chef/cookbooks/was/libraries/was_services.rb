@@ -1,7 +1,7 @@
 # Cookbook Name:: was
 # Library:: was_services
 #
-# Copyright IBM Corp. 2016, 2017
+# Copyright IBM Corp. 2016, 2018
 #
 
 # <> library: WAS services
@@ -35,6 +35,14 @@ module WASServices
     svc = "#{was_tags((node['was']['profiles']['node_profile']['node']).to_s)}_was.init"
     service svc do
       action [:enable, :start]
+      supports [:restart, :status, :stop]
+    end
+  end
+
+  def enable_nodeagent
+    svc = "#{was_tags((node['was']['profiles']['node_profile']['node']).to_s)}_was.init"
+    service svc do
+      action [:enable]
       supports [:restart, :status, :stop]
     end
   end
