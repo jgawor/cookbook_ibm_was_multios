@@ -86,6 +86,11 @@ unless chef_vault.empty?
   keystorepassword = chef_vault_item(chef_vault, encrypted_id)['was']['profiles']['dmgr']['keystorepassword']
 end
 
+host_to_ip = if node['was']['profiles']['dmgr']['use_ipaddress'] == 'true'
+               node['ipaddress']  
+             else
+               node['fqdn']  
+             end
 
 template "#{node['was']['expand_area']}/dmgr.rsp" do
   source "dmgr.rsp.erb"
@@ -99,7 +104,7 @@ template "#{node['was']['expand_area']}/dmgr.rsp" do
     :PROFILEPATH => "#{node['was']['profile_dir']}/#{node['was']['profiles']['dmgr']['profile']}",
     :CELLNAME => (node['was']['profiles']['dmgr']['cell']).to_s,
     :NODENAME => was_tags(node['was']['profiles']['dmgr']['node'].to_s),
-    :HOSTNAME => node['fqdn'],
+    :HOSTNAME => host_to_ip,
     :ADMINUSERNAME => (node['was']['security']['admin_user']).to_s,
     :ADMINPASSWORD => admin_user_pwd.to_s,
     :PORTSFILE => "#{node['was']['expand_area']}/dmgr.ports",

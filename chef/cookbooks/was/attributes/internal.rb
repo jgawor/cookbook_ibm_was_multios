@@ -56,8 +56,7 @@ default['was']['OS_supported'] = {
   'rhel'    => "true",
   'centos'  => "true",
   'debian'  => "true",
-  'sles'   =>  "false"
-}
+  'sles'   =>  "false" }
 
 case node['platform_family']
 when 'rhel'
@@ -106,14 +105,12 @@ when /^8.5.5/ # ~ip_checker
   #<>IBM Installation Manager offering ID to be used for installation, based on WAS edition
   default['was']['offering_id'] = {
     'base' => 'com.ibm.websphere.BASE.v85',
-    'nd' => 'com.ibm.websphere.ND.v85'
-  }
+    'nd' => 'com.ibm.websphere.ND.v85' }
 
   #<> IBM Installation Manager profile to be used for installation, based on WAS edition
   default['was']['profile_id'] = {
     'base' => 'IBM WebSphere Application Server V8.5',
-    'nd' => 'IBM WebSphere Application Server Network Deployment V8.5'
-  }
+    'nd' => 'IBM WebSphere Application Server Network Deployment V8.5' }
 
 when /^9.0.0/ # ~ip_checker
   #<> Installation templates for WebSphere
@@ -124,14 +121,12 @@ when /^9.0.0/ # ~ip_checker
   #<>IBM Installation Manager offering ID to be used for installation, based on WAS edition
   default['was']['offering_id'] = {
     'base' => 'com.ibm.websphere.BASE.v90',
-    'nd' => 'com.ibm.websphere.ND.v90'
-  }
+    'nd' => 'com.ibm.websphere.ND.v90' }
 
   #<> IBM Installation Manager profile to be used for installation, based on WAS edition
   default['was']['profile_id'] = {
     'base' => 'IBM WebSphere Application Server V9.0',
-    'nd' => 'IBM WebSphere Application Server Network Deployment V9.0'
-  }
+    'nd' => 'IBM WebSphere Application Server Network Deployment V9.0' }
 end
 
 #<> Prerequisite packages for a Redhat Installation

@@ -103,8 +103,7 @@ default['was']['im_install_dir'] = '/home/wasadmin/InstallationManager'
 # <md>          :secret => 'false'
 default['was']['edition'] = {
   'base'  => "false",
-  'nd'    => "true"
-}
+  'nd'    => "true" }
 
 #<> WebSphere Installation Options
 #<> NOTE: only com.ibm.sdk.6_32bit OR com.ibm.sdk.6_64bit should be set to true
@@ -237,8 +236,7 @@ when /^8.5.5/ # ~ip_checker
     'websphere_java_v70'  => { 'enable' => "false",
                                'offering_id' => "com.ibm.websphere.IBMJAVA.v70" },
     'websphere_java_v71'  => { 'enable' => "true",
-                               'offering_id' => "com.ibm.websphere.IBMJAVA.v71" }
-  }
+                               'offering_id' => "com.ibm.websphere.IBMJAVA.v71" } }
 
   default['was']['features'] = {
     'core.feature'        => "true",
@@ -248,8 +246,7 @@ when /^8.5.5/ # ~ip_checker
     'samples'             => "false",
     'liberty'             => "false",
     'com.ibm.sdk.6_32bit' => "false",
-    'com.ibm.sdk.6_64bit' => "true"
-  }
+    'com.ibm.sdk.6_64bit' => "true" }
 when /^9.0.0/ # ~ip_checker
 
   default['was']['java_version'] = "8.0.50.7" # ~ip_checker
@@ -257,8 +254,7 @@ when /^9.0.0/ # ~ip_checker
   #<> WebSphere Installation Options
   default['was']['java_features'] = {
     'websphere_java_v8'  => { 'enable' => "true",
-                              'offering_id' => "com.ibm.java.jdk.v8" }
-  }
+                              'offering_id' => "com.ibm.java.jdk.v8" } }
 
   default['was']['features'] = {
     'core.feature'        => "true",
@@ -266,8 +262,7 @@ when /^9.0.0/ # ~ip_checker
     'thinclient'          => "true",
     'embeddablecontainer' => "true",
     'samples'             => "false",
-    'liberty'             => "false"
-  }
+    'liberty'             => "false" }
 end
 
 
@@ -492,17 +487,14 @@ default['was']['os_users'] = {
     'comment' =>  'WAS administrative user',
     'home' =>     "/home/wasadmin",
     'shell' =>    '/bin/bash',
-    'ldap_user' => 'false'
-  },
+    'ldap_user' => 'false' },
   'wasrun'  =>  {
     'name' =>     '',
     'gid' =>      '',
     'comment' =>  'WAS administrative user',
     'home' =>     "",
     'shell' =>    '/bin/bash',
-    'ldap_user' => 'false'
-  }
-}
+    'ldap_user' => 'false' } }
 
 ############################################################################################################
 # WebSphere Console Security
@@ -594,8 +586,7 @@ default['was']['security']['admin_user_pwd'] = ""
 default['was']['config'] = {
   'os_service' => "true",
   'enable_admin_security' => "true",
-  'use_default_certs' => "true"
-}
+  'use_default_certs' => "true" }
 
 # <> Hostnames can be entered if bringing from outside of stack
 # <md>attribute 'was/dmgr_host_name',
@@ -687,6 +678,19 @@ default['was']['ihs_host_name'] = ''
 # <md>attribute 'was/profiles/dmgr/host',
 # <md>          :displayname =>  'WebSphere Deployment Manager host name',
 # <md>          :description => 'A host name is the domain name system (DNS) name (short or long) or the IP address of this virtual machine and cannot contain an understore (_)',
+# <md>          :type => 'string',
+# <md>          :required => 'recommended',
+# <md>          :default => '',
+# <md>          :selectable => 'true',
+# <md>          :immutable_after_create => 'true',
+# <md>          :precedence_level => 'node',
+# <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
+# <md>          :secret => 'false'
+
+# <md>attribute 'was/profiles/dmgr/use_ipaddress',
+# <md>          :displayname =>  'Use the WebSphere Deployment Manager host name or IP address',
+# <md>          :description => 'Boolean value to use the host name or IP address',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '',
@@ -975,6 +979,7 @@ default['was']['profiles']['dmgr'] = {
   'cell' => 'cell01',
   'node' => '{SHORTHOSTNAME}CellManager01',
   'host' => node['was']['dmgr_host_name'],
+  'use_ipaddress' => 'false',
   'ports' => {
     'WC_adminhost' => '9060',
     'WC_adminhost_secure' => '9043',
@@ -991,14 +996,12 @@ default['was']['profiles']['dmgr'] = {
     'XDAGENT_PORT' => '7060',
     'OVERLAY_UDP_LISTENER_ADDRESS' => '11005',
     'OVERLAY_TCP_LISTENER_ADDRESS' => '11006',
-    'STATUS_LISTENER_ADDRESS' => '9420'
-  }, #'dmgr.ports',
+    'STATUS_LISTENER_ADDRESS' => '9420' }, #'dmgr.ports',
   'personalcertdn' => "cn=" + "{FULLHOSTNAME}" + "\\\\,ou=dmgr\\\\,o=IBM\\\\,c=US",
   'personalcertvalidityperiod' => '3',
   'signingcertdn' => 'cn=cell\\\\,ou=dmgr\\\\,o=IBM\\\\,c=US',
   'signingcertvalidityperiod' => '15',
-  'keystorepassword' => ''
-}
+  'keystorepassword' => '' }
 
 # Singular Instance per Node
 
@@ -1017,7 +1020,7 @@ default['was']['profiles']['dmgr'] = {
 
 # <md>attribute 'was/profiles/node_profile/dmgr_host',
 # <md>          :displayname =>  'WebSphere Deployment Manager host name or IP address',
-# <md>          :description => 'Speicfy the host name or IP address for an existing deployment manager',
+# <md>          :description => 'Specify the host name or IP address for an existing deployment manager',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
 # <md>          :default => '',
@@ -1027,6 +1030,19 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :parm_type => 'node',
 # <md>          :hidden => 'false',
 # <md>          :secret => 'false'
+
+# <md>attribute 'was/profiles/node_profile/use_ipaddress',
+# <md>          :displayname =>  'Use the WebSphere Deployment Manager host name or IP address',
+# <md>          :description => 'Specify to use the host name or IP address for an existing deployment manager',
+# <md>          :type => 'string',
+# <md>          :required => 'recommended',
+# <md>          :default => '',
+# <md>          :selectable => 'true',
+# <md>          :immutable_after_create => 'true',
+# <md>          :precedence_level => 'node',
+# <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
+# <md>          :secret => 'false'  
 
 # <md>attribute 'was/profiles/node_profile/dmgr_port',
 # <md>          :displayname =>  'WebSphere Deployment Manager SOAP Port',
@@ -1346,6 +1362,7 @@ default['was']['profiles']['node_profile'] = {
   'profile' => 'AppSrv01',
   'dmgr_host' => node['was']['dmgr_host_name'],
   'dmgr_port' => '',
+  'use_ipaddress' => 'false',
   'node' => '{SHORTHOSTNAME}Node01',
   'host' => '{FULLHOSTNAME}',
   'ports' => {
@@ -1362,14 +1379,12 @@ default['was']['profiles']['node_profile'] = {
     'DCS_UNICAST_ADDRESS' => '9354',
     'XDAGENT_PORT' => '7061',
     'OVERLAY_UDP_LISTENER_ADDRESS' => '11001',
-    'OVERLAY_TCP_LISTENER_ADDRESS' => '11002'
-  }, #'managed.ports',
+    'OVERLAY_TCP_LISTENER_ADDRESS' => '11002' }, #'managed.ports',
   'personalcertdn' => "cn=" + "{FULLHOSTNAME}" + "\\\\,ou=nodeagent\\\\,o=IBM\\\\,c=US",
   'personalcertvalidityperiod' => '3',
   'signingcertdn' => 'cn=cell\\\\,ou=nodeagent\\\\,o=IBM\\\\,c=US',
   'signingcertvalidityperiod' => '15',
-  'keystorepassword' => ''
-}
+  'keystorepassword' => '' }
 
 # Multiple Instances Per Node
 # <md>attribute 'was/profiles/standalone_profiles/standalone1/profile',
@@ -1789,15 +1804,12 @@ default['was']['profiles']['standalone_profiles'] = {
       'SIP_DEFAULTHOST' => '5060',
       'SIP_DEFAULTHOST_SECURE' => '5061',
       'OVERLAY_UDP_LISTENER_ADDRESS' => '11003',
-      'OVERLAY_TCP_LISTENER_ADDRESS' => '11004'
-    }, #'managed.ports',
+      'OVERLAY_TCP_LISTENER_ADDRESS' => '11004' }, #'managed.ports',
     'personalcertdn' => "cn=" + "{FULLHOSTNAME}" + "\\\\,ou=nodeagent\\\\,o=IBM\\\\,c=US",
     'personalcertvalidityperiod' => '3',
     'signingcertdn' => 'cn=cell\\\\,ou=nodeagent\\\\,o=IBM\\\\,c=US',
     'signingcertvalidityperiod' => '15',
-    'keystorepassword' => ''
-  }
-}
+    'keystorepassword' => '' } }
 
 # <md>attribute 'was/profiles/job_manager/profile',
 # <md>          :displayname =>  'WebSphere Job Manager profile name ',
@@ -2061,14 +2073,12 @@ default['was']['profiles']['job_manager'] = {
     'CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS' => '9403',
     'CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS' => '9402',
     'ORB_LISTENER_ADDRESS' => '9099',
-    'STATUS_LISTENER_ADDRESS' => '9425'
-  }, #'job_manager.ports',
+    'STATUS_LISTENER_ADDRESS' => '9425' }, #'job_manager.ports',
   'personalcertdn' => "cn=" + "{FULLHOSTNAME}" + "\\\\,ou=job_manager\\\\,o=IBM\\\\,c=US",
   'personalcertvalidityperiod' => '3',
   'signingcertdn' => 'cn=cell\\\\,ou=job_manager\\\\,o=IBM\\\\,c=US',
   'signingcertvalidityperiod' => '15',
-  'keystorepassword' => ''
-}
+  'keystorepassword' => '' }
 
 # <md>attribute 'was/unmanaged_node/unmngNode01/node_name',
 # <md>          :displayname =>  'WebSphere Unmanaged node name ',
@@ -2113,9 +2123,7 @@ default['was']['unmanaged_node'] = {
   'unmngNode01'  =>  {
     'node_name'  =>  '{SHORTHOSTNAME}UnmangedNode01',
     'host_name' =>     node['was']['ihs_host_name'],
-    'os' =>   "linux"
-  }
-}
+    'os' =>   "linux" } }
 
 # <md>attribute 'was/webserver/ihs_server/node_name',
 # <md>          :displayname =>  'WebSphere was webserver ihs_server node_name',
@@ -2258,9 +2266,7 @@ default['was']['webserver'] = {
     'ihs_admin_user' => 'ihsadmin',
     'ihs_admin_password' => '',
     'webserver_type' => 'IHS',
-    'webapp_mapping' => 'ALL'
-  }
-}
+    'webapp_mapping' => 'ALL' } }
 
 #<> WebSphere configure jvm properties and cluster configurations
 
@@ -2505,36 +2511,25 @@ default['was']['wsadmin'] = {
       'node_name' => node['was']['profiles']['dmgr']['node'],
       'profile_path' => "#{node['was']['profile_dir']}/#{node['was']['profiles']['dmgr']['profile']}",
       'property_value_initial' =>   "256",
-      'property_value_maximum' =>   "512"
-    }
-  },
+      'property_value_maximum' =>   "512" } },
   'nodeagent'  =>  {
     'jvmproperty' => {
       'server_name' => 'nodeagent',
       'node_name' => node['was']['profiles']['node_profile']['node'],
       'profile_path' => "#{node['was']['profile_dir']}/#{node['was']['profiles']['node_profile']['profile']}",
       'property_value_initial' =>   "256",
-      'property_value_maximum' =>   "512"
-    }
-  },
+      'property_value_maximum' =>   "512" } },
   'standalone'  =>  {
     'jvmproperty' => {
       'server_name' => node['was']['profiles']['standalone_profiles']['standalone1']['server'],
       'node_name' => node['was']['profiles']['standalone_profiles']['standalone1']['node'],
       'profile_path' => "#{node['was']['profile_dir']}/#{node['was']['profiles']['standalone_profiles']['standalone1']['profile']}",
       'property_value_initial' =>   "256",
-      'property_value_maximum' =>   "512"
-    }
-  },
+      'property_value_maximum' =>   "512" } },
   'clusters'  =>  {
     'cluster01'  =>  {
       'cluster_name' => 'cluster01',
       'session_rep' =>   "True",
       'cluster_servers' => {
         'cluster_server01'  =>  {
-          'server_name' =>     "server1"
-        }
-      }
-    }
-  }
-}
+          'server_name' =>     "server1" } } } } }

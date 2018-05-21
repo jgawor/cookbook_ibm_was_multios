@@ -52,8 +52,6 @@ module WASProfiles
     end
   end
 
-
-
   def execute_manage_profile(response_file, profile_name)
     cmd = "./manageprofiles.sh -response #{response_file}"
     # Chef 12+ problem with OS detection. Replacing C.UTF-8 with en_US"

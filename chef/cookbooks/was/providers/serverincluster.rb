@@ -7,7 +7,7 @@
 include WASWsadmin
 include WASSearch
 
-use_inline_resources
+# use_inline_resources
 
 action :create do
   if @current_resource.server_in_cluster_created

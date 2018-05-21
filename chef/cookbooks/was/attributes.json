@@ -834,6 +834,19 @@
                     "secret": "false",
                     "selectable": "true",
                     "type": "string"
+                },
+                "use_ipaddress": {
+                    "default": "",
+                    "description": "Boolean value to use the host name or IP address",
+                    "displayname": "Use the WebSphere Deployment Manager host name or IP address",
+                    "hidden": "false",
+                    "immutable_after_create": "true",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
                 }
             },
             "job_manager": {
@@ -1082,7 +1095,7 @@
             "node_profile": {
                 "dmgr_host": {
                     "default": "",
-                    "description": "Speicfy the host name or IP address for an existing deployment manager",
+                    "description": "Specify the host name or IP address for an existing deployment manager",
                     "displayname": "WebSphere Deployment Manager host name or IP address",
                     "hidden": "false",
                     "immutable_after_create": "true",
@@ -1404,6 +1417,19 @@
                     "description": "An optional parameter that specifies the amount of time in years that the root signing certificate is valid",
                     "displayname": "WebSphere root signing certificate expiration period in years",
                     "hidden": "true",
+                    "immutable_after_create": "true",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "secret": "false",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "use_ipaddress": {
+                    "default": "",
+                    "description": "Specify to use the host name or IP address for an existing deployment manager",
+                    "displayname": "Use the WebSphere Deployment Manager host name or IP address",
+                    "hidden": "false",
                     "immutable_after_create": "true",
                     "parm_type": "node",
                     "precedence_level": "node",

@@ -83,6 +83,11 @@ unless chef_vault.empty?
   keystorepassword = chef_vault_item(chef_vault, encrypted_id)['was']['profiles']['node_profile']['keystorepassword']
 end
 
+host_to_ip = if node['was']['profiles']['node_profile']['use_ipaddress'] == 'true'
+               node['ipaddress']  
+             else
+               node['fqdn']  
+             end
 
 template "#{node['was']['expand_area']}/custom.rsp" do
   source "custom.rsp.erb"
@@ -95,7 +100,7 @@ template "#{node['was']['expand_area']}/custom.rsp" do
     :PROFILENAME => (node['was']['profiles']['node_profile']['profile']).to_s,
     :PROFILEPATH => "#{node['was']['profile_dir']}/#{node['was']['profiles']['node_profile']['profile']}",
     :NODENAME => was_tags(node['was']['profiles']['node_profile']['node'].to_s),
-    :HOSTNAME => node['fqdn'],
+    :HOSTNAME => host_to_ip,
     :ADMINUSERNAME => (node['was']['security']['admin_user']).to_s,
     :ADMINPASSWORD => admin_user_pwd.to_s,
     :PORTSFILE => "#{node['was']['expand_area']}/custom.ports",

@@ -2,6 +2,9 @@ name             'was'
 maintainer       'IBM Corp'
 maintainer_email ''
 license 'Copyright IBM Corp. 2016, 2018'
+issues_url       'https://github.com/IBM-CAMHub-Open/cookbook_ibm_was_multios/issues'
+source_url       'https://github.com/IBM-CAMHub-Open/cookbook_ibm_was_multios'
+chef_version '>= 12.5' if respond_to?(:chef_version)
 description      'Installs and configures WebSphere Application Server and WebSphere Application Server Network Deployment'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 
@@ -10,10 +13,10 @@ version '1.0.2'
 depends          'ibm_cloud_utils'
 depends          'im'
 depends          'linux'
-supports 'RHEL6', '>= 6.5'
-supports 'RHEL7', '>= 7.0'
-supports 'Ubuntu14', '>= 14.04'
-supports 'Ubuntu16', '>= 16.0.4'
+supports 'redhat', '>= 6.5'
+supports 'redhat', '>= 7.0'
+supports 'ubuntu', '>= 14.04'
+supports 'ubuntu', '>= 16.0.4'
 attribute 'was/config/enable_admin_security',
           :choice => ['true', 'false'],
           :default => 'true',
@@ -734,6 +737,18 @@ attribute 'was/profiles/dmgr/signingcertvalidityperiod',
           :secret => 'false',
           :selectable => 'true',
           :type => 'string'
+attribute 'was/profiles/dmgr/use_ipaddress',
+          :default => '',
+          :description => 'Boolean value to use the host name or IP address',
+          :displayname => 'Use the WebSphere Deployment Manager host name or IP address',
+          :hidden => 'false',
+          :immutable_after_create => 'true',
+          :parm_type => 'node',
+          :precedence_level => 'node',
+          :required => 'recommended',
+          :secret => 'false',
+          :selectable => 'true',
+          :type => 'string'
 attribute 'was/profiles/job_manager/cell',
           :default => 'cell01',
           :description => 'Cell name of the Job manager ',
@@ -956,7 +971,7 @@ attribute 'was/profiles/job_manager/signingcertvalidityperiod',
           :type => 'string'
 attribute 'was/profiles/node_profile/dmgr_host',
           :default => '',
-          :description => 'Speicfy the host name or IP address for an existing deployment manager',
+          :description => 'Specify the host name or IP address for an existing deployment manager',
           :displayname => 'WebSphere Deployment Manager host name or IP address',
           :hidden => 'false',
           :immutable_after_create => 'true',
@@ -1251,6 +1266,18 @@ attribute 'was/profiles/node_profile/signingcertvalidityperiod',
           :description => 'An optional parameter that specifies the amount of time in years that the root signing certificate is valid',
           :displayname => 'WebSphere root signing certificate expiration period in years',
           :hidden => 'true',
+          :immutable_after_create => 'true',
+          :parm_type => 'node',
+          :precedence_level => 'node',
+          :required => 'recommended',
+          :secret => 'false',
+          :selectable => 'true',
+          :type => 'string'
+attribute 'was/profiles/node_profile/use_ipaddress',
+          :default => '',
+          :description => 'Specify to use the host name or IP address for an existing deployment manager',
+          :displayname => 'Use the WebSphere Deployment Manager host name or IP address',
+          :hidden => 'false',
           :immutable_after_create => 'true',
           :parm_type => 'node',
           :precedence_level => 'node',

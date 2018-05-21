@@ -8,10 +8,8 @@ Requirements
 
 ### Platform:
 
-* Rhel6 (>= 6.5)
-* Rhel7 (>= 7.0)
-* Ubuntu14 (>= 14.04)
-* Ubuntu16 (>= 16.0.4)
+* Redhat (>= 7.0)
+* Ubuntu (>= 16.0.4)
 
 ### Cookbooks:
 
@@ -324,6 +322,11 @@ Attributes
     <td><code>15</code></td>
   </tr>
   <tr>
+    <td><code>node['was']['profiles']['dmgr']['use_ipaddress']</code></td>
+    <td>Boolean value to use the host name or IP address</td>
+    <td><code></code></td>
+  </tr>
+  <tr>
     <td><code>node['was']['profiles']['job_manager']['cell']</code></td>
     <td>Cell name of the Job manager </td>
     <td><code>cell01</code></td>
@@ -421,7 +424,7 @@ Attributes
   </tr>
   <tr>
     <td><code>node['was']['profiles']['node_profile']['dmgr_host']</code></td>
-    <td>Speicfy the host name or IP address for an existing deployment manager</td>
+    <td>Specify the host name or IP address for an existing deployment manager</td>
     <td><code></code></td>
   </tr>
   <tr>
@@ -549,6 +552,11 @@ Attributes
     <td><code>node['was']['profiles']['node_profile']['signingcertvalidityperiod']</code></td>
     <td>An optional parameter that specifies the amount of time in years that the root signing certificate is valid</td>
     <td><code>15</code></td>
+  </tr>
+  <tr>
+    <td><code>node['was']['profiles']['node_profile']['use_ipaddress']</code></td>
+    <td>Specify to use the host name or IP address for an existing deployment manager</td>
+    <td><code></code></td>
   </tr>
   <tr>
     <td><code>node['was']['profiles']['standalone_profiles']['standalone1']['cell']</code></td>

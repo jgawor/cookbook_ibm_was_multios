@@ -22,7 +22,6 @@ module WASWsadmin
     end
   end
 
-
   def run_jython(os_user, profile_path, _tmp, dmgr_host, dmgr_soap_port, admin_user, admin_pwd, jython_file)
     security_credentials = if admin_user.nil?
       ""
