@@ -7,7 +7,7 @@
 include WASWsadmin
 include WASSearch
 
-# use_inline_resources
+use_inline_resources
 
 action :create_unmanaged do
   if @current_resource.unmanaged_created

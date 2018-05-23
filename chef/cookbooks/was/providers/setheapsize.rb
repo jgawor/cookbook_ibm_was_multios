@@ -7,7 +7,7 @@
 include WASHelper
 include WASWsadmin
 include WASSearch
-# use_inline_resources
+use_inline_resources
 
 action :set_initial_heap_size do
   if @current_resource.initial_heap_size
