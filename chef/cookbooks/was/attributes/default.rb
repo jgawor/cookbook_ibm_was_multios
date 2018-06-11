@@ -1001,7 +1001,8 @@ default['was']['profiles']['dmgr'] = {
   'personalcertvalidityperiod' => '3',
   'signingcertdn' => 'cn=cell\\\\,ou=dmgr\\\\,o=IBM\\\\,c=US',
   'signingcertvalidityperiod' => '15',
-  'keystorepassword' => '' }
+  'keystorepassword' => '' } 
+
 
 # Singular Instance per Node
 
@@ -1030,6 +1031,19 @@ default['was']['profiles']['dmgr'] = {
 # <md>          :parm_type => 'node',
 # <md>          :hidden => 'false',
 # <md>          :secret => 'false'
+  
+# <md>attribute 'was/profiles/node_profile/use_ipaddress',
+# <md>          :displayname =>  'Use the WebSphere Deployment Manager host name or IP address',
+# <md>          :description => 'Specify to use the host name or IP address for an existing deployment manager',
+# <md>          :type => 'string',
+# <md>          :required => 'recommended',
+# <md>          :default => '',
+# <md>          :selectable => 'true',
+# <md>          :immutable_after_create => 'true',
+# <md>          :precedence_level => 'node',
+# <md>          :parm_type => 'node',
+# <md>          :hidden => 'false',
+# <md>          :secret => 'false'  
 
 # <md>attribute 'was/profiles/node_profile/use_ipaddress',
 # <md>          :displayname =>  'Use the WebSphere Deployment Manager host name or IP address',

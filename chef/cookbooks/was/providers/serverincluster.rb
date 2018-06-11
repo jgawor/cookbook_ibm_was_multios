@@ -4,11 +4,6 @@
 #
 # Copyright IBM Corp. 2017, 2018
 #
-include WASWsadmin
-include WASSearch
-
-use_inline_resources
-
 action :create do
   if @current_resource.server_in_cluster_created
     Chef::Log.info "#{@new_resource} already exists - nothing to do."
@@ -29,7 +24,8 @@ end
 
 #Override Load Current Resource
 def load_current_resource
-  @current_resource = Chef::Resource::WasServerincluster.new(@new_resource.name)
+  # CHEF 12 @current_resource = Chef::Resource::WasServerincluster.new(@new_resource.name)
+  @current_resource = Chef::Resource.resource_for_node(:was_serverincluster, node).new(@new_resource.name)
   #A common step is to load the current_resource instance variables with what is established in the new_resource.
   #What is passed into new_resouce via our recipes, is not automatically passed to our current_resource.
   #Get current state

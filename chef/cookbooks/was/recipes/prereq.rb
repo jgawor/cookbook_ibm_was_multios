@@ -47,11 +47,11 @@ end
 
 # This will only work if the VM has access to rubygems.org
 # Otherwise the gem should be installed during bootstrap
-chef_gem 'chef-vault' do
-  action :install
-  version '2.9.0'
-  compile_time true
-end
+# chef_gem 'chef-vault' do
+#   action :install
+#   version '2.9.0'
+#   compile_time true
+# end
 
 execute 'Update debian/ubuntu repos' do
   command "apt-get update"

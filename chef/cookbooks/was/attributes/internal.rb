@@ -140,7 +140,7 @@ when 'rhel'
                                       end
   #[compat-libstdc++-33', 'compat-db', 'ksh', 'gtk2', 'gtk2-engines', 'pam', 'rpm-build', 'elfutils', 'elfutils-libs', 'libXft', 'glibc', 'libgcc', 'nss-softokn-freebl', 'nss-softokn-freebl', 'libXp', 'libXmu', 'libXtst', 'openssl', 'libXp', 'libXmu', 'libXtst', 'pam', 'compat-libstdc++-296', 'gtk2', 'gtk2-engines' ]
 when 'debian'
-  default['was']['prereq_packages'] = %w(libxtst6 libgtk2.0-bin libxft2)
+  default['was']['prereq_packages'] = %w(libxtst6 libgtk2.0-bin libxft2 psmisc)
 when 'windows'
   default['was']['prereq_packages'] = []
 end

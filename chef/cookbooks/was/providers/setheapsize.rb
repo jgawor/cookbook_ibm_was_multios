@@ -7,7 +7,6 @@
 include WASHelper
 include WASWsadmin
 include WASSearch
-use_inline_resources
 
 action :set_initial_heap_size do
   if @current_resource.initial_heap_size
@@ -54,7 +53,8 @@ end
 
 #Override Load Current Resource
 def load_current_resource
-  @current_resource = Chef::Resource::WasSetheapsize.new(@new_resource.name)
+  # CHEF 12 @current_resource = Chef::Resource::WasSetheapsize.new(@new_resource.name)
+  @current_resource = Chef::Resource.resource_for_node(:was_setheapsize, node).new(@new_resource.name)
   #A common step is to load the current_resource instance variables with what is established in the new_resource.
   #What is passed into new_resouce via our recipes, is not automatically passed to our current_resource.
   #Get current state
