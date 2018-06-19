@@ -1880,7 +1880,7 @@
                     "type": "string"
                 },
                 "node_name": {
-                    "default": "{SHORTHOSTNAME}UnmangedNode01",
+                    "default": "{SHORTHOSTNAME}UnmanagedNode01",
                     "description": "Node name for the unmanaged node",
                     "displayname": "WebSphere Unmanaged node name ",
                     "hidden": "true",
@@ -1975,7 +1975,7 @@
                     "type": "string"
                 },
                 "node_name": {
-                    "default": "{SHORTHOSTNAME}UnmangedNode01",
+                    "default": "{SHORTHOSTNAME}UnmanagedNode01",
                     "description": "Web server node name",
                     "displayname": "WebSphere was webserver ihs_server node_name",
                     "hidden": "false",

@@ -8,7 +8,7 @@ chef_version     '>= 12.5' if respond_to?(:chef_version)
 description      'Installs and configures WebSphere Application Server and WebSphere Application Server Network Deployment'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 
-version '2.0.0'
+version '2.0.1'
 
 depends          'ibm_cloud_utils'
 depends          'im'
@@ -1682,7 +1682,7 @@ attribute 'was/unmanaged_node/unmngNode01/host_name',
           :selectable => 'true',
           :type => 'string'
 attribute 'was/unmanaged_node/unmngNode01/node_name',
-          :default => '{SHORTHOSTNAME}UnmangedNode01',
+          :default => '{SHORTHOSTNAME}UnmanagedNode01',
           :description => 'Node name for the unmanaged node',
           :displayname => 'WebSphere Unmanaged node name ',
           :hidden => 'true',
@@ -1765,7 +1765,7 @@ attribute 'was/webserver/ihs_server/install_dir',
           :selectable => 'true',
           :type => 'string'
 attribute 'was/webserver/ihs_server/node_name',
-          :default => '{SHORTHOSTNAME}UnmangedNode01',
+          :default => '{SHORTHOSTNAME}UnmanagedNode01',
           :description => 'Web server node name',
           :displayname => 'WebSphere was webserver ihs_server node_name',
           :hidden => 'false',

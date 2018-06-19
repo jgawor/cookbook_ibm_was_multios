@@ -137,4 +137,4 @@ fix_user_ownership([node['was']['install_dir']], node['was']['os_users']['was'][
 
 #fix_init_script("#{node['was']['profiles']['node_profile']['node'].to_s}_was.init")
 
-start_nodeagent
+# start_nodeagent

@@ -4,6 +4,10 @@
 #
 # Copyright IBM Corp. 2017, 2018
 #
+include WASHelper
+include WASWsadmin
+include WASSearch
+
 action :create do
   if @current_resource.server_in_cluster_created
     Chef::Log.info "#{@new_resource} already exists - nothing to do."

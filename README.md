@@ -726,7 +726,7 @@ Attributes
   <tr>
     <td><code>node['was']['unmanaged_node']['unmngNode01']['node_name']</code></td>
     <td>Node name for the unmanaged node</td>
-    <td><code>{SHORTHOSTNAME}UnmangedNode01</code></td>
+    <td><code>{SHORTHOSTNAME}UnmanagedNode01</code></td>
   </tr>
   <tr>
     <td><code>node['was']['unmanaged_node']['unmngNode01']['os']</code></td>
@@ -761,7 +761,7 @@ Attributes
   <tr>
     <td><code>node['was']['webserver']['ihs_server']['node_name']</code></td>
     <td>Web server node name</td>
-    <td><code>{SHORTHOSTNAME}UnmangedNode01</code></td>
+    <td><code>{SHORTHOSTNAME}UnmanagedNode01</code></td>
   </tr>
   <tr>
     <td><code>node['was']['webserver']['ihs_server']['plugin_dir']</code></td>

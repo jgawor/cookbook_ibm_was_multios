@@ -2099,7 +2099,7 @@ default['was']['profiles']['job_manager'] = {
 # <md>          :description => 'Node name for the unmanaged node',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
-# <md>          :default => '{SHORTHOSTNAME}UnmangedNode01',
+# <md>          :default => '{SHORTHOSTNAME}UnmanagedNode01',
 # <md>          :selectable => 'true',
 # <md>          :immutable_after_create => 'true',
 # <md>          :precedence_level => 'node',
@@ -2135,7 +2135,7 @@ default['was']['profiles']['job_manager'] = {
 
 default['was']['unmanaged_node'] = {
   'unmngNode01'  =>  {
-    'node_name'  =>  '{SHORTHOSTNAME}UnmangedNode01',
+    'node_name'  =>  '{SHORTHOSTNAME}UnmanagedNode01',
     'host_name' =>     node['was']['ihs_host_name'],
     'os' =>   "linux" } }
 
@@ -2144,7 +2144,7 @@ default['was']['unmanaged_node'] = {
 # <md>          :description => 'Web server node name',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
-# <md>          :default => '{SHORTHOSTNAME}UnmangedNode01',
+# <md>          :default => '{SHORTHOSTNAME}UnmanagedNode01',
 # <md>          :selectable => 'true',
 # <md>          :immutable_after_create => 'true',
 # <md>          :precedence_level => 'node',
@@ -2271,7 +2271,7 @@ default['was']['unmanaged_node'] = {
 
 default['was']['webserver'] = {
   'ihs_server'  =>  {
-    'node_name'  =>  '{SHORTHOSTNAME}UnmangedNode01',
+    'node_name'  =>  '{SHORTHOSTNAME}UnmanagedNode01',
     'webserver_name' => 'webserver1',
     'webserver_port' =>   '80',
     'install_dir' => '/opt/IBM/HTTPServer',
