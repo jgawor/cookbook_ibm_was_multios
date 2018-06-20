@@ -10,7 +10,7 @@ hostName=<%= @HOSTNAME %>
 <% if node['was']['config']['enable_admin_security'] == "true" %>
 enableAdminSecurity=true
 adminUserName=<%= @ADMINUSERNAME %>
-adminPassword="<%= @ADMINPASSWORD %>"
+adminPassword=<%= @ADMINPASSWORD %>
 <% else %>
 enableAdminSecurity=false
 <% end %>
@@ -20,5 +20,5 @@ personalCertDN=<%= @PERSONALCERTDN %>
 personalCertValidityPeriod=<%= @PERSONALCERTVALIDITYPERIOD %>
 signingCertDN=<%= @SIGNINGCERTDN %>
 signingCertValidityPeriod=<%= @SIGNINGCERTVALIDITYPERIOD %>
-keyStorePassword="<%= @KEYSTOREPASSWORD %>"
+keyStorePassword=<%= @KEYSTOREPASSWORD %>
 <% end %>

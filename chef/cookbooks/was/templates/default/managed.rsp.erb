@@ -9,7 +9,7 @@ hostName=<%= @HOSTNAME %>
 federateLater=false
 portsFile=<%= @PORTSFILE %>
 dmgrAdminUserName=<%= @ADMINUSERNAME %>
-dmgrAdminPassword="<%= @ADMINPASSWORD %>"
+dmgrAdminPassword=<%= @ADMINPASSWORD %>
 dmgrHost=<%= @DMGRHOST %>
 dmgrPort=<%= @DMGRPORT %>
 <% if node['was']['config']['use_default_certs'] == "false" %>
@@ -17,7 +17,7 @@ personalCertDN=<%= @PERSONALCERTDN %>
 personalCertValidityPeriod=<%= @PERSONALCERTVALIDITYPERIOD %>
 signingCertDN=<%= @SIGNINGCERTDN %>
 signingCertValidityPeriod=<%= @SIGNINGCERTVALIDITYPERIOD %>
-keyStorePassword="<%= @KEYSTOREPASSWORD %>"
+keyStorePassword=<%= @KEYSTOREPASSWORD %>
 <% end %>
 enableService=<%= @ENABLESERVICE %>
 serviceUserName=<%= @SERVICEUSER %>
