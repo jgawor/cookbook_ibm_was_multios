@@ -290,7 +290,7 @@
             }
         },
         "java_version": {
-            "default": "8.0.50.7",
+            "default": "8.0.5.17",
             "description": "The Java SDK version that should be installed with the WebSphere Application Server. Example format is 8.0.4.70",
             "displayname": "WebSphere Java SDK version",
             "hidden": "false",
@@ -1908,8 +1908,8 @@
             }
         },
         "version": {
-            "default": "9.0.0.6",
-            "description": "The release and fixpack level of WebSphere Application Server to be installed. Example formats are 8.5.5.13 or 9.0.0.6",
+            "default": "9.0.0.8",
+            "description": "The release and fixpack level of WebSphere Application Server to be installed. Example formats are 8.5.5.13 or 9.0.0.8",
             "displayname": "WebSphere Application Server Version",
             "hidden": "false",
             "immutable_after_create": "true",

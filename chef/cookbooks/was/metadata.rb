@@ -8,7 +8,7 @@ chef_version     '>= 12.5' if respond_to?(:chef_version)
 description      'Installs and configures WebSphere Application Server and WebSphere Application Server Network Deployment'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 
-version '2.0.2'
+version '2.0.3'
 
 depends          'ibm_cloud_utils'
 depends          'im'
@@ -254,7 +254,7 @@ attribute 'was/java_features/websphere_java_v8/offering_id',
           :selectable => 'false',
           :type => 'string'
 attribute 'was/java_version',
-          :default => '8.0.50.7',
+          :default => '8.0.5.17',
           :description => 'The Java SDK version that should be installed with the WebSphere Application Server. Example format is 8.0.4.70',
           :displayname => 'WebSphere Java SDK version',
           :hidden => 'false',
@@ -1706,8 +1706,8 @@ attribute 'was/unmanaged_node/unmngNode01/os',
           :selectable => 'true',
           :type => 'string'
 attribute 'was/version',
-          :default => '9.0.0.6',
-          :description => 'The release and fixpack level of WebSphere Application Server to be installed. Example formats are 8.5.5.13 or 9.0.0.6',
+          :default => '9.0.0.8',
+          :description => 'The release and fixpack level of WebSphere Application Server to be installed. Example formats are 8.5.5.13 or 9.0.0.8',
           :displayname => 'WebSphere Application Server Version',
           :immutable_after_create => 'true',
           :parm_type => 'node',

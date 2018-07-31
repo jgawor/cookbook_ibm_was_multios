@@ -14,16 +14,16 @@
 #default['was']['version'] = "8.5.5.13"
 # <md>attribute 'was/version',
 # <md>          :displayname =>  'WebSphere Application Server Version',
-# <md>          :description => 'The release and fixpack level of WebSphere Application Server to be installed. Example formats are 8.5.5.13 or 9.0.0.6',
+# <md>          :description => 'The release and fixpack level of WebSphere Application Server to be installed. Example formats are 8.5.5.13 or 9.0.0.8',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
-# <md>          :default => '9.0.0.6',
+# <md>          :default => '9.0.0.8',
 # <md>          :selectable => 'true',
 # <md>          :immutable_after_create => 'true',
 # <md>          :precedence_level => 'node',
 # <md>          :parm_type => 'node',
 # <md>          :secret => 'false'
-default['was']['version'] = "9.0.0.6" # ~ip_checker
+default['was']['version'] = "9.0.0.8" # ~ip_checker
 
 #<> Rolenames required for chef-search
 # <md>attribute 'was/dmgr_role_name',
@@ -113,7 +113,7 @@ default['was']['edition'] = {
 # <md>          :description => 'The Java SDK version that should be installed with the WebSphere Application Server. Example format is 8.0.4.70',
 # <md>          :type => 'string',
 # <md>          :required => 'recommended',
-# <md>          :default => '8.0.50.7',
+# <md>          :default => '8.0.5.17',
 # <md>          :selectable => 'true',
 # <md>          :immutable_after_create => 'true',
 # <md>          :precedence_level => 'node',
@@ -249,7 +249,7 @@ when /^8.5.5/ # ~ip_checker
     'com.ibm.sdk.6_64bit' => "true" }
 when /^9.0.0/ # ~ip_checker
 
-  default['was']['java_version'] = "8.0.50.7" # ~ip_checker
+  default['was']['java_version'] = "8.0.5.17" # ~ip_checker
 
   #<> WebSphere Installation Options
   default['was']['java_features'] = {

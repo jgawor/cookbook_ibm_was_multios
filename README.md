@@ -124,7 +124,7 @@ Attributes
   <tr>
     <td><code>node['was']['java_version']</code></td>
     <td>The Java SDK version that should be installed with the WebSphere Application Server. Example format is 8.0.4.70</td>
-    <td><code>8.0.50.7</code></td>
+    <td><code>8.0.5.17</code></td>
   </tr>
   <tr>
     <td><code>node['was']['os_perms']</code></td>
@@ -735,8 +735,8 @@ Attributes
   </tr>
   <tr>
     <td><code>node['was']['version']</code></td>
-    <td>The release and fixpack level of WebSphere Application Server to be installed. Example formats are 8.5.5.13 or 9.0.0.6</td>
-    <td><code>9.0.0.6</code></td>
+    <td>The release and fixpack level of WebSphere Application Server to be installed. Example formats are 8.5.5.13 or 9.0.0.8</td>
+    <td><code>9.0.0.8</code></td>
   </tr>
   <tr>
     <td><code>node['was']['webserver']['ihs_server']['admin_port']</code></td>
