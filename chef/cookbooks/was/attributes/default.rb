@@ -247,7 +247,7 @@ when /^8.5.5/ # ~ip_checker
     'liberty'             => "false",
     'com.ibm.sdk.6_32bit' => "false",
     'com.ibm.sdk.6_64bit' => "true" }
-when /^9.0.0/ # ~ip_checker
+when /^9.0.0/, /^9.0.5/ # ~ip_checker
 
   default['was']['java_version'] = "8.0.5.17" # ~ip_checker
 
