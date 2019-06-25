@@ -1,7 +1,7 @@
 # Cookbook Name::was
 # Recipe:: internal
 #
-#         Copyright IBM Corp. 2016, 2018
+#         Copyright IBM Corp. 2016, 2019
 #
 # <> This file contains the preset attributes that have the highest level of precendence.
 #
@@ -112,7 +112,7 @@ when /^8.5.5/ # ~ip_checker
     'base' => 'IBM WebSphere Application Server V8.5',
     'nd' => 'IBM WebSphere Application Server Network Deployment V8.5' }
 
-when /^9.0.0/, /^9.0.5/ # ~ip_checker
+when /^9.0/ # ~ip_checker
   #<> Installation templates for WebSphere
   force_default['was']['install_template'] = 'WAS.install.xml.erb'
 

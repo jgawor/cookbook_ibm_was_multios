@@ -1,7 +1,7 @@
 # Cookbook Name::was
 # Recipe::attributes
 #
-# Copyright IBM Corp. 2016, 2018
+# Copyright IBM Corp. 2016, 2019
 #
 # <> The attributes file will define all attributes that may be over-written by CHEF Attribute Precendence
 #
@@ -247,7 +247,7 @@ when /^8.5.5/ # ~ip_checker
     'liberty'             => "false",
     'com.ibm.sdk.6_32bit' => "false",
     'com.ibm.sdk.6_64bit' => "true" }
-when /^9.0.0/, /^9.0.5/ # ~ip_checker
+when /^9.0/ # ~ip_checker
 
   default['was']['java_version'] = "8.0.5.17" # ~ip_checker
 
